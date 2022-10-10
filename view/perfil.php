@@ -69,30 +69,28 @@
                             <img src="data:image/jpg/png;base64,<?php echo base64_encode($row['Foto']); ?>">
                         </div>
 
-                        <div class="DatosPersonales">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="row">Documento</th>
-                                        <td><?php echo $row["Documento"] ?></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Nombre</th>
-                                        <td><?php echo $row["Nombres"] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Apellido</th>
-                                        <td><?php echo $row["Apellidos"] ?></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Celular</th>
-                                        <td><?php echo $row["Celular"] ?></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <center>
+                            <div class="DatosPersonales">
+                                <table class="responsivegene">
+                                    <thead>
+                                        <tr>
+                                            <th>Documento</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Celular</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Documento"><?php echo $row["Documento"] ?></td>
+                                            <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
+                                            <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
+                                            <td data-label="Celular"><?php echo $row["Celular"] ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </center>
                     </div>
                 </div>
             <?php } ?>
@@ -198,32 +196,110 @@ div.content {
 
 }
 
+/*Foto*/
+.Foto img{
+    border-radius: 50%;
+    width: 200px;
+}
+
 /*Contenedor de Textos principales*/
-.Datos h1{
+.Usuario h1{
     text-align: center;
     text-transform: uppercase;
     font-weight: 900;
-    margin-bottom: 20px;
-    font-family: 'Concert One', cursive;
     margin-top: 50px;
+    font-family: 'Concert One', cursive;
+    text-shadow: -1px -1px 0px black,
+    3px 3px 0px white,
+    6px 6px 0px black;
 }
 
-.Datos h1 span{
+.Usuario h1 span{
     color: red;
 }
 
-.Datos p{
-    text-align: left;
-    font-family: 'Concert One', cursive;
-    font-size: 20px;
-    margin-top: 38px;
+.Usuario p{
+    font-size: 30px;
     margin-left: 40px;
+    font-weight: 700;
+    font-family: 'Concert One', cursive;
 }
 
-.Datos hr{
-    width: 93%;
+hr{
+    display: block;
     margin: 0 auto;
+    width: 94%;
 }
+
+table.responsivegene {
+    border: 1px solid #ccc;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0; 
+}
+
+table thead tr{
+    background-color: #fc5500;
+    color: #fff;
+}
+
+table tbody tr{
+    background-color: #DADADA;
+    font-weight: 600;
+}
+
+table.responsivegene tr {
+    border: 1px solid #ddd;
+    padding: 5px; 
+}
+
+table.responsivegene th, table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table.responsivegene th {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+@media screen and (max-width: 600px) {
+    table.responsivegene {
+        border: 0;
+        width: 80%;
+    }
+
+    table.responsivegene thead {
+        display: none;
+    }
+
+    table.responsivegene tr {
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+
+    table.responsivegene td {
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    table.responsivegene td:last-child {
+        border-bottom: 0;
+    }
+
+    table.responsivegene td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+  }
 
 /*Estilos Datos Usuario*/
 

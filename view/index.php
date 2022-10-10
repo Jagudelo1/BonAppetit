@@ -8,7 +8,7 @@
     }
 
     include("conexion.php");
-    $platillos = "SELECT * FROM platillos";
+    $platillos = "SELECT * FROM platillos WHERE id_platillo = '1'";
 ?>
 
 <!DOCTYPE html>

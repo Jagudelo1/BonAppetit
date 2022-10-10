@@ -7,7 +7,11 @@
         session_start(); 
     }
 
-    include 'cerrar_sesion.php';
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        die();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
