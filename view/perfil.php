@@ -78,6 +78,7 @@
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>Celular</th>
+                                            <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,6 +87,9 @@
                                             <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
                                             <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
+                                            <td data-label="Actualizar">
+                                                <button class="Update">Actualizar</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -198,8 +202,13 @@ div.content {
 
 /*Foto*/
 .Foto img{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border-radius: 50%;
-    width: 200px;
+    width: 170px;
+    height: 170px;
 }
 
 /*Contenedor de Textos principales*/
@@ -264,6 +273,19 @@ table.responsivegene th {
     text-transform: uppercase;
     font-size: 14px;
     letter-spacing: 1px;
+}
+
+.Update{
+    border: 0;
+    background-color: #fc5500;
+    color: #fff;
+    padding: 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.Update:hover{
+    background-color: #FF8547;
 }
 
 @media screen and (max-width: 600px) {
