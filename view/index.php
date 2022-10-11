@@ -8,7 +8,7 @@
     }
 
     include("conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE id_platillo = '1'";
+    $platillos = "SELECT * FROM platillos WHERE id_categoria IN ('1', '4','2','5','3')"
 ?>
 
 <!DOCTYPE html>
@@ -68,30 +68,32 @@
 </div>
 
 <!--Platilllos-->
-  <div class="Cantainerinfo">
-      <h2>Deleitate con nuestros mejores platillos</h2>
-      <button>Ver más</button>
-  </div>
-<!--Titulo-->
-  <h1 class="text_title">Conoce nuestras variedades de platillos</h3>
+<div class="Cantainerinfo">
+    <h2>En nuestros platillos hay mucho amor</h2>
+</div>
 
 <!--Tarjetas-->
-  <div class="ContainerCards">
+<div class="ContainerCards">
     <?php $resultado = mysqli_query($conexion, $platillos);
     while($row=mysqli_fetch_assoc($resultado)) { ?>
-      <div class="card" style="width: 18rem;">
-        <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
-          <div class="card-body">
+    <div class="card" style="width: 23rem;">
+        <div class="ImgCard">
+            <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
+        </div>
+        <div class="card-body">
             <p class="card-text">
-              <?php echo $row["Nombre_Platillo"] ?>
+                <?php echo $row["Nombre_Platillo"] ?>
             </p>
             <p class="text_card">
-              $<?php echo $row["Precio_Platillo"] ?>
+                $<?php echo $row["Precio_Platillo"] ?>
             </p>
-          </div>
-      </div>
-      <?php } ?>
-  </div>
+        </div>
+    </div>
+    <?php } ?>
+</div>
+<button class="buttonV">
+    <a href="view/platillos.php">Ver más</a>
+</button>
 
     <!--Footer-->
     <?php include("../template/footer.php"); ?>
@@ -126,6 +128,21 @@ body{
     font-weight: 700;
 }
 
+/*Estilos de slider*/
+
+.texth5 .text1{
+    padding-bottom: 3%;
+}
+
+.texth5 .text2, .text4{
+    padding-bottom: 68%;
+}
+
+.texth5 h5{
+    color: white;
+    font-weight: 700;
+}
+
 /*Texto informativo*/
 .Cantainerinfo{
     background-color: #FF955F;
@@ -144,7 +161,76 @@ body{
     6px 6px 0px red;
 }
 
-.Cantainerinfo button{
+@media (max-width: 685px){
+    .Cantainerinfo h2{
+        text-align: center;
+        font-size: 50px;
+    }
+
+    .ContainerCards button{
+        padding: 12px;
+        font-size: 18px;
+    }
+}
+
+/*Cards*/
+.ContainerCards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.ContainerCards .card{
+    margin: 0 auto;
+    border-radius: 18px;
+    background-color: #D0D0D0;
+    margin-bottom: 30px;
+    margin-top: 60px;
+}
+
+.ContainerCards .ImgCard{
+    background-color: #fc5500;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 18px 18px 0 0;
+    padding: 10px;
+}
+
+.ContainerCards .card img{
+    height: 200px;
+    width: 210px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+    display: block;
+    margin: 0 auto;
+}
+
+.card .card-text{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: 'Concert One', cursive;
+    font-size: 25px;
+
+    color: #fff;
+    text-shadow:
+    3px 3px 0px #000,
+    6px 6px 0px #000;
+}
+
+.card .text_card{
+    display: block;
+    margin: 0 auto;
+    background-color: #fc5500;
+    width: 30%;
+    padding: 8px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
+}
+
+.buttonV{
     background-color: #E41A06;
     display: block;
     margin: 0 auto;
@@ -152,80 +238,20 @@ body{
     padding: 15px;
     font-size: 20px;
     border-radius: 18px;
-    margin-top: 50px;
+    margin-bottom: 50px;
     box-shadow: 0px 0px 7px 3px #1F1B1B;
     font-weight: 600;
 }
 
-.Cantainerinfo button:hover{
+.buttonV:hover{
     background-color: #CF1200;
     color: white;
     transition-duration: 2s;
     box-shadow: 0px 0px 7px 3px #989898;
 }
 
-/*Platillos*/
-.text_title{
-  margin-top: 50px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #FF0000;
-  font-family: 'Concert One', cursive;
-  font-weight: 900;
-  font-size: 50px;
-  color: #FF955F;
-  text-shadow:
-  3px 3px 0px white,
-  6px 6px 0px #1F1B1B;
-}
-
-@media (max-width: 685px){
-    .Cantainerinfo h2{
-        text-align: center;
-        font-size: 50px;
-    }
-
-    .Cantainerinfo button{
-        padding: 12px;
-        font-size: 18px;
-    }
-}
-
-/*Estilos de las Cards*/
-.ContainerCards{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.card{
-  margin: 0 auto;
-  margin-top: 40px;
-  border-radius: 18px;
-}
-
-.card img{
-  height: 180px;
-  object-fit: cover;
-  border-radius: 18px;
-}
-
-.card .card-text{
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.card .text_card{
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: red;
-  color: white;
-  padding: 0.4em;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 0 6px 0 6px;
+.buttonV a{
+    text-decoration: none;
+    color: #fff;
 }
 </style>
