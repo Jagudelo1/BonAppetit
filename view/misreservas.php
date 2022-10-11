@@ -1,7 +1,6 @@
 <?php
     // No mostrar los errores de PHP
     error_reporting(0);
-
     if(!isset($_SESSION)) 
     { 
         session_start(); 
@@ -12,6 +11,10 @@
         echo 'Usted no tiene autorización';
         die();
     }
+
+    include("conexion.php");
+    
+    $reserva = "SELECT * FROM reservas INNER JOIN clientes ON reservas.id_cliente = clientes.id_cliente";
 ?>
 
 <!DOCTYPE html>
@@ -26,257 +29,295 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/d751bf33a4.js" crossorigin="anonymous"></script>
-    <title>Mi Perfil - Mis Reservas</title>
+    <title>Mi Perfil - Reservas</title>
 </head>
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid ml-auto">
-        <a class="navbar-brand titulo" href="#">Bonappetit</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <!--Despues de logearse-->
-    <?php
-        //En el if va la variable con la que identificas si estan logueados
-        if($_SESSION['usuario'] == true){
-    ?>
-    <div class="collapse navbar-collapse navcolor" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="platillos.php">Platillos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="resena.php">Reseña</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="reservas.php">Reserva</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contactanos.php">Contactanos</a>
-                </li>
-            </ul>            
-        </div>
-            <ul class="navbar-nav ms-auto user">
-              <li><b>Hola, <?php echo $_SESSION['usuario']; ?></b></li>
-            </ul>
-
-    <?php
-        //Acción que se ejecutaria en caso de que no estes logueado
-        }else{
-    ?>
-    <!--Antes de logearse-->
-    <div class="collapse navbar-collapse navcolor " id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../view/platillos.php">Platillos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../view/resena.php">Reseña</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../view/contactanos.php">Contactanos</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="../view/login.php">Ingresar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../view/registrate.php">Registrate</a>
-            </li>
-        </ul>
-    </div>
-    <?php
-        }
-    ?>
-    </div>
-</nav>
+    <?php include("../template/navbar.php"); ?>
     
     <div class="ContenedorPRN">
+
         <!--Barra Nav Vertical-->
-        <aside>
-            <div class="sidebar">
-                <a href="./perfil.php" class="active">
-                     <span class="material-icons-sharp">person_outline</span>
-                     <h3>Datos Personales</h3>
-                </a>
-                <a href="./perfilupdate.php">
-                    <span class="material-icons-sharp">edit</span>
-                    <h3>Modificar Datos</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">restaurant</span>
-                    <h3>Actualizar Reserva</h3>
-               </a>
-               <a href="#">
-                    <span class="material-icons-sharp">key</span>
-                    <h3>Cambiar Contraseña</h3>
-               </a>
-                
-                <a href="./login.php">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>Salir</h3>
-                </a>
+        <div class="sidebar">
+            <i class="fa-solid fa-user iconos"></i>
+            <a class="active" href="perfil.php">Datos Personales</a>
+
+            <i class="fa-solid fa-key iconos"></i>
+            <a href="actualizar_contrasena.php">Cambiar Contraseña</a>
+
+            <i class="fa-solid fa-utensils iconos"></i>
+            <a href="misreservas.php">Mi Reserva</a>
+
+            <div class="Exit">
+                <i class="fa-solid fa-door-open iconos"></i>
+                <a href="cerrar_sesion.php"> Salir</a>
             </div>
-        </aside>
+        </div>
 
         <!--Contenido Principal-->
-        <div class="container_data">
-          <ul class="navbar-nav ms-auto user">
-              <li><b>Hola, <?php echo $_SESSION['usuario']; ?></b></li>
-            </ul>
+        <div class="ContainerInfo">
+            <?php $resultado = mysqli_query($conexion, $reserva);
+            while($row=mysqli_fetch_assoc($resultado)) { ?>
+                <div class="Datos">
+                    <div class="Info">
+                        <center>
+                            <div class="DatosPersonales">
+                                <table class="responsivegene">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre Completo</th>
+                                            <th>Telefono</th>
+                                            <th>Fecha</th>
+                                            <th>Hora</th>
+                                            <th>Mesa</th>
+                                            <th>Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Nombre Completo"><?php echo $row["Nombre_Completo"] ?></td>
+                                            <td data-label="Telefono"><?php echo $row["Telefono"] ?></td>
+                                            <td data-label="Fecha"><?php echo $row["Fecha"] ?></td>
+                                            <td data-label="Hora"><?php echo $row["Hora"] ?></td>
+                                            <td data-label="Mesa"><?php echo $row["Mesa"] ?></td>
+                                            <td data-label="Descripción"><?php echo $row["Descripcion"] ?></td>
+                                            <td data-label="Actualizar">
+                                                <button class="Update">Actualizar</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
-        Reservas
     </div>
 
+    <!--Footer-->
     <?php include("../template/footer.php"); ?>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
 </body>
 </html>
 
 <style>
-/*Navbar*/
-    :root{
-            --primary-color: #fc5500;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
-    /*Navbar*/
-    .navbar{
-        background-color: var(--primary-color);
-        box-shadow: 4px 4px 7px #C71414;
-    }
+.ContenedorPRN{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
 
-    .titulo{
-        color: white;
-        font-size: 30px;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
+/*Sidebar*/
+.sidebar {
+    margin: 0;
+    padding: 0;
+    background-color: #fc5500;
+    height: 86vh;
+    overflow: auto;
+    padding-top: 20px;
+}
 
-    .nav-item a{
-        font-size: 15px;
-        color: white;
-        font-weight: 900;
-    }
+/* Sidebar links */
+.sidebar a {
+    display: block;
+    color: black;
+    font-weight: 700;
+    padding: 16px;
+    text-decoration: none;
+}
 
-    .dropdown button{
-        border: none;
-        color: white !important;
-    }
+/* activo/actual link */
+.sidebar a.active {
+    background-color: #F47B3D;
+    color: white;
+}
 
-    .dropdown button:hover{
-        color: white !important;
-    }
+/* Enlaces al pasar el mouse */
+.sidebar a:hover:not(.active) {
+    background-color: #F47B3D;
+    color: white;
+}
 
-    .user b{
-      color: white;
-    }
+.sidebar a:last-child{
+    position: absolute;
+    bottom: 2rem;
+    width: 15%;
+}
 
-    aside {
-        width: 20%;
-        background-color: #fc5500;
-    }
+.sidebar i{
+    display: none;
+}
 
-/* ================== SIDEBAR ================== */
+/* Contenido de página. El valor de la propiedad de margen izquierdo debe coincidir con el valor de la propiedad de ancho de la barra lateral. */
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
 
-    aside .sidebar {
-        display: flex;
-        flex-direction: column;
-        height: 86vh;
-        position: relative;
-        top: 3rem;
-
-    }
-    aside h3 {
-        font-weight: bold;
-        font-size: 15px;
-    }
-
-    aside .sidebar a {
-        display: flex;
-        text-decoration: none;
-        color: #fff;
-        margin-left: 2rem;
-        gap: 1rem;
-        align-items: center;
-        height: 3.7rem;
-        transition: all 300ms ease;
-    }
-
-    aside .sidebar a span {
-        font-size: 1.6rem;
-        transition: all 300ms ease;
-        color: #000;
-    }
-
-    aside .sidebar a:last-child{
-        position: absolute;
-        bottom: 2rem;
-        width: 100%;
-    }
-
-    aside .sidebar a.active {
-        background: rgba(132,139,200,0.18);
-        color: black;
-        margin-left: 0;
-    }
-
-    aside .sidebar a.active::before {
-        content: "";
-        width: 6px;
-        height: 100%;
-        background: #7380ec;
-    }
-
-    aside .sidebar a.active span {
-        color: white;
-        margin-left: calc(1rem - 3px);
-    }
-
-    aside .sidebar a:hover {
-        color: black;
-    }
-
-    aside .sidebar a:hover span{
-        margin-left: 1rem;
-    }
-
-    aside .sidebar .message-count {
-        background: #ff7782;
-        color: #fff;
-        padding: 2px 10px;
-        font-size: 11px;
-        border-radius: var(--border-radius-1);
-    }
-
-@media (max-width: 414px){
-    aside h3{
+@media screen and (max-width: 788px){
+    .sidebar a{
         display: none;
     }
 
-    aside .sidebar a {
-        display: flex;
-        text-decoration: none;
+    .sidebar i{
+        display: block;
+        text-align: center;
+        margin-top: 20px;
         color: #fff;
-        margin-left: 2rem;
-        gap: 1rem;
-        align-items: center;
-        height: 3.7rem;
-    }
-
-    aside .sidebar a span {
-        font-size: 1.6rem;
-        color: #000;
+        padding: 16px;
     }
 }
+
+/* En pantallas que tienen menos de 700 px de ancho, convierta la barra lateral en una barra superior */
+@media screen and (max-width: 700px) {
+    .sidebar{
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    div.content{
+        margin-left: 0;
+    }
+}
+
+/* En pantallas de menos de 400 px, muestre la barra verticalmente, en lugar de horizontalmente */
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+
+}
+
+/*Foto*/
+.Foto img{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    width: 170px;
+    height: 170px;
+}
+
+/*Contenedor de Textos principales*/
+.Usuario h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-top: 50px;
+    font-family: 'Concert One', cursive;
+    text-shadow: -1px -1px 0px black,
+    3px 3px 0px white,
+    6px 6px 0px black;
+}
+
+.Usuario h1 span{
+    color: red;
+}
+
+.Usuario p{
+    font-size: 30px;
+    margin-left: 40px;
+    font-weight: 700;
+    font-family: 'Concert One', cursive;
+}
+
+hr{
+    display: block;
+    margin: 0 auto;
+    width: 94%;
+}
+
+table.responsivegene {
+    border: 1px solid #ccc;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0; 
+}
+
+table thead tr{
+    background-color: #fc5500;
+    color: #fff;
+}
+
+table tbody tr{
+    background-color: #DADADA;
+    font-weight: 600;
+}
+
+table.responsivegene tr {
+    border: 1px solid #ddd;
+    padding: 5px; 
+}
+
+table.responsivegene th, table td {
+    padding: 10px;
+    text-align: center;
+}
+
+table.responsivegene th {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.Update{
+    border: 0;
+    background-color: #fc5500;
+    color: #fff;
+    padding: 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.Update:hover{
+    background-color: #FF8547;
+}
+
+@media screen and (max-width: 600px) {
+    table.responsivegene {
+        border: 0;
+        width: 80%;
+    }
+
+    table.responsivegene thead {
+        display: none;
+    }
+
+    table.responsivegene tr {
+        margin-bottom: 10px;
+        display: block;
+        border-bottom: 2px solid #ddd;
+    }
+
+    table.responsivegene td {
+        display: block;
+        text-align: right;
+        font-size: 13px;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    table.responsivegene td:last-child {
+        border-bottom: 0;
+    }
+
+    table.responsivegene td:before {
+        content: attr(data-label);
+        float: left;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+  }
+
+/*Estilos Datos Usuario*/
+
 
 </style>

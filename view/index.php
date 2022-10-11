@@ -35,28 +35,28 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="img/Restaurant1.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block texth5">
-        <h5 class="text1">Te ofrecemos una experiencia gastronómica con el sabor único de la cocina.</h5>
-      </div>
+        <img src="img/Restaurant1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block texth5">
+            <h5 class="text1">Te ofrecemos una experiencia gastronómica con el sabor único de la cocina.</h5>
+        </div>
     </div>
     <div class="carousel-item">
-      <img src="img/Restaurant2.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block texth5">
-        <h5 class="text2">Comparte momentos agradables con tus amigos.</h5>
-      </div>
+        <img src="img/Restaurant2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block texth5">
+            <h5 class="text2">Comparte momentos agradables con tus amigos.</h5>
+        </div>
     </div>
     <div class="carousel-item">
-      <img src="img/Restaurant3.jpeg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block texth5">
-        <h5 class="text3">Deleitate con nuestras variedades.</h5>
-      </div>
+        <img src="img/Restaurant3.jpeg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block texth5">
+            <h5 class="text3">Deleitate con nuestras variedades.</h5>
+        </div>
     </div>
     <div class="carousel-item">
-      <img src="img/Restaurant4.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block texth5">
-        <h5 class="text4">Disfruta de nuestros deliciosos platillos.</h5>
-      </div>
+        <img src="img/Restaurant4.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block texth5">
+            <h5 class="text4">Disfruta de nuestros deliciosos platillos.</h5>
+        </div>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
