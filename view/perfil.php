@@ -77,6 +77,7 @@
                                             <th>Documento</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
+                                            <th>Correo Electronico</th>
                                             <th>Celular</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -86,12 +87,50 @@
                                             <td data-label="Documento"><?php echo $row["Documento"] ?></td>
                                             <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
                                             <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
+                                            <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
                                             <td data-label="Actualizar">
-                                                <button class="Update">Actualizar</button>
+                                            <button type="button" class="btn Update" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                Actualizar
+                                            </button>
                                             </td>
                                         </tr>
                                     </tbody>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="Form_Update">
+                                                        <div class="mb-3 DatosUser">
+                                                            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Nombres"] ?>">
+                                                        </div>
+                                                        <div class="mb-3 DatosUser">
+                                                            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Apellidos"] ?>">
+                                                        </div>
+                                                        <div class="mb-3 DatosUser">
+                                                            <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
+                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Correo_Electronico"] ?>">
+                                                        </div>
+                                                        <div class="mb-3 DatosUser">
+                                                            <label for="exampleFormControlInput1" class="form-label">Celular</label>
+                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Celular"] ?>">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </table>
                             </div>
                         </center>
@@ -323,7 +362,9 @@ table.responsivegene th {
     }
   }
 
-/*Estilos Datos Usuario*/
-
+/*Styles Modal Update*/
+.DatosUser{
+    text-align: left;
+}
 
 </style>
