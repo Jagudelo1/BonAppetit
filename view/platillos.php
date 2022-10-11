@@ -8,7 +8,7 @@
     }
 
     include("conexion.php");
-    $platillos = "SELECT * FROM platillos";
+    $platillos = "SELECT Id_Platillo, Nombre_Platillo, Descripcion_Platillo, Precio_Platillo, Foto_Platillo FROM platillos";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,40 +64,40 @@
     <div class="ContainerCards">
         <?php $resultado = mysqli_query($conexion, $platillos);
         while($row=mysqli_fetch_assoc($resultado)) { ?>
-            <div class="card Cards" style="width: 19rem;">
-            <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $row["Nombre_Platillo"] ?></h5>
-                    <p class="card-text">$<?php echo $row["Precio_Platillo"] ?></p>
-                    <button type="button" class="ButtonM" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Más Detalles
-                    </button>
-                </div>
+        <div class="card" style="width: 23rem;">
+            <div class="ImgCard">
+                <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
             </div>
-        <?php } ?>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-headers">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        <?php echo $row["Nombre_Platillo"] ?>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <?php echo $row["Descripcion_Platillo"] ?>
-                </div>
-                <div class="modal-body">
-                    <?php echo $row["Precio_Platillo"] ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-                </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <?php echo $row["Nombre_Platillo"] ?>
+                </p>
+                <center>
+                    <button type="button" class="btn btn-primary botonVer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Ver más
+                    </button>
+                </center>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $row["Nombre_Platillo"] ?></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <?php echo $row["Descripcion_Platillo"] ?>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary botonVer" data-bs-dismiss="modal">Salir</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <?php } ?>
+
 
         
     </div>
@@ -167,78 +167,65 @@ body{
     font-size: 50px;
 }
 
-/*Contenedor Principal*/
+/*Cards*/
 .ContainerCards{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-/*Estilos de las Cards*/
-.ContainerCards .Cards{
+.ContainerCards .card{
     margin: 0 auto;
-    margin-bottom: 35px;
-    border-radius: 15px;
-    transition: all .2s;
-    cursor: pointer;
+    border-radius: 18px;
+    background-color: #D0D0D0;
+    margin-bottom: 30px;
+    margin-top: 60px;
 }
 
-.ContainerCards .Cards img{
-    border-radius: 15px;
-    height: 200px;
-}
-
-.ContainerCards .Cards:hover{
-    transform: scale(1.1);
-}
-
-.Cards .card-title{
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 700;
-    font-family: 'Concert One', cursive;
-    margin-top: 8px;
-}
-
-.Cards .card-text{
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: red;
-    color: white;
-    padding: 0.1em;
-    border-radius: 0 6px 0 6px;
-    font-weight: 200;
-    font-family: 'Concert One', cursive;
-}
-
-.Cards .ButtonM{
+.ContainerCards .ImgCard{
+    background-color: #fc5500;
     display: block;
     margin: 0 auto;
-    border: 0;
-    background: #E21010;
-    color: white;
-    font-weight: 600;
-    padding: 0.5em;
+    width: 100%;
+    border-radius: 18px 18px 0 0;
+    padding: 10px;
+}
+
+.ContainerCards .card img{
+    height: 200px;
+    width: 210px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+    display: block;
+    margin: 0 auto;
+}
+
+.card .card-text{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-family: 'Concert One', cursive;
+    font-size: 25px;
+
+    color: #fff;
+    text-shadow:
+    3px 3px 0px #000,
+    6px 6px 0px #000;
+}
+
+.card .text_card{
+    display: block;
+    margin: 0 auto;
+    background-color: #fc5500;
+    width: 30%;
+    padding: 8px;
     border-radius: 12px;
-    margin-top: 18px;
+    text-align: center;
+    font-weight: 700;
+    color: #fff;
 }
 
-.Cards .ButtonM:hover{
-    background: #D02424;
-}
-
-@media (max-width: 1014px){
-    .ContainerCards{
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-}
-
-@media (max-width: 675px){
-    .ContainerCards{
-        display: grid;
-        grid-template-columns: auto;
-    }
+.botonVer{
+    border: 0;
 }
 
 </style>
