@@ -8,6 +8,7 @@ error_reporting(0);
 $Documento = $_POST["Documento"];
 $Nombres = $_POST["Nombres"];
 $Apellidos = $_POST["Apellidos"];
+$Correo_Electronico = $_POST["Correo_Electronico"];
 $Celular = $_POST["Celular"];
 $Fecha = $_POST["Fecha"];
 $Usuario = $_POST["Usuario"];
@@ -24,9 +25,10 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
 }
- 
-$sql = "INSERT INTO clientes (Documento, Nombres, Apellidos, Celular, Fecha, Usuario, Contrasena, Foto) 
-VALUES ('$Documento','$Nombres','$Apellidos','$Celular', '$Fecha','$Usuario','$Contrasena','$Foto')";
+
+//Consulta para subir los datos del usuario
+$sql = "INSERT INTO clientes (Documento, Nombres, Apellidos, Correo_Electronico, Celular, Fecha, Usuario, Contrasena, Foto) 
+VALUES ('$Documento','$Nombres','$Apellidos','$Correo_Electronico', '$Celular', '$Fecha','$Usuario','$Contrasena','$Foto')";
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro completado con exito");</script>';
 

@@ -1,3 +1,6 @@
+<? 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,6 +54,10 @@
             <input class="input" type="name" required  name="Apellidos" onkeypress="return validar(event)">
         </div>
         <div>
+            <label>Correo</label>
+            <input class="input" type="email" required  name="Correo_Electronico">
+        </div>
+        <div>
             <label>Telefono/Celular</label>
             <input class="input" type="number" required name="Celular">
         </div>
@@ -76,7 +83,7 @@
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault" require>Acepta Terminos y Condiciones</label>
         </div>
-        <button type="submit" class="botonR">Registrarse</button>
+        <button type="submit" class="botonR" data-bs-toggle="modal" data-bs-target="#exampleModal">Registrarse</button>
     </form>
     <div class="Recuperar">
         <p>¿Ya tienes una cuenta? 
@@ -210,6 +217,7 @@ input[type=number] {
 }
 
 .form-check{
+    grid-column: 1 / 3;
     margin: 15px;
     font-weight: 700;
 }

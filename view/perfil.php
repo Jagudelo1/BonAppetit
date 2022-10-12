@@ -90,7 +90,7 @@
                                             <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
                                             <td data-label="Actualizar">
-                                            <button type="button" class="btn Update" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                 Actualizar
                                             </button>
                                             </td>
