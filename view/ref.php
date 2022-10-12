@@ -52,6 +52,7 @@
             </a>
 
             <ul class="dropdown-menu lista" aria-labelledby="dropdownMenuLink">
+                <li class="platillos"><a class="dropdown-item" href="platillos.php">Todos los Platillos</a></li>
                 <li><a class="dropdown-item" href="col.php">Comida Colombiana</a></li>
                 <li><a class="dropdown-item" href="asados.php">Comidas Asadas</a></li>
                 <li><a class="dropdown-item" href="mar.php">Comida de Mar</a></li>
@@ -151,6 +152,10 @@ body{
 .lista a{
     color: #fff;
     font-weight: 700;
+}
+
+.platillos a:hover{
+    color: red;
 }
 
 /*Titulo*/

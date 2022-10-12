@@ -38,7 +38,7 @@
                 <form class="Inputs_Contenedor" method="Post" action="enviar_reserva.php">
                     <p>
                         <label for="Nombre_Completo">Nombre Completo</label>
-                        <input type="text" name="Nombre_Completo" onkeypress="return validar(event)">
+                        <input type="text" name="Nombre_Completo" onkeypress="return validar(event)" placeholder="<?php echo $row["Nombre_Platillo"] ?>">
                     </p>
                     <p>
                         <label>Celular</label>

@@ -6,12 +6,6 @@
         session_start(); 
     }
 
-    $sesion = $_SESSION['usuario'];
-        if($sesion == null || $sesion = ''){
-        echo 'Usted no tiene autorización';
-        die();
-    }
-
     include("conexion.php");
     
     $usuario = "SELECT * FROM clientes WHERE Usuario = '$_SESSION[usuario]' ";
@@ -90,14 +84,14 @@
                                             <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
                                             <td data-label="Actualizar">
-                                            <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#editar">
                                                 Actualizar
                                             </button>
                                             </td>
                                         </tr>
                                     </tbody>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">

@@ -14,9 +14,9 @@
 
     include("conexion.php");
     
-    $reserva = "SELECT * FROM reservas INNER JOIN clientes ON reservas.id_cliente = clientes.id_cliente";
+    $reserva = mysql_query("SELECT * FROM reservas, clientes INNER JOIN
+    reservas ON clientes.id_cliente = reservas.id_cliente WHERE usuario = '".$_SESSION['usuario']."'");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
