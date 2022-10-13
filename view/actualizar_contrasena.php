@@ -74,12 +74,37 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td data-label="Contraseña"><?php echo $row["Contrasena"] ?></td>
+                                            <td data-label="Contraseña" class="texto"><?php echo $row["Contrasena"] ?></td>
+                                        </tr>
+                                        <tr>
                                             <td data-label="Actualizar">
-                                                <button class="Update">Actualizar</button>
+                                                <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#editar">Actualizar</button>
                                             </td>
                                         </tr>
                                     </tbody>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="Form_Update">
+                                                        <div class="mb-3 DatosUser">
+                                                            <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Contrasena"] ?>">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </table>
                             </div>
                         </center>
