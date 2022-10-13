@@ -51,10 +51,8 @@
                 </div>
 
                 <div class="checkbox-text">
-                  
-                    <a href="#" class="text">Olvidaste tu contraseña?</a>
+                    <a href="RecuperarContraseña/restablecer.php" class="text">Olvidaste tu contraseña?</a>
                 </div>
-
                     <button class="buttonI">Ingresar</button>
             </form>
 
@@ -73,7 +71,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
 
 *{
     margin: 0;
@@ -87,26 +85,26 @@ body{
 }
 
 :root{
-        --primary-color: #fc5500 !important;
-    }
+    --primary-color: #fc5500 !important;
+}
 
-    /*Navbar*/
-    .navbar{
-        background-color: var(--primary-color);
-        box-shadow: 4px 4px 7px #C71414 !important;
-    }
+/*Navbar*/
+.navbar{
+    background-color: var(--primary-color);
+    box-shadow: 4px 4px 7px #C71414 !important;
+}
 
-    .titulo{
-        font-size: 30px;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
+.titulo{
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
 
-    .nav-item a{
-        font-size: 15px;
-        color: white;
-        font-weight: 900;
-    }
+.nav-item a{
+    font-size: 15px;
+    color: white;
+    font-weight: 900;
+}
 
 .container{
     position: relative;

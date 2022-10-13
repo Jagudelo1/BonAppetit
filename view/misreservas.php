@@ -12,9 +12,10 @@
         die();
     }
 
+
     include("conexion.php");
-    
-    $reserva = "SELECT * FROM reservas";
+
+    $reserva = "SELECT * FROM reservas WHERE Usuario = '$Usuario'";
 ?>
 <!DOCTYPE html>
 <html lang="en">
