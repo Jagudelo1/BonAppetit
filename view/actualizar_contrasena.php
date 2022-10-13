@@ -60,33 +60,21 @@
             while($row=mysqli_fetch_assoc($resultado)) { ?>
                 <div class="Datos">
                     <div class="Usuario">
-                        <h1>Bienvenido <span><?php echo $_SESSION['usuario']; ?></span></h1>
-                        <p>Mis Datos</p><hr>
+                        <h1>Cambiar Contraseña</h1>
                     </div>
 
                     <div class="Info">
-                        <div class="Foto">
-                            <img src="data:image/jpg/png;base64,<?php echo base64_encode($row['Foto']); ?>">
-                        </div>
-
                         <center>
                             <div class="DatosPersonales">
                                 <table class="responsivegene">
                                     <thead>
                                         <tr>
-                                            <th>Documento</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>Celular</th>
-                                            <th>Acciones</th>
+                                            <th>Contraseña</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td data-label="Documento"><?php echo $row["Documento"] ?></td>
-                                            <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
-                                            <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
-                                            <td data-label="Celular"><?php echo $row["Celular"] ?></td>
+                                            <td data-label="Contraseña"><?php echo $row["Contrasena"] ?></td>
                                             <td data-label="Actualizar">
                                                 <button class="Update">Actualizar</button>
                                             </td>

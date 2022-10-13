@@ -14,8 +14,7 @@
 
     include("conexion.php");
     
-    $reserva = mysql_query("SELECT * FROM reservas, clientes INNER JOIN
-    reservas ON clientes.id_cliente = reservas.id_cliente WHERE usuario = '".$_SESSION['usuario']."'");
+    $reserva = "SELECT * FROM reservas";
 ?>
 <!DOCTYPE html>
 <html lang="en">
