@@ -12,9 +12,7 @@
         echo 'Usted no tiene autorización';
         die();
     }
-
-    
-    
+    include("../db/conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +24,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Bon Appetit - Reserva</title>
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <!--Navbar-->
 <?php include("../template/navbar.php") ?>
 
@@ -37,60 +43,46 @@
 
         <div class="Reserva">
             <div class="form">
-                <h3>Reservar</h3>
-                <form class="Inputs_Contenedor" method="Post" action="enviar_reserva.php">
+                <form method="Post" action="enviar_reserva.php">
                     <p>
-                        <label for="Nombre_Completo">Nombre Completo</label>
-                        <input type="text" name="Nombre_Completo" onkeypress="return validar(event)">
+                        <label for="Nombre">Nombre Completo</label>
+                        <input type="text" name="Nombre_Completo" id="Nombre_Completo" onkeypress="return validar(event);">
                     </p>
                     <p>
-                        <label>Telefono</label>
-                        <input type="number" name="Telefono">
+                        <label for="Telefono">Telefono</label>
+                        <input type="text" name="Telefono" id="Telefono" onkeypress="return validekey(event);">
                     </p>
                     <p>
                         <label>Fecha</label>
-                        <input type="date" name="Fecha" min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
+                        <input type="date" name="Fecha" id="Fecha">
                     </p>
                     <p>
                         <label>Hora</label>
-                        <input type="time" name="Hora">
+                        <input type="time" name="Hora" id="Hora">
                     </p>
-                    <p class="moti">
-                        <label>Motivo</label>
-                        <input type="text" name="Descripcion" onkeypress="return validar(event)">
+                    <p>
+                        <label>Mensaje</label>
+                        <input type="text" name="Descripcion" id="Descripcion"></input>
                     </p>
-                    
                     <p>
                         <label>Mesa</label>
-                        <input type="number" name="Mesa"/>
+                        <input type="number" name="Mesa" id="Mesa"/>
                     </p>
-                
 
                     <p class="block">
                         <button type="submit">
-                            Enviar Reservación
+                            Enviar
                         </button>
                     </p>
                 </form>
             </div>
-
-            <div class="informacion">
-                <img src="img/Reserva.png" alt="">
-                <h2>Otros medios de reserva</h2>
-                <ul>
-                    <li><i class="fas fa-phone"> 123456789</i></li>
-                    <li><i class="fas fa-envelope-open-text"> BonAppetit@gmail.com</i></li>
-                </ul>
-                <p>Bievenido a Bon Appètit, donde ofrecemos una experiencia gastronómica única con
-                    el sabor unico de la cocina Colombiana, nuestras delicias enfocadas en Postres,
-                    Banquetes y mucho mása tu gusto.
-                </p>
-            </div>
         </div>
-    </div><br><br>
+    </div>
 
     <?php include("../template/footer.php"); ?>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="../loader.min.js"></script>
 </body>
 </html>
 
@@ -105,7 +97,7 @@
 }
 
 body{
-    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.jpg);
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.png);
     background-size: cover;
     background-position: center center;
     font-family: 'Raleway', sans-serif;
@@ -172,12 +164,7 @@ input[type=number] { -moz-appearance:textfield; }
     padding: 1em;
 }
 
-.form form .Opciones{
-    margin-top: 5px;
-}
-
 .form form button,
-.form form .Opciones,
 .form form input,
 .form form textarea{
     width: 100%;
@@ -185,6 +172,7 @@ input[type=number] { -moz-appearance:textfield; }
     border: none;
     background: none;
     outline: 0;
+    color: #fff;
     border-bottom: 1px solid #e15a00;
     cursor: pointer;
 }
@@ -227,6 +215,10 @@ input[type=number] { -moz-appearance:textfield; }
     width: 25%;
     display: block;
     margin: auto;
+}
+
+.moti{
+    grid-column: 1 / 3;
 }
 
 .wrap{
@@ -285,6 +277,48 @@ input[type=number] { -moz-appearance:textfield; }
     border-radius: 3px; 
 }
 
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
+}
+
 
 @media (min-width: 700px){
 
@@ -331,3 +365,13 @@ input[type=number] { -moz-appearance:textfield; }
     });
 });
 </script>
+<script type="text/javascript">
+		// Initialize our function when the document is ready for events.
+		jQuery(document).ready(function(){
+			// Listen for the input event.
+			jQuery("#Telefono").on('input', function (evt) {
+				// Allow only numbers.
+				jQuery(this).val(jQuery(this).val().replace(/[^0-9]/g, ''));
+			});
+		});
+		</script>

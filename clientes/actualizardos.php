@@ -9,10 +9,9 @@
 
     include("../db/conexion.php");
 
-    $datos= "SELECT * FROM resenas";
+    $datos= "SELECT * FROM clientes";
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-                <!--Animation Script-->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,19 +30,14 @@
     <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
     <title>Clientes</title>
-    <link rel="stylesheet"a href="../resenas/stylere.css">
+    <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
 <body>
-
-<div class="loader">
-    <div></div>
-</div>
-
-<div class="content">
-<div class="container">
+<div class="container1">
     <aside>
-        <div class="top">       
+        <div class="top1">       
             <div class="logo">
                 <img src="./imag/icon.png">
                 <h2>BON<span class="danger">APPETIT</span></h2>
@@ -59,7 +51,7 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Reservas</h3>
             </a>
-            <a href="../clientes/clientes.php">
+            <a href="../clientes/clientes.php"  class="active">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Personas</h3>
             </a>
@@ -67,7 +59,7 @@
                     <span class="material-icons-sharp">restaurant</span>
                     <h3>Platillos</h3>
                </a>
-            <a href="../resenas/resenas.php" class="active">
+            <a href="../resenas/resenas.php">
                 <span class="material-icons-sharp">reviews</span>
                 <h3>Reseñas</h3>
             </a>
@@ -75,7 +67,6 @@
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
                 </a>
-
 
             <a href="../index.php">
                 <span class="material-icons-sharp">logout</span>
@@ -85,45 +76,63 @@
     </aside>
 
     <main>
+    <h1>Menú Administrador</h1>
 
-        <h1>Menú Administrador</h1>
-
-             <br> 
+        <br>        
 
         <div class="recent-orders">
-            <h2>Reseñas</h2>
+            <div class="lupa">
 
-            <table border="0" cellspacing="2" cellpadding="2"> 
-                            <tr> 
-                                <td> <font face="Arial">id</font> </td> 
-                                <td> <font face="Arial">nombre</font> </td> 
-                                <td> <font face="Arial">correo</font> </td> 
-                                <td> <font face="Arial">comentario</font> </td> 
+            </div>
+
+            <table border="0" cellspacing="5" cellpadding="5">
+                <div class="container2">
+                <thead> 
+                            <tr>
+                                <td> <font face="Arial">Documento</font> </td> 
+                                <td> <font face="Arial">Nombres</font> </td> 
+                                <td> <font face="Arial">Apellidos</font> </td> 
+                                <td> <font face="Arial">Teléfono</font> </td> 
+                                <td> <font face="Arial">Fecha</font> </td>
+                                <td> <font face="Arial">Usuario</font> </td> 
+                                <td> <font face="Arial">Contraseña</font> </td> 
+    
                             </tr>
+                </thead>
+                </div>
 
-                            <?php foreach ($conexion -> query($datos) as $row) {
+                    <tbody id="content">
 
-                            
-                        ?>
+                    <?php foreach ($conexion -> query($datos) as $row) {
+ 
+ ?>
 
-                            
-                                <tr>
-                                    <td><p><?php echo $row['id_resena'] ?></p></td>
-                                    <td><p><?php echo $row['Nombre_Completo'] ?></p></td>
-                                    <td><p><?php echo $row['Correo'] ?></p></td>
-                                    <td><p><?php echo $row['Descripcion'] ?></p></td>
-                                    <th><a href="actualizar.php?id_resena=<?php echo $row['id_resena'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                                    <th><a href="delete.php?id_resena=<?php echo $row['id_resena'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                
-                                </tr>
+     
+         <tr>
+             <td><p><?php echo $row['Documento'] ?></p></td>
+             <td><p><?php echo $row['Nombres'] ?></p></td>
+             <td><p><?php echo $row['Apellidos'] ?></p></td>
+             <td><p><?php echo $row['Celular'] ?></p></td>
+             <td><p><?php echo $row['Fecha'] ?></p></td>  
+             <td><p><?php echo $row['Usuario'] ?></p></td>  
+             <td><p><?php echo $row['Contrasena'] ?></p></td>  
+             <th><a href="actualizar.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
+             <th><a href="delete.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+         </tr>
 
 
-                        <?php
-                        }
-                    ?>
+ <?php
+ }
+?>
+
+                                
+                    </tbody>
 
         </table>
         </div>
     </main>
+
+    
     <div class="right">
         <div class="top">
             <button id="menu-btn">
@@ -143,14 +152,18 @@
                 </div>
             </div>
         </div>
-        <!----- END OF TOP ------>
-
-            <!------------------- END OF RECENT UPDATES -------------------->
 
     </div>
 </div>
-</div>
-<script src="./indexre.js"></script>
-<script src="../loader.min.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="./indexc.js"></script>
+<script src="./pagination.js"></script>
+<script src="./jquery.js"></script>
+<script src="../clientes/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -6,7 +6,13 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        die();
+    }
+
+    include("../db/conexion.php");
     
     $usuario = "SELECT * FROM clientes WHERE Usuario = '$_SESSION[usuario]' ";
 ?>
@@ -23,11 +29,18 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/d751bf33a4.js" crossorigin="anonymous"></script>
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Mi Perfil</title>
 </head>
 <body>
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="contento">
     <!--Navbar-->
-    <?php include("../template/navbar.php"); ?>
+    <?php include("template/navbar.php"); ?>
     
     <div class="ContenedorPRN">
 
@@ -44,100 +57,105 @@
 
             <div class="Exit">
                 <i class="fa-solid fa-door-open iconos"></i>
-                <a href="cerrar_sesion.php"> Salir</a>
+                <a href="../logout.php"> Salir</a>
             </div>
         </div>
-
         <!--Contenido Principal-->
         <div class="ContainerInfo">
-            <?php $resultado = mysqli_query($conexion, $usuario);
-            while($row=mysqli_fetch_assoc($resultado)) { ?>
-                <div class="Datos">
-                    <div class="Usuario">
-                        <h1>Bienvenido <span><?php echo $_SESSION['usuario']; ?></span></h1>
-                        <p>Mis Datos</p><hr>
-                    </div>
+        <?php $resultado = mysqli_query($conexion, $usuario);
+        while($row=mysqli_fetch_assoc($resultado)) { ?>
+        <div class="Datos">
+            <div class="Usuario">
+                <h1>Bienvenido <span><?php echo $_SESSION['usuario']; ?></span></h1>
+                <p>Mis Datos</p><hr>
+            </div>
 
-                    <div class="Info">
-                        <div class="Foto">
-                            <img src="data:image/jpg/png;base64,<?php echo base64_encode($row['Foto']); ?>">
-                        </div>
-
-                        <center>
-                            <div class="DatosPersonales">
-                                <table class="responsivegene">
-                                    <thead>
-                                        <tr>
-                                            <th>Documento</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>Correo Electronico</th>
-                                            <th>Celular</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td data-label="Documento"><?php echo $row["Documento"] ?></td>
-                                            <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
-                                            <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
-                                            <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
-                                            <td data-label="Celular"><?php echo $row["Celular"] ?></td>
-                                            <td data-label="Actualizar">
-                                            <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#editar">
-                                                Actualizar
-                                            </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form class="Form_Update">
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Nombres"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Apellidos"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Correo_Electronico"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Celular</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Celular"] ?>">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </table>
-                            </div>
-                        </center>
-                    </div>
+            <div class="Info">
+                <div class="Foto">
+                    <img src="data:image/jpg/png;base64,<?php echo base64_encode($row['Foto']); ?>">
                 </div>
-            <?php } ?>
+
+                    <center>
+                <div class="DatosPersonales">
+                    <table class="responsivegene">
+                        <thead>
+                            <tr>
+                                <th>Documento</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo Electronico</th>
+                                <th>Celular</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-label="Documento"><?php echo $row["Documento"] ?></td>
+                                <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
+                                <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
+                                <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
+                                <td data-label="Celular"><?php echo $row["Celular"] ?></td>
+                                <td data-label="Actualizar">
+                                <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Actualizar
+                                </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form class="Form_Update">
+                                            <div class="mb-3 DatosUser">
+                                                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Nombres"] ?>">
+                                            </div>
+                                            <div class="mb-3 DatosUser">
+                                                <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Apellidos"] ?>">
+                                            </div>
+                                            <div class="mb-3 DatosUser">
+                                                <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Correo_Electronico"] ?>">
+                                            </div>
+                                            <div class="mb-3 DatosUser">
+                                                <label for="exampleFormControlInput1" class="form-label">Celular</label>
+                                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Celular"] ?>">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </table>
+                </div>
+                </center>
+            </div>
         </div>
+        <?php } ?>
     </div>
+</div>
 
     <!--Footer-->
-    <?php include("../template/footer.php"); ?>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
+    <?php include("template/footer.php"); ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script>
+        $(window).on('load',function(){
+    $(".loader").fadeOut(1000);
+    $(".contento").fadeIn(1000);
+});
+    </script> 
 </body>
 </html>
 
@@ -355,6 +373,48 @@ table.responsivegene th {
         font-weight: bold;
     }
   }
+
+  .contento{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
+}
 
 /*Styles Modal Update*/
 .DatosUser{

@@ -56,7 +56,7 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="../view/perfil.php">Editar</a></li>
-                    <li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar Sesion</a></li>
+                    <li><a class="dropdown-item" href="../logout.php">Cerrar Sesion</a></li>
                 </ul>
             </div>
             
@@ -70,7 +70,7 @@
     <div class="collapse navbar-collapse navcolor" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="../index.php">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../view/platillos.php">Platillos</a>

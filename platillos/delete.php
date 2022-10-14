@@ -1,14 +1,14 @@
 <?php
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
-    $id_platillo = $_GET["id_platillo"];
+    $Id_Platillo = $_GET["Id_Platillo"];
 
-    $delete = "DELETE FROM platillos WHERE id_platillo = '$id_platillo'";
-    $result = mysqli_query($con, $delete);
+    $delete = "DELETE FROM platillos WHERE Id_Platillo = '$Id_Platillo'";
+    $result = mysqli_query($conexion, $delete);
 
     if(isset($delete)){
-        header("location:/ADMIN/platillos/platillos.php");
+        header("location: platillos.php");
     }
     else{
         echo "No";

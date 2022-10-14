@@ -1,14 +1,14 @@
 <?php
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $Documento = $_GET["Documento"];
 
     $delete = "DELETE FROM clientes WHERE Documento = '$Documento'";
-    $result = mysqli_query($con, $delete);
+    $result = mysqli_query($conexion, $delete);
 
     if(isset($delete)){
-        header("location:/ADMIN/clientes/clientes.php");
+        header("location:./clientes.php");
     }
     else{
         echo "No";

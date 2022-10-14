@@ -139,7 +139,7 @@
     }
 
     .footer{
-        background-color: #fc5500;
+        background-color: var(--primary-color);
         padding: 70px 0;
     }
 
@@ -198,18 +198,13 @@
         color: #fff;
         transition: all 0.5s ease;
     }
-
-    .footer_col .social_links i{
-        margin-top: 10px;
-    }
-
     .footer_col .social_links a:hover{
         background-color: #fff;
         color: #000;
     }
 
     .Copy{
-        background-color: #C71414;
+        background-color: var(--primary-color);
         width: 100%;
         padding: 5px 0;
         text-align: center;

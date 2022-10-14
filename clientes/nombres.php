@@ -7,7 +7,7 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $datos= "SELECT * FROM clientes";
 
@@ -21,6 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+                <!--Animation Script-->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,6 +37,12 @@
     <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <div class="container1">
     <aside>
         <div class="top1">       
@@ -90,7 +98,7 @@
                                 <td> <font face="Arial">Apellidos</font> </td> 
                             </tr>
 
-                            <?php foreach ($con -> query($datos) as $row) {
+                            <?php foreach ($conexion -> query($datos) as $row) {
 
                             
                         ?>
@@ -167,7 +175,8 @@
         </div>
     </div>
 </div>
-
+</div>
 <script src="./indexc.js"></script>
+<script src="../loader.min.js"></script>
 </body>
 </html>

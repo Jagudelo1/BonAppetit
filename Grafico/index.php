@@ -108,7 +108,7 @@
                         </div>
                         <br></br>
                         <br></br>
-                        <canvas id="graficobar" width="100" height="100" class="ver" ></canvas>
+                        <canvas id="graficobar" width="100" height="100" class="ver" ></canvas> 
                         <canvas id="graficobarhorizontal" width="100" height="100"></canvas>
                         <canvas id="graficodoughnut" width="100" height="100"></canvas>
                         <canvas id="graficoline" width="100" height="100"></canvas>
@@ -142,30 +142,55 @@
 
             <!------------------- END OF RECENT UPDATES -------------------->
         <div class="sales-analytics">
-        <h2>Analizador de INGRESOS</h2>
             <div class="item customers">
                 <div class="icon">
-                    <a href="../platillosr/index.php"> <span class="material-icons-sharp">inventory</span> </a>
+                    <button class="graficos" onclick="downloadPDF()"><span class="material-icons-sharp">bar_chart</span></button>
                 </div>
                 <div class="right">
                     <div class="info">
-                        <h3>Imprimir reporte</h3>
+                        <h3>Gráfico de barras versión PDF</h3>
                     </div>
                 </div>
-            </div><br>
-            <div class="col-lg-5">
-                <label for="">Fecha inicio</label>
-                <select name="" id="select_finicio" class="form-control"></select>
-            </div><br>
-
-            <div class="col-lg-5">
-            <label for="">Fecha fin</label>
-                <select name="" id="select_ffin" class="form-control"></select>
             </div>
-            
-            <div class="col-lg-2">
-                <label for="">&nbsp;</label><br>
-                <button class="btn btn-danger" onclick="CargarDatosGraficoBar()">Buscar</button>
+            <div class="item customers">
+                <div class="icon">
+                    <button class="graficos" onclick="downloadPDFhori()"><span class="material-icons-sharp">align_horizontal_left</span></button>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Gráfico de barras horizontal versión PDF</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item customers">
+                <div class="icon">
+                    <button class="graficos" onclick="downloadPDFdona()"><span class="material-icons-sharp">donut_large</span></button>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Gráfico dona versión PDF</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item customers">
+                <div class="icon">
+                    <button class="graficos" onclick="downloadPDFline()"><span class="material-icons-sharp">insights</span></button>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Gráfico de línea versión PDF</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="item customers">
+                <div class="icon">
+                    <button class="graficos" onclick="downloadPDFarea()"><span class="material-icons-sharp">network_wifi_2_bar</span></button>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Gráfico de área versión PDF</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -183,10 +208,13 @@
 
 <!-- Option 2: jQuery, Popper.js, and Bootstrap JS    -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js" integrity="sha512-t2JWqzirxOmR9MZKu+BMz0TNHe55G5BZ/tfTmXMlxpUY8tsTo3QMD27QGoYKZKFAraIPDhFv56HLdN11ctmiTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+
     <script>
 
 
@@ -321,67 +349,202 @@
         
     }
     
+    const bgColor = {
+        id: 'bgColor',
+        beforeDraw: (chart, steps, options) => {
+            const { ctx, width, height } = chart;
+            ctx.fillStyle = options.backgroundColor;
+            ctx.fillRect(0, 0, width, height)
+            ctx.restore();
+        }
+    }
     
     
-    function CrearGrafico(titulo,cantidad,tipo,emcabezado,id){
-        var ctx = document.getElementById(id);
-            var myChart = new Chart(ctx, {
-                type: tipo,
-                data: {
-                    labels: titulo,
-                    datasets: [{
-                        label: emcabezado,
-                        data: cantidad,
-                        backgroundColor: [
-                            'rgba(201, 203, 207, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)',
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(201, 203, 207, 0.2)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 7
-                    }]
-                },
-                options: {
-                    saceles: {
-                        yAxes:[{
-                            ticks:{
-                                beginAtZero: true
-                            }
+    
+        function CrearGrafico(titulo,cantidad,tipo,emcabezado,id){
+            
+            var ctx = document.getElementById(id);
+                var myChart = new Chart(ctx, {
+                    type: tipo,
+                    data: {
+                        labels: titulo,
+                        datasets: [{
+                            label: emcabezado,
+                            data: cantidad,
+                            backgroundColor: [
+                                'rgba(201, 203, 207, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)',
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(201, 203, 207, 0.2)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 3
                         }]
                     },
-                    legend: {
-                        position: 'right',
-                        labels: {
-                            fontColor: '#000',
-                            fontSize: 16
-                        }
-                    }
-                }
-            });
+                    
+                    options: {
+                        saceles: {
+                            yAxes:[{
+                                ticks:{
+                                    beginAtZero: true
+                                }
+                            }]
+                        },
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                fontColor: 'black',
+                                fontSize: 16
+                            }
+                        },
+                        plugins: {
+                            bgColor: {
+                                backgroundColor: 'white'
+                            }
+                        },
+                        
+                    },
+                    plugins: [bgColor]
+                });
+        };
+    
+    
+ 
+
+
+
+    const graficobar = new Chart(
+        document.getElementById('graficobar'),
+        config
+    );
+
+
+    function downloadPDF(){
+        const canvas = document.getElementById('graficobar');
+        // create image
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+        console.log(canvasImage)
+        // image must go to PDF
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage, 'JPEG', 20, 20, 250, 170);
+        pdf.text(120, 10, "Reporte de ventas",0,0)
+        pdf.save('GráficoBar.pdf');
+    }
+
+
+
+
+
+    const graficobarhorizontal = new Chart(
+        document.getElementById('graficobarhorizontal'),
+        config
+    );
+
+
+    function downloadPDFhori(){
+        const canvas = document.getElementById('graficobarhorizontal');
+        // create image
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+        console.log(canvasImage)
+        // image must go to PDF
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage, 'JPEG', 20, 20, 250, 170);
+        pdf.text(120, 10, "Reporte de ventas",0,0)
+        pdf.save('GráficoBarHorizontal.pdf');
+    }
+
+
+
+
+    const graficodoughnut = new Chart(
+        document.getElementById('graficodoughnut'),
+        config
+    );
+
+
+    function downloadPDFdona(){
+        const canvas = document.getElementById('graficodoughnut');
+        // create image
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+        console.log(canvasImage)
+        // image must go to PDF
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage, 'JPEG',30, 20, 250, 170);
+        pdf.text(120, 10, "Reporte de ventas",0,0)
+        pdf.save('GráficoBarHorizontal.pdf');
+    }
+
+
+
+    const graficoline = new Chart(
+        document.getElementById('graficoline'),
+        config
+    );
+
+
+    function downloadPDFline(){
+        const canvas = document.getElementById('graficoline');
+        // create image
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+        console.log(canvasImage)
+        // image must go to PDF
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage, 'JPEG', 20, 20, 250, 170);
+        pdf.text(120, 10, "Reporte de ventas",0,0)
+        pdf.save('GráficoBarHorizontal.pdf');
+    }
+
+
+
+    const graficopolarArea = new Chart(
+        document.getElementById('graficopolarArea'),
+        config
+    );
+
+
+    function downloadPDFarea(){
+        const canvas = document.getElementById('graficopolarArea');
+        // create image
+        const canvasImage = canvas.toDataURL('image/jpeg', 1.0);
+        console.log(canvasImage)
+        // image must go to PDF
+
+        let pdf = new jsPDF('landscape');
+        pdf.setFontSize(20);
+        pdf.addImage(canvasImage, 'JPEG', 20, 20, 250, 170);
+        pdf.text(120, 10, "Reporte de ventas",0,0)
+        pdf.save('GráficoBarHorizontal.pdf');
     }
 
 

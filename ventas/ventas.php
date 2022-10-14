@@ -96,10 +96,10 @@
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['id_platillo'] ?></p></td>
-                                    <td><p><?php echo $row['nombre_platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Id_Platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['ventas'] ?></p></td>
-                                    <th><a href="actualizar.php?id_platillo=<?php echo $row['id_platillo']?>"> <span class="material-icons-sharp">add</span> </a></td>                                  
+                                    <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo']?>"> <span class="material-icons-sharp">add</span> </a></td>                                  
                                 </tr>
 
 

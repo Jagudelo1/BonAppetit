@@ -8,7 +8,7 @@
     $result = mysqli_query($con, $delete);
 
     if(isset($delete)){
-        header("location:/ADMIN/resenas/resenas.php");
+        header("location:./resenas.php");
     }
     else{
         echo "No";

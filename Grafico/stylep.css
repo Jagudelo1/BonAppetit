@@ -15,7 +15,7 @@
   --color-dark-variant:#677483;
   --color-background:linear-gradient(to bottom, #EDEAE5, #EDEAE5);
   --color-tablas:#fff;
-
+  --color-botones: #ff9483;
   --card-border-radius:2rem;
   --border-radius-1:0.4rem;
   --border-radius-2:0.8rem;
@@ -66,6 +66,7 @@ body{
     overflow-x: hidden;
     color: var(--color-dark);
 }
+
 
 .container{
     display: grid;
@@ -123,6 +124,11 @@ small {
     width: 2.8rem;
     height: 2.8rem;
     overflow: hidden;
+}
+
+.graficos{
+    background-color: transparent;
+    border-radius: 3px;
 }
 
 

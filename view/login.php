@@ -8,8 +8,15 @@
 <!-- ===== Iconscout CSS ===== -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>Bon Appetit - Ingresar</title>
 
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid ml-auto">
         <a class="navbar-brand titulo" href="#">Bonappetit</a>
@@ -65,46 +72,47 @@
     </div>
 </div>
 
-<?php include("../template/footer.php") ?>
-
-<script src="jquery.min.js"></script>
+<?php include("template/footer.php") ?>
+</div>
+<script src="../jquery.min.js"></script>
+<script src="../loader.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
 
 *{
     margin: 0;
 }
 
 body{
-    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.jpg);
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.png);
     background-size: cover;
     background-position: center center;
     overflow-x: hidden;
 }
 
 :root{
-    --primary-color: #fc5500 !important;
-}
+        --primary-color: #fc5500 !important;
+    }
 
-/*Navbar*/
-.navbar{
-    background-color: var(--primary-color);
-    box-shadow: 4px 4px 7px #C71414 !important;
-}
+    /*Navbar*/
+    .navbar{
+        background-color: var(--primary-color);
+        box-shadow: 4px 4px 7px #C71414 !important;
+    }
 
-.titulo{
-    font-size: 30px;
-    font-weight: 900;
-    text-transform: uppercase;
-}
+    .titulo{
+        font-size: 30px;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
 
-.nav-item a{
-    font-size: 15px;
-    color: white;
-    font-weight: 900;
-}
+    .nav-item a{
+        font-size: 15px;
+        color: white;
+        font-weight: 900;
+    }
 
 .container{
     position: relative;
@@ -259,6 +267,48 @@ body{
 .form .login-signup{
     margin-top: 30px;
     text-align: center;
+}
+
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
 }
 
 </style>

@@ -7,7 +7,7 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $datos= "SELECT * FROM platillos";
 
@@ -19,6 +19,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
@@ -34,6 +36,12 @@
     <link rel="stylesheet"a href="../platillos/stylep.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <div class="container">
     <aside>
         <div class="top">       
@@ -88,24 +96,22 @@
                                 <td> <font face="Arial">imagen</font> </td> 
                                 <td> <font face="Arial">nombre</font> </td> 
                                 <td> <font face="Arial">precio</font> </td> 
-                                <td> <font face="Arial">descripcion</font> </td> 
-                                <td> <font face="Arial">Estado</font> </td>     
+                                <td> <font face="Arial">descripcion</font> </td>    
                             </tr>
 
-                            <?php foreach ($con -> query($datos) as $row) {
+                            <?php foreach ($conexion -> query($datos) as $row) {
 
                             
                         ?>
 
                             
                                 <tr>
-                                    <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['imagen']); ?>"></td>
-                                    <td><p><?php echo $row['nombre_platillo'] ?></p></td>
-                                    <td><p><?php echo $row['precio'] ?></p></td>
-                                    <td class="tdp"><p><?php echo $row['descripcion'] ?></p></td>
-                                    <td><p><?php echo $row['Estado'] ?></p></td>  
-                                    <th><a href="actualizar.php?id_platillo=<?php echo $row['id_platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                                    <th><a href="delete.php?id_platillo=<?php echo $row['id_platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
+                                    <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
+                                    <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
+                                    <td class="tdp"><p><?php echo $row['Descripcion_Platillo'] ?></p></td>
+                                    <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
+                                    <th><a href="delete.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
                                 </tr>
 
 
@@ -163,8 +169,9 @@
         </div>
     </div>
 </div>
-
+</div>
 
 <script src="./indexp.js"></script>
+<script src="../loader.min.js"></script>
 </body>
 </html>

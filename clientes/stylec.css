@@ -57,7 +57,7 @@ html{
 
 body{
     width: 100vw;
-    height: 103vh;
+    height: 107vh;
     font-family: poppins, sans-serif;
     font-size:0.88rem;
     background: var(--color-background);
@@ -77,6 +77,10 @@ body{
 
 a {
     color: var(--color-dark);
+}
+
+th,td {
+    padding: 0.4rem !important;
 }
 
 
@@ -377,9 +381,7 @@ main .insights small {
 
 /*=============== PLATILLOS RECIENTES ===============*/
 
-main .recent-orders{
-    margin-top: 2rem;
-}
+
 
 main .recent-orders h2 {
     margin-bottom: 0.8rem;
@@ -393,6 +395,9 @@ main .recent-orders table {
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
+    box-shadow: 4px 4px 2px black;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 main .recent-orders table:hover{
@@ -727,6 +732,44 @@ main .recent-orders a{
     margin-left: 60%;
 }
 
-.container2{
-    margin-top: 20px;
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
 }

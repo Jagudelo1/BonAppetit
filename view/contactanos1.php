@@ -1,4 +1,5 @@
 <?php
+include("../db/conexion.php");
 // No mostrar los errores de PHP
 // echo '<pre>';
 // print_r($_POST);
@@ -10,30 +11,19 @@ $Correo = $_POST["Correo"];
 $Telefono = $_POST["Telefono"];
 $Mensaje = $_POST["Mensaje"];
 
-$servername = "localhost";
-$database = "bonappetit";
-$username = "root";
-$password = "";
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection
-if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-}
 
  //Insert//
- 
 $sql = "INSERT INTO contactanos (Nombre, Apellido, Correo, Telefono, Mensaje) 
                          VALUES ('$Nombre','$Apellido','$Correo','$Telefono','$Mensaje')";
-if (mysqli_query ($conn, $sql)) {
+if (mysqli_query ($conexion, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 
       
-      include 'contactanos.php';
+      include('contactanos.php');
 } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
+      echo "Error: " . $sql . "<br>" . mysqli_error ($conexion);
 }
-mysqli_close($conn);
+mysqli_close($conexion);
 
  
 ?>

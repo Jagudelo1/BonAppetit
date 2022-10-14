@@ -2,8 +2,8 @@
 
     include("conexion.php");
 
-    $id_platillo = $_GET["id_platillo"];
-    $datos = "SELECT * FROM platillos WHERE id_platillo = '".$id_platillo."'"; 
+    $Id_Platillo = $_GET["Id_Platillo"];
+    $datos = "SELECT * FROM platillos WHERE Id_Platillo = '".$Id_Platillo."'"; 
 
 ?>
 
@@ -87,8 +87,8 @@
                         ?>
       
                                 <tr>
-                                <td><p><textarea readonly="readonly" class="pipe" name="id_platillo" id="id_platillo" rows="1"><?php echo $row['id_platillo'] ?></textarea></p></td>
-                                    <td><p><?php echo $row['nombre_platillo'] ?></p></td>
+                                    <td><p><textarea readonly="readonly" class="pipe" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea readonly="readonly" class="pipe" name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="ventas" id="ventas" rows="1"><?php echo $row['ventas'] ?></textarea></p></td>
                                 </tr>
 

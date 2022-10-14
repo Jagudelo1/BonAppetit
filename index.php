@@ -6,9 +6,8 @@
     { 
         session_start(); 
     }
-
-    include("view/conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','9','18','22')"
+    include("db/conexion.php");
+    $platillos = "SELECT * FROM platillos WHERE id_categoria IN ('1', '4','2','5','3')"
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +24,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <title>Bon Appetit - Inicio</title>
 </head>
 <body>
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg">
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg">
     <div class="container-fluid ml-auto">
         <a class="navbar-brand titulo" href="#">Bonappetit</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
@@ -64,10 +71,10 @@
             </ul>
         </div>
     </div>
-</nav>
+    </nav>
 
-<!--Slider-->
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <!--Slider-->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img src="view/img/Restaurant1.jpg" class="d-block w-100" alt="...">
@@ -100,15 +107,15 @@
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
     </button>
-</div>
+    </div>
 
-<!--Platilllos-->
-<div class="Cantainerinfo">
+    <!--Platilllos-->
+    <div class="Cantainerinfo">
     <h2>En nuestros platillos hay mucho amor</h2>
-</div>
+    </div>
 
-<!--Tarjetas-->
-<div class="ContainerCards">
+    <!--Tarjetas-->
+    <div class="ContainerCards">
     <?php $resultado = mysqli_query($conexion, $platillos);
     while($row=mysqli_fetch_assoc($resultado)) { ?>
     <div class="card" style="width: 23rem;">
@@ -125,13 +132,13 @@
         </div>
     </div>
     <?php } ?>
-</div>
-<button class="buttonV">
+    </div>
+    <button class="buttonV">
     <a href="view/platillos.php">Ver más</a>
-</button>
+    </button>
 
-<!--Footer-->
-<footer class="footer">
+    <!--Footer-->
+    <footer class="footer">
     <div class="container_footer">
         <div class="row_container">
             <div class="footer_col">
@@ -169,13 +176,14 @@
             </div>
         </div>
     </div>
-</footer>
-<div class="Copy">
+    </footer>
+    <div class="Copy">
     <p>CopyRigth &copy;2022 Bon Appetit</p>
+    </div>
 </div>
-
 <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="loader.min.js"></script>
 </body>
 </html>
 
@@ -437,6 +445,48 @@ body{
     text-transform: capitalize;
 }
 
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
+}
+
 @media(max-width: 1020px){
     .row_container{
         display: grid;
@@ -458,7 +508,3 @@ body{
     }
 }
 </style>
-
-<script>
-
-</script>
