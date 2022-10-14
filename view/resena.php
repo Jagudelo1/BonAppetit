@@ -104,20 +104,20 @@
 
     /*Reseña*/
     .Contenedor{
-    max-width: 1170px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.5em;
-    background-color: #fc5500;
-    color: #fff;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    border-radius: 18px;
+        max-width: 1170px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 1.5em;
+        background-color: #fc5500;
+        color: #fff;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        border-radius: 18px;
     }
 
     .tituloC{
-    text-align: center;
-    font-size: 3em;
+        text-align: center;
+        font-size: 3em;
     }
 
     .tituloC span{
