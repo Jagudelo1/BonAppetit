@@ -12,6 +12,9 @@
         echo 'Usted no tiene autorización';
         die();
     }
+
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,50 +37,57 @@
 
         <div class="Reserva">
             <div class="form">
-                <form method="Post" action="enviar_reserva.php">
+                <h3>Reservar</h3>
+                <form class="Inputs_Contenedor" method="Post" action="enviar_reserva.php">
                     <p>
-                        <label for="Nombre">Nombre Completo</label>
-                        <input type="text" name="Nombre_Completo" id="Nombre" onkeypress="return validar(event)">
+                        <label for="Nombre_Completo">Nombre Completo</label>
+                        <input type="text" name="Nombre_Completo" onkeypress="return validar(event)">
                     </p>
                     <p>
-                        <label for="Telefono">Telefono</label>
-                        <input type="text" name="Celular" id="Nombre" onkeypress="return validar(event)">
+                        <label>Telefono</label>
+                        <input type="number" name="Telefono">
                     </p>
                     <p>
                         <label>Fecha</label>
-                        <input type="date" name="Fecha">
+                        <input type="date" name="Fecha" min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
                     </p>
                     <p>
                         <label>Hora</label>
                         <input type="time" name="Hora">
                     </p>
-                    <p>
-                        <label>Mensaje</label>
-                        <input type="text" name="Descripcion" id="Descripción"></input>
+                    <p class="moti">
+                        <label>Motivo</label>
+                        <input type="text" name="Descripcion" onkeypress="return validar(event)">
                     </p>
+                    
                     <p>
-                        <label>Elije la Mesa</label>
-                        <select class="Opciones">
-                            <option>1 Mesa - 4 personas</option>
-                            <option>2 Mesa - 6 personas</option>
-                            <option>3 Mesa - 2 personas</option>
-                            <option>4 Mesa - 4 personas</option>
-                            <option>5 Mesa - 5 personas</option>
-                            <option>6 Mesa - 6 personas</option>
-                            <option>7 Mesa - 2 personas</option>
-                            <option>8 Mesa - 5 personas</option>
-                        </select>
+                        <label>Mesa</label>
+                        <input type="number" name="Mesa"/>
                     </p>
+                
 
                     <p class="block">
                         <button type="submit">
-                            Enviar
+                            Enviar Reservación
                         </button>
                     </p>
                 </form>
             </div>
+
+            <div class="informacion">
+                <img src="img/Reserva.png" alt="">
+                <h2>Otros medios de reserva</h2>
+                <ul>
+                    <li><i class="fas fa-phone"> 123456789</i></li>
+                    <li><i class="fas fa-envelope-open-text"> BonAppetit@gmail.com</i></li>
+                </ul>
+                <p>Bievenido a Bon Appètit, donde ofrecemos una experiencia gastronómica única con
+                    el sabor unico de la cocina Colombiana, nuestras delicias enfocadas en Postres,
+                    Banquetes y mucho mása tu gusto.
+                </p>
+            </div>
         </div>
-    </div>
+    </div><br><br>
 
     <?php include("../template/footer.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -94,39 +104,48 @@
     box-sizing: border-box;
 }
 
+body{
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.jpg);
+    background-size: cover;
+    background-position: center center;
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+}
+
+/*ESTILOS RESERVA*/
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
 }
 
-/*Estilos Contenedor Principal*/
+input[type=number] { -moz-appearance:textfield; }
+
 .ContenedorReser{
-    display: block;
-    margin: 0 auto;
-    width: 65%;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    background-color: #ff6d2a;
-    padding: 30px;
-    
-    border-radius: 18px;
-    box-shadow: 10px 0 10px 0 black;
-}
-
-/*Estilos para el titulo principal de reservas*/
-.ContenedorReser .titulod{
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 900;
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    background-color: #fc5500;
     color: #fff;
+    margin-top: 35px;
 }
 
-.ContenedorReser .titulod span{
-    color: red;
+.titulod{
+   text-align: center;
+   font-size: 3em;
+   font-weight: 800;
 }
 
-/*Estilos del formulario*/
+.titulod span{
+    font-weight: 800;
+    color: #b70e21;
+}
+
+.form h3{
+    font-weight: 700;
+}
+
 .Reserva{
     box-shadow: 0 0 20px 0 rgba(240, 95, 17, 0.748);
 }
@@ -137,8 +156,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .form{
     background: #ff6d2a;
-    border-bottom-left-radius: 18px;
-    border-top-left-radius: 18px;
 }
 
 .form form{
@@ -155,48 +172,136 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 1em;
 }
 
-.form form label{
-    color: #fff;
+.form form .Opciones{
+    margin-top: 5px;
 }
 
 .form form button,
+.form form .Opciones,
 .form form input,
-.form form textarea,
-.form form select{
+.form form textarea{
     width: 100%;
     padding: .2em;
     border: none;
-    color: #fff;
     background: none;
     outline: 0;
     border-bottom: 1px solid #e15a00;
-}
-
-.form form select option{
-    color: #000;
-    border: 0;
+    cursor: pointer;
 }
 
 .form form button{
     background: #fc5500;
-    color: #000;
+    color: #fff;
     border: 0;
     text-transform: uppercase;
     padding: 1em;
     border-radius: 10px;
+    font-weight: 600;
 }
 
 .form form button:hover,
 .form form button:focus{
     background: #e45b00;
-    color: #fff;
+    color: #000;
     transition: background-color 1s ease-out;
     outline: 0;
 }
 
-@media (max-width: 768px){
-    .form form{
-        grid-column: auto;
+.informacion{
+    background: #ff6d20;
+}
+
+.informacion h2,
+.informacion ul,
+.informacion p{
+    text-align: center;
+    margin: 0 0 1rem;
+}
+
+.informacion ul li{
+    padding: 1em;
+}
+
+
+.informacion img{
+    width: 25%;
+    display: block;
+    margin: auto;
+}
+
+.wrap{
+    grid-column: 1 / 3;
+}
+
+.radio{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-left: 50px;
+}
+
+.formulario h2 {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-transform: uppercase;
+}
+
+.formulario .radio label{
+    background-color: #fc5500;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    padding: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    border-radius: 12px;
+    font-weight: 700;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease; 
+}
+
+.formulario input[type="radio"] {
+    display: none; 
+}
+
+.formulario input[type="radio"]:checked + label:before {
+    display: none; 
+}
+
+.formulario input[type="radio"]:checked + label {
+    padding: 15px 15px;
+    background: #e45b10;
+    border-radius: 12px;
+    color: #fff; 
+}
+
+.formulario .checkbox label:before {
+    border-radius: 3px; 
+}
+
+
+@media (min-width: 700px){
+
+    .Reserva{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .Reserva > *{
+        padding: 2em;
+    }
+
+    .informacion h2,
+    .informacion ul,
+    .informacion p{
+        padding: 0.5em;
+        text-align: left;
     }
 }
 

@@ -43,20 +43,22 @@
                         <label>Comentarios</label>
                         <textarea name="Descripcion" id="Descripción" rows="3"></textarea>
                     </p>
+                    <!--
                     <div class="rating">
                         <p class="clasificacion">
                             <input id="radio1" type="radio" name="estrellas" value="1"><!--
-                            --><label for="radio1">★</label><!--
-                            --><input id="radio2" type="radio" name="estrellas" value="2"><!--
-                            --><label for="radio2">★</label><!--
-                            --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                            --><label for="radio3">★</label><!--
-                            --><input id="radio4" type="radio" name="estrellas" value="4"><!--
-                            --><label for="radio4">★</label><!--
-                            --><input id="radio5" type="radio" name="estrellas" value="5"><!--
-                            --><label for="radio5">★</label>
+                            <label for="radio1">★</label>
+                            <input id="radio2" type="radio" name="estrellas" value="2"><!--
+                            <label for="radio2">★</label>
+                            <input id="radio3" type="radio" name="estrellas" value="3"><!--
+                            <label for="radio3">★</label>
+                            <input id="radio4" type="radio" name="estrellas" value="4"><!--
+                            <label for="radio4">★</label>
+                            <input id="radio5" type="radio" name="estrellas" value="5"><!--
+                            <label for="radio5">★</label>
                         </p>     
                     </div>
+                    -->
                     <p class="block">
                         <button type="submit" name="submit">
                             Enviar Reseña
@@ -145,11 +147,11 @@
     }
     
     .form form .comentariosxd{
-        grid-column: 1;
+        grid-column: 1 / 3;
     }
 
     .form form .block{
-        grid-column: 1/3;
+        grid-column: 1 / 3;
     }
 
     .form form p{

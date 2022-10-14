@@ -1,6 +1,5 @@
 <?php
 // No mostrar los errores de PHP
-error_reporting(0);
 // echo '<pre>';
 // print_r($_POST);
 // echo '</pre>';
@@ -9,8 +8,8 @@ $Nombre_Completo = $_POST["Nombre_Completo"];
 $Telefono = $_POST["Telefono"];
 $Fecha = $_POST["Fecha"];
 $Hora = $_POST["Hora"];
-$Mesa = $_POST["Mesa"];
 $Descripcion = $_POST["Descripcion"];
+$Mesa = $_POST["Mesa"];
 
 $servername = "localhost";
 $database = "bonappetit";
@@ -23,11 +22,14 @@ if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
 }
 
+ //Insert//
  
-$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha, Hora, Mesa, Descripcion) 
-VALUES ('$Nombre_Completo','$Telefono','$Fecha','$Hora','$Mesa','$Descripcion')";
+$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, 
+Fecha, Hora, Descripcion, Mesa) 
+VALUES ('$Nombre_Completo','$Telefono',
+'$Fecha','$Hora','$Descripcion','$Mesa')";
 if (mysqli_query ($conn, $sql)) {
-      echo '<script language="javascript">alert("Envio de reserva con exito, Que tenga buen dia");</script>';
+      echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 
       
       include 'reservas.php';
