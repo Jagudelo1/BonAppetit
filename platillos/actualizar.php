@@ -1,9 +1,25 @@
 <?php
 
-    include("conexion.php");
+    // No mostrar los errores de PHP
+    error_reporting(0);
 
-    $id_platillo = $_GET["id_platillo"];
-    $datos = "SELECT * FROM platillos WHERE id_platillo = '".$id_platillo."'"; 
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+    include("../db/conexion.php");
+
+    $Id_Platillo = $_GET["Id_Platillo"];
+    $datos = "SELECT * FROM platillos WHERE Id_Platillo = '".$Id_Platillo."'";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -12,6 +28,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
@@ -19,6 +37,12 @@
     <link rel="stylesheet"a href="../platillos/stylep.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
     <div class="container">
         <aside>
             <div class="top">       
@@ -52,7 +76,7 @@
                     <h3>Ventas</h3>
                 </a>
 
-                <a href="http://localhost:8080/modelovistacontrolador/index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>
@@ -73,7 +97,7 @@
             <!--------------- END OF INSIGHTS --------------->
             <div class="recent-orders">
 
-            <form action="update.php" method="POST">
+            <form action="updatep.php" method="POST">
 
             <table border="0" cellspacing="2" cellpadding="2"> 
             <tr> 
@@ -82,26 +106,22 @@
                                 <td> <font face="Arial">nombre_platillo</font> </td> 
                                 <td> <font face="Arial">precio</font> </td> 
                                 <td> <font face="Arial">descripcion</font> </td> 
-                                <td> <font face="Arial">id_categoria</font> </td>     
-                                <td> <font face="Arial">Estado</font> </td>     
+                                <td> <font face="Arial">id_categoria</font> </td>        
                             </tr>
 
 
-                    <?php foreach ($con -> query($datos) as $row) {
+                    <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
 
                             
                                 <tr>
-                                <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['imagen']); ?>"></td>
-                                    <td><p><?php echo $row['id_platillo'] ?></p></td>
-                                    <td><p><?php echo $row['nombre_platillo'] ?></p></td>
-                                    <td><p><?php echo $row['precio'] ?></p></td>
-                                    <td><p><?php echo $row['descripcion'] ?></p></td>
-                                    <td><p><?php echo $row['id_categoria'] ?></p></td> 
-                                    <td><p><?php echo $row['Estado'] ?></p></td> 
-                                    <th><a href="actualizar.php?id_platillo=<?php echo $row['id_platillo']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?id_platillo=<?php echo $row['id_platillo']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
+                                    <td><p><textarea readonly="readonly" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Precio_Platillo" id="Precio_Platillo" rows="1"><?php echo $row['Precio_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Descripcion_Platillo" id="Descripcion_Platillo" rows="1"><?php echo $row['Descripcion_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Id_Categoria" id="Id_Categoria" rows="1"><?php echo $row['Id_Categoria'] ?></textarea></p></td>
                                 </tr>
 
 
@@ -109,6 +129,10 @@
                         }
                     ?>
                 </table>
+                <button type="submit">
+                    <span class="material-icons-sharp">edit</span>
+                    <h3>Confirmar</h3>
+                </button>
                 </form>
             </div>
         </main>
@@ -139,7 +163,8 @@
             
         </div>
     </div>
-
+</div>
     <script src="../admin/index.js"></script>
+    <script src="../loader.min.js"></script>
 </body>
 </html>

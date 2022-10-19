@@ -70,7 +70,7 @@
     <div class="collapse navbar-collapse navcolor" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../index.php">Inicio</a>
+                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../view/platillos.php">Platillos</a>
@@ -124,6 +124,9 @@
         font-size: 30px;
         font-weight: 900;
         text-transform: uppercase;
+
+        pointer-events: none;
+        cursor: default;
     }
 
     .nav-item a{

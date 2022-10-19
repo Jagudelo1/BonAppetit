@@ -74,13 +74,14 @@
         <div>
             <label>Foto</label>
             <input class="input form-control" type="file" id="formFile" name="Foto" accept="image/*">
+            <p style="color: white">Peso maximo de 60kb</p>
         </div>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault" require>Acepta Terminos y Condiciones</label>
         </div>
-        <button type="submit" class="botonR" data-bs-toggle="modal" data-bs-target="#exampleModal">Registrarse</button>
+        <button class="botonR">Registrarse</button>
     </form>
     <div class="Recuperar">
         <p>¿Ya tienes una cuenta? 

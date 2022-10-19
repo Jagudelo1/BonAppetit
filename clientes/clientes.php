@@ -7,9 +7,17 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $datos= "SELECT * FROM clientes";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -19,22 +27,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
-    <link rel="shortcut icon" href="Img/ICONO.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
     <title>Clientes</title>
     <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <div class="container1">
     <aside>
         <div class="top1">       
@@ -68,7 +79,7 @@
                     <h3>Ventas</h3>
                 </a>
 
-            <a href="../index.php">
+            <a href="../view/cerrar_sesion.php">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Salir</h3>
             </a>
@@ -81,17 +92,10 @@
         <br>        
 
         <div class="recent-orders">
-            <div class="lupa">
-            <form action="" method="post">
-                <h2>Clientes
-                    <label class="lab" for="campo">Buscar: </label>
-                    <input type="text" name="campo" id="campo" style="height: 20px; border-radius: 20px">
-                </h2>
-                </form>
-            </div>
+            
 
-            <table border="0" cellspacing="5" cellpadding="5">
-                <div class="container2">
+            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%">
+                <div class="container2" style="margin-top: 10px;padding: 5px">
                 <thead> 
                             <tr>
                                 <td> <font face="Arial">Documento</font> </td> 
@@ -105,35 +109,69 @@
                             </tr>
                 </thead>
                 </div>
+                <tbody>
+                    <?php foreach ($conexion -> query($datos) as $row) {
+    
+                        ?>
+                                <tr>
+                                    <td><p><?php echo $row['Documento'] ?></p></td>
+                                    <td><p><?php echo $row['Nombres'] ?></p></td>
+                                    <td><p><?php echo $row['Apellidos'] ?></p></td>
+                                    <td><p><?php echo $row['Celular'] ?></p></td>  
+                                    <td><p><?php echo $row['Fecha'] ?></p></td>  
+                                    <td><p><?php echo $row['Usuario'] ?></p></td>  
+                                    <td><p><?php echo $row['Contrasena'] ?></p></td>  
+                                    <th><a href="actualizar.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
+                                    <th><a href="delete.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                </tr>
+                        <?php
+                        }
+                        ?>
 
-                            <tbody id="content">
-                                
-                        </tbody>
-
-        </table>
+                </tbody>
+            </table>
         </div>
     </main>
 
+
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
     <script>
-        /* Llamando a la función getData() */
-        getData()
-        /* Escuchar un evento keyup en el campo de entrada y luego llamar a la función getData. */
-        document.getElementById("campo").addEventListener("keyup", getData)
-        /* Peticion AJAX */
-        function getData() {
-            let input = document.getElementById("campo").value
-            let content = document.getElementById("content")
-            let url = "load.php"
-            let formaData = new FormData()
-            formaData.append('campo', input)
-            fetch(url, {
-                    method: "POST",
-                    body: formaData
-                }).then(response => response.json())
-                .then(data => {
-                    content.innerHTML = data
-                }).catch(err => console.log(err))
-        }
+        $(document).ready(function () {
+            $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
+            });
+        });
     </script>
     
     <div class="right">
@@ -191,18 +229,23 @@
                     </div>
                 </div>
             </div>
+            <div class="item customers">
+                <div class="icon">
+                    <a href="../clientes/ejemplo.php"> <span class="material-icons-sharp">edit</span> </a>
+                </div>
+                <div class="right">
+                    <div class="info">
+                        <h3>Ejemplo</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+</div>
 
-<script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
 <script src="./indexc.js"></script>
-<script src="./pagination.js"></script>
-<script src="./jquery.js"></script>
 <script src="../clientes/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="../loader.min.js"></script>
 </body>
 </html>

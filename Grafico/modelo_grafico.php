@@ -10,7 +10,7 @@
 
         function TraerDatosGraficoBar(){
             $sql = "SELECT `platillos`.`id_platillo`, `platillos`.`nombre_platillo`, `platillos`.`ventas`
-            FROM `platillos`";
+            FROM `platillos` ORDER BY ventas DESC LIMIT 5";
             $arreglo = array();
             if ($consulta = $this->conexion->conexion->query($sql)) {
                 

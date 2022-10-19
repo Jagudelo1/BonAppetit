@@ -28,11 +28,11 @@ if (!$conn) {
 }
 
 //Validar Registros
-$checkNombre = "SELECT Usuario FROM clientes WHERE Usuario = '$Usuario' and Correo_Electronico = '$Correo_Electronico' ";
-if (mysqli_query ($conn, $checkNombre)) {
-      echo '<script language="javascript">alert("El usuario y/o correo ya existe");</script>';
+$checkDocumento = "SELECT Documento FROM clientes WHERE Documento = '$Documento'";
+if (mysqli_query ($conn, $checkDocumento)) {
+      echo '<script language="javascript">alert("El documento ya se encuentra registrado");</script>';
       
-      include 'registrate.php';
+      header('Location: registrate.php');
 }else{
 //Consulta para Subir los Datos del Usuario
 $sql = "INSERT INTO clientes (Documento, Nombres, Apellidos, Correo_Electronico, Celular, Fecha, Usuario, Contrasena, Foto) 
@@ -40,7 +40,7 @@ VALUES ('$Documento','$Nombres','$Apellidos','$Correo_Electronico', '$Celular', 
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro completado con exito");</script>';
 
-      include 'login.php';
+      header('Location: login.php');
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }

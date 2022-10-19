@@ -39,11 +39,11 @@ function Footer()
 }
 }
 
-require 'conn.php';
-$consulta = "SELECT nombre_platillo, precio, Estado, ventas, (precio * ventas) as ingresos from platillos ORDER BY ventas DESC";
+require '../db/conexion.php';
+$consulta = "SELECT Nombre_Platillo, Precio_Platillo, Estado, ventas, (Precio_Platillo * ventas) as ingresos from platillos ORDER BY ventas DESC";
 $consultaT = "SELECT * from platillos ORDER BY ventas DESC limit 1";
 $total = 0;
-$resultado = $mysqli->query($consulta);
+$resultado = $conexion->query($consulta);
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
@@ -51,10 +51,10 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','',8);
 
 while($row = $resultado->fetch_assoc()){
-    $pdf->Cell(60, 10, utf8_decode($row['nombre_platillo']), 1, 0, 'C', 0);
+    $pdf->Cell(60, 10, utf8_decode($row['Nombre_Platillo']), 1, 0, 'C', 0);
     $pdf->Cell(30, 10, $row['Estado'], 1, 0, 'C', 0);
     $pdf->Cell(30, 10, $row['ventas'], 1, 0, 'C', 0);
-    $pdf->Cell(40, 10, $row['precio'], 1, 0, 'C', 0);
+    $pdf->Cell(40, 10, $row['Precio_Platillo'], 1, 0, 'C', 0);
     $pdf->Cell(30, 10, $row['ingresos'], 1, 1, 'C', 0);
     $total = $total + $row['ingresos'];
 }
@@ -62,10 +62,10 @@ $pdf->Cell(155, 10, 'El total de ingresos es de:', 1, 0);
 $pdf->Cell(5, 10, '$', 1, 0);
 $pdf->Cell(30, 10, $total, 1, 1);
 
-$result = $mysqli->query($consultaT);
+$result = $conexion->query($consultaT);
 while($fila = $result->fetch_assoc()){
     $pdf->Cell(160, 10, utf8_decode('El plato más vendido en el mes es: '), 1, 0);
-    $pdf->Cell(30, 10, utf8_decode($fila['nombre_platillo']), 1, 1);
+    $pdf->Cell(30, 10, utf8_decode($fila['Nombre_Platillo']), 1, 1);
 }
 $pdf->Output();
 ?>

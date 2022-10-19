@@ -139,7 +139,7 @@
     }
 
     .footer{
-        background-color: var(--primary-color);
+        background-color: #fc5500;
         padding: 70px 0;
     }
 
@@ -198,13 +198,18 @@
         color: #fff;
         transition: all 0.5s ease;
     }
+
+    .footer_col .social_links i{
+        margin-top: 10px;
+    }
+
     .footer_col .social_links a:hover{
         background-color: #fff;
         color: #000;
     }
 
     .Copy{
-        background-color: var(--primary-color);
+        background-color: #EB7133;
         width: 100%;
         padding: 5px 0;
         text-align: center;
@@ -216,6 +221,7 @@
         font-size: 18px;
         word-spacing: 2px;
         text-transform: capitalize;
+        padding-top: 12px;
     }
 
     @media(max-width: 1020px){

@@ -1,6 +1,15 @@
 <?php
+    // No mostrar los errores de PHP
+    error_reporting(0);
 
-    $conexion=mysqli_connect('localhost','root','','bonappetit');
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+    include("../db/conexion.php");
+
+    $datos= "SELECT * FROM clientes";
 
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
@@ -29,13 +38,14 @@
     <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
     <title>Clientes</title>
-    <link rel="stylesheet"a href="../facturas/stylefac.css">
+    <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
 <body>
-<div class="container">
+<div class="container1">
     <aside>
-        <div class="top">       
+        <div class="top1">       
             <div class="logo">
                 <img src="./imag/icon.png">
                 <h2>BON<span class="danger">APPETIT</span></h2>
@@ -49,7 +59,7 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Reservas</h3>
             </a>
-            <a href="../clientes/clientes.php">
+            <a href="../clientes/clientes.php"  class="active">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Personas</h3>
             </a>
@@ -61,10 +71,10 @@
                 <span class="material-icons-sharp">reviews</span>
                 <h3>Reseñas</h3>
             </a>
-            <a href="../facturas/facturas.php"class="active">
-                <span class="material-icons-sharp">inventory</span>
-                <h3>Facturas</h3>
-            </a>
+            <a href="../ventas/ventas.php">
+                    <span class="material-icons-sharp">add_alert</span>
+                    <h3>Ventas</h3>
+                </a>
 
             <a href="../view/cerrar_sesion.php">
                 <span class="material-icons-sharp">logout</span>
@@ -74,52 +84,63 @@
     </aside>
 
     <main>
-    
     <h1>Menú Administrador</h1>
 
-        <br> 
+        <br>        
 
         <div class="recent-orders">
-            <h2>Facturas</h2>
+            <div class="lupa">
 
-            <table border="0" cellspacing="2" cellpadding="2"> 
-                            <tr> 
-                                <td> <font face="Arial">Id_Factura</font> </td> 
-                                <td> <font face="Arial">Id_Cliente</font> </td> 
-                                <td> <font face="Arial">Id_Categoria</font> </td> 
-                                <td> <font face="Arial">Id_Reserva</font> </td> 
-                                <td> <font face="Arial">Id_Platillo</font> </td> 
+            </div>
+
+            <table border="0" cellspacing="5" cellpadding="5">
+                <div class="container2">
+                <thead> 
+                            <tr>
+                                <td> <font face="Arial">Documento</font> </td> 
+                                <td> <font face="Arial">Nombres</font> </td> 
+                                <td> <font face="Arial">Apellidos</font> </td> 
+                                <td> <font face="Arial">Teléfono</font> </td> 
                                 <td> <font face="Arial">Fecha</font> </td>
+                                <td> <font face="Arial">Usuario</font> </td> 
+                                <td> <font face="Arial">Contraseña</font> </td> 
+    
                             </tr>
+                </thead>
+                </div>
 
-                    <?php
-                        $query="SELECT * from factura_ventas";
-                        $resultado = $conexion->query($query);
-                        while($row = $resultado->fetch_assoc()){
+                    <tbody id="content">
 
-                            
-                        ?>
+                    <?php foreach ($conexion -> query($datos) as $row) {
+ 
+ ?>
 
-                            
-                                <tr>
-                                    <td><p><?php echo $row['Id_Factura'] ?></p></td>
-                                    <td><p><?php echo $row['Id_Cliente'] ?></p></td>
-                                    <td><p><?php echo $row['Id_Categoria'] ?></p></td>
-                                    <td><p><?php echo $row['Id_Reserva'] ?></p></td>
-                                    <td><p><?php echo $row['Id_Platillo'] ?></p></td>
-                                    <td><p><?php echo $row['Fecha'] ?></p></td>
-                                    <th><a href="actualizar.php?Id_Factura=<?php echo $row['Id_Factura'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                                    <th><a href="delete.php?Id_Factura=<?php echo $row['Id_Factura'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                 
-                                </tr>
+     
+         <tr>
+             <td><p><?php echo $row['Documento'] ?></p></td>
+             <td><p><?php echo $row['Nombres'] ?></p></td>
+             <td><p><?php echo $row['Apellidos'] ?></p></td>
+             <td><p><?php echo $row['Celular'] ?></p></td>
+             <td><p><?php echo $row['Fecha'] ?></p></td>  
+             <td><p><?php echo $row['Usuario'] ?></p></td>  
+             <td><p><?php echo $row['Contrasena'] ?></p></td>  
+             <th><a href="actualizar.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
+             <th><a href="delete.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+         </tr>
 
 
-                        <?php
-                        }
-                    ?>
+ <?php
+ }
+?>
+
+                                
+                    </tbody>
 
         </table>
         </div>
     </main>
+
+    
     <div class="right">
         <div class="top">
             <button id="menu-btn">
@@ -131,7 +152,7 @@
             </div>
             <div class="profile">
                 <div class="info">
-                    <p>Buen día, <b>Administrador</b></p>
+                <p>Hola, <b><?php echo $_SESSION['usuario']; ?></b></p>
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
@@ -139,35 +160,18 @@
                 </div>
             </div>
         </div>
-        <!----- END OF TOP ------>
 
-            <!------------------- END OF RECENT UPDATES -------------------->
-        <div class="sales-analytics">
-            <h2>Analizador de CLIENTES</h2>
-            <div class="item customers">
-                <div class="icon">
-                    <a href="#"> <span class="material-icons-sharp">add_circle</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Añadir</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item customers">
-                <div class="icon">
-                    <a href="../repfact/index.php"> <span class="material-icons-sharp">inventory</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Imprimir reporte</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
-<script src="./indexfac.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="./indexc.js"></script>
+<script src="./pagination.js"></script>
+<script src="./jquery.js"></script>
+<script src="../clientes/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

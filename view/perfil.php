@@ -36,9 +36,6 @@
             <i class="fa-solid fa-user iconos"></i>
             <a class="active" href="perfil.php">Datos Personales</a>
 
-            <i class="fa-solid fa-key iconos"></i>
-            <a href="actualizar_contrasena.php">Cambiar Contraseña</a>
-
             <i class="fa-solid fa-utensils iconos"></i>
             <a href="misreservas.php">Mi Reserva</a>
 
@@ -60,7 +57,7 @@
 
                     <div class="Info">
                         <div class="Foto">
-                            <img src="data:image/jpg/png;base64,<?php echo base64_encode($row['Foto']); ?>">
+                            <img src="data:image/png;base64,<?php echo base64_encode($row['Foto']); ?>">
                         </div>
 
                         <center>
@@ -73,7 +70,8 @@
                                             <th>Apellido</th>
                                             <th>Correo Electronico</th>
                                             <th>Celular</th>
-                                            <th>Acciones</th>
+                                            <th>Contraseña</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,48 +81,14 @@
                                             <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
                                             <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
+                                            <td data-label="Contrasena"><?php echo $row["Contrasena"] ?></td>
                                             <td data-label="Actualizar">
-                                            <button type="button" class="Update" data-bs-toggle="modal" data-bs-target="#editar">
-                                                Actualizar
-                                            </button>
+                                                <button type="button" class="Update">
+                                                    <a href="updateperfil.php">Actualizar</a>
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar mis Datos</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form class="Form_Update">
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Nombres"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Apellido</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Apellidos"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Correo Electronico</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Correo_Electronico"] ?>">
-                                                        </div>
-                                                        <div class="mb-3 DatosUser">
-                                                            <label for="exampleFormControlInput1" class="form-label">Celular</label>
-                                                            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="<?php echo $row["Celular"] ?>">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </table>
                             </div>
                         </center>
@@ -359,6 +323,11 @@ table.responsivegene th {
 /*Styles Modal Update*/
 .DatosUser{
     text-align: left;
+}
+
+.colorPrim{
+    border: 0 !important;
+    background-color: #fc5500 !important;
 }
 
 </style>

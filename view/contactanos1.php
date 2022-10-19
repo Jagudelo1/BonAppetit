@@ -29,7 +29,7 @@ if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 
       
-      include 'contactanos.php';
+      header("Location: contactanos.php");
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }

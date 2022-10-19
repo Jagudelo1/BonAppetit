@@ -42,9 +42,6 @@
             <i class="fa-solid fa-user iconos"></i>
             <a class="active" href="perfil.php">Datos Personales</a>
 
-            <i class="fa-solid fa-key iconos"></i>
-            <a href="actualizar_contrasena.php">Cambiar Contraseña</a>
-
             <i class="fa-solid fa-utensils iconos"></i>
             <a href="misreservas.php">Mi Reserva</a>
 

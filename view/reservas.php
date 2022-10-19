@@ -10,10 +10,10 @@
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
+        header('Location: login.php');
         die();
-    }
 
-    
+    }
     
 ?>
 <!DOCTYPE html>
@@ -41,28 +41,28 @@
                 <form class="Inputs_Contenedor" method="Post" action="enviar_reserva.php">
                     <p>
                         <label for="Nombre_Completo">Nombre Completo</label>
-                        <input type="text" name="Nombre_Completo" onkeypress="return validar(event)">
+                        <input type="text" name="Nombre_Completo" required onkeypress="return validar(event)">
                     </p>
                     <p>
                         <label>Telefono</label>
-                        <input type="number" name="Telefono">
+                        <input type="number" name="Telefono" required>
                     </p>
                     <p>
                         <label>Fecha</label>
-                        <input type="date" name="Fecha" min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
+                        <input type="date" name="Fecha" required min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
                     </p>
                     <p>
                         <label>Hora</label>
-                        <input type="time" name="Hora">
+                        <input type="time" name="Hora" required>
                     </p>
                     <p class="moti">
                         <label>Motivo</label>
-                        <input type="text" name="Descripcion" onkeypress="return validar(event)">
+                        <input type="text" name="Descripcion" required onkeypress="return validar(event)">
                     </p>
                     
                     <p>
                         <label>Mesa</label>
-                        <input type="number" name="Mesa"/>
+                        <input type="number" name="Mesa" required/>
                     </p>
                 
 
@@ -75,7 +75,6 @@
             </div>
 
             <div class="informacion">
-                <img src="img/Reserva.png" alt="">
                 <h2>Otros medios de reserva</h2>
                 <ul>
                     <li><i class="fas fa-phone"> 123456789</i></li>

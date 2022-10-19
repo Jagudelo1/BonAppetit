@@ -33,15 +33,15 @@
                 <form method="Post" action="enviar_resena.php">
                     <p class="nombre">
                         <label for="Nombre_Completo">Nombre</label>
-                        <input type="text" name="Nombre_Completo" id="Nombre" onkeypress="return validar(event)">
+                        <input type="text" required name="Nombre_Completo" id="Nombre" onkeypress="return validar(event)">
                     </p>
                     <p class="correo">
                         <label>Correo</label>
-                        <input type="email" name="Correo">
+                        <input type="email" required name="Correo">
                     </p>
                     <p class="comentariosxd">
                         <label>Comentarios</label>
-                        <textarea name="Descripcion" id="Descripción" rows="3"></textarea>
+                        <textarea name="Descripcion" required id="Descripción" rows="3"></textarea>
                     </p>
                     <!--
                     <div class="rating">

@@ -3,7 +3,15 @@
     include("conexion.php");
 
     $Id_Factura = $_GET["Id_Factura"];
-    $datos = "SELECT * FROM factura_ventas WHERE Id_Factura = '".$Id_Factura."'"; 
+    $datos = "SELECT * FROM factura_ventas WHERE Id_Factura = '".$Id_Factura."'";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -52,7 +60,7 @@
                     <h3>Facturas</h3>
                 </a>
 
-                <a href="http://localhost:8080/modelovistacontrolador/index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>

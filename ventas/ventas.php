@@ -11,6 +11,14 @@
 
     $datos= "SELECT * FROM platillos";
 
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +75,7 @@
                     <h3>Ventas</h3>
                 </a>
                 
-                <a href="../index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>
@@ -79,7 +87,7 @@
 
             <br>
 
-            <h2 style="margin-top: 15px">Reservas</h2>
+            <h2 style="margin-top: 15px">Ventas</h2>
 
             <div class="recent-orders">
             <table border="0" cellspacing="2" cellpadding="2"> 
@@ -96,10 +104,10 @@
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['id_platillo'] ?></p></td>
-                                    <td><p><?php echo $row['nombre_platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Id_Platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['ventas'] ?></p></td>
-                                    <th><a href="actualizar.php?id_platillo=<?php echo $row['id_platillo']?>"> <span class="material-icons-sharp">add</span> </a></td>                                  
+                                    <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo']?>"> <span class="material-icons-sharp">add</span> </a></td>                                  
                                 </tr>
 
 

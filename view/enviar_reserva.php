@@ -31,8 +31,7 @@ VALUES ('$Nombre_Completo','$Telefono',
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 
-      
-      include 'reservas.php';
+      header("Location: reservas.php");
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }

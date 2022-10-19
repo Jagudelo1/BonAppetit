@@ -1,9 +1,25 @@
 <?php
 
-    include("conexion.php");
+    // No mostrar los errores de PHP
+    error_reporting(0);
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+    include("../db/conexion.php");
 
     $id_reserva = $_GET["id_reserva"];
-    $datos = "SELECT * FROM reservas WHERE id_reserva = '".$id_reserva."'"; 
+    $datos = "SELECT * FROM reservas WHERE id_reserva = '".$id_reserva."'";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -14,11 +30,19 @@
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+            <!--Animation Script-->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <title>Administrador</title>
     <link rel="stylesheet"a href="../admin/style.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
     <div class="container">
         <aside>
             <div class="top">       
@@ -52,7 +76,7 @@
                     <h3>Ventas</h3>
                 </a>
 
-                <a href="http://localhost:8080/modelovistacontrolador/index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>
@@ -77,30 +101,26 @@
 
             <table border="0" cellspacing="2" cellpadding="2"> 
             <tr > 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">id_reserva</font> </td> 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Número de Reserva</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Fecha</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Hora</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Documento</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Estado</font> </td> 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td>
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Telefono</font> </td> 
                         </tr>
 
-                    <?php foreach ($con -> query($datos) as $row) {
+                    <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['id_reserva'] ?></p></td>
-                                    <td><p><?php echo $row['Fecha'] ?></p></td>
-                                    <td><p><?php echo $row['Hora'] ?></p></td>
-                                    <td><p><?php echo $row['Mesa'] ?></p></td>
-                                    <td><p><?php echo $row['Descripcion'] ?></p></td>  
-                                    <td><p><?php echo $row['Documento'] ?></p></td>  
-                                    <td><p><?php echo $row['Estado'] ?></p></td>  
-                                    <th><a href="actualizar.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <td><p><textarea readonly="readonly" name="id_reserva" id="id_reserva" rows="1"><?php echo $row['id_reserva'] ?></textarea></p></td>
+                                    <td><p><textarea name="Fecha" id="Fecha" rows="1"><?php echo $row['Fecha'] ?></textarea></p></td>
+                                    <td><p><textarea name="Hora" id="Hora" rows="1"><?php echo $row['Hora'] ?></textarea></p></td>
+                                    <td><p><textarea name="Mesa" id="Mesa" rows="1"><?php echo $row['Mesa'] ?></textarea></p></td>
+                                    <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion'] ?></textarea></p></td>
+                                    <td><p><textarea name="Telefono" id="Telefono" rows="1" onkeypress="return valideKey(event);"><?php echo $row['Telefono'] ?></textarea></p></td>
                                 </tr>
 
 
@@ -108,6 +128,10 @@
                         }
                     ?>
                 </table>
+                <button type="submit">
+                    <span class="material-icons-sharp">edit</span>
+                    <h3>Confirmar</h3>
+                </button>
                 </form>
             </div>
         </main>
@@ -138,7 +162,23 @@
             
         </div>
     </div>
-
+</div>
     <script src="../admin/index.js"></script>
+    <script type="text/javascript">
+		function valideKey(evt){
+			
+			// code is the decimal ASCII representation of the pressed key.
+			var code = (evt.which) ? evt.which : evt.keyCode;
+			
+			if(code==8) { // backspace.
+			  return true;
+			} else if(code>=48 && code<=57) { // is a number.
+			  return true;
+			} else{ // other keys.
+			  return false;
+			}
+		}
+		</script>
+        <script src="../loader.min.js"></script>
 </body>
 </html>

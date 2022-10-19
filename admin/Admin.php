@@ -7,9 +7,17 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $datos= "SELECT * FROM reservas";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -20,16 +28,24 @@
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <!--Animation Script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <title>Administrador</title>
     <link rel="stylesheet"a href="../admin/style.css">
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
     <div class="container">
         <aside>
             <div class="top">       
                  <div class="logo">
-                       <img src="./img/icon.png">
+                       <img src="img/icon.png">
                        <h2>BON<span class="danger">APPETIT</span></h2>
                  </div>
                  <div class="close" id="close-btn">
@@ -58,7 +74,7 @@
                     <h3>Ventas</h3>
                 </a>
                 
-                <a href="../index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>
@@ -74,33 +90,27 @@
 
             <div class="recent-orders">
             <table border="0" cellspacing="2" cellpadding="2"> 
-            <tr > 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">id_reserva</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Nombre_Completo</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Telefono</font> </td> 
+            <tr >  
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Nombre</font> </td> 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Teléfono</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Fecha</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Hora</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Documento</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Estado</font> </td> 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td>
                         </tr>
 
-                    <?php foreach ($con -> query($datos) as $row) {
+                    <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['id_reserva'] ?></p></td>
                                     <td><p><?php echo $row['Nombre_Completo'] ?></p></td>
                                     <td><p><?php echo $row['Telefono'] ?></p></td>
                                     <td><p><?php echo $row['Fecha'] ?></p></td>
                                     <td><p><?php echo $row['Hora'] ?></p></td>  
                                     <td><p><?php echo $row['Mesa'] ?></p></td>  
-                                    <td><p><?php echo $row['Descripcion'] ?></p></td>  
-                                    <td><p><?php echo $row['Documento'] ?></p></td>  
-                                    <td><p><?php echo $row['Estado'] ?></p></td>  
+                                    <td><p><?php echo $row['Descripcion'] ?></p></td>
                                     <th><a href="actualizar.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
                                     <th><a href="delete.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
                                 </tr>
@@ -151,7 +161,8 @@
             </div>
         </div>
     </div>
-
-    <script src="../admin/index.js"></script>
+</div>
+    <script src="index.js"></script>
+    <script src="../loader.min.js"></script>
 </body>
 </html>

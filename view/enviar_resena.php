@@ -25,7 +25,7 @@ $sql = "INSERT INTO resenas (Nombre_Completo, Correo, Descripcion)
 VALUES ('$Nombre_Completo','$Correo','$Descripcion')";
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Envio de reserva con exito, Que tenga buen dia");</script>';
-      include 'resena.php';
+      header("Location: resena.php");
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }

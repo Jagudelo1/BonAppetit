@@ -170,7 +170,21 @@ body{
 /*Cards*/
 .ContainerCards{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: auto auto auto;
+}
+
+@media (max-width: 1157px){
+    .ContainerCards{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 772px){
+    .ContainerCards{
+        display: grid;
+        grid-template-columns: auto;
+    }
 }
 
 .ContainerCards .card{

@@ -1,9 +1,17 @@
 <?php
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $id_resena = $_GET["id_resena"];
     $datos = "SELECT * FROM resenas WHERE id_resena = '".$id_resena."'"; 
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -53,7 +61,7 @@
                 </a>
 
 
-                <a href="http://localhost:8080/modelovistacontrolador/index.php">
+                <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
                     <h3>Salir</h3>
                 </a>
@@ -82,30 +90,29 @@
                                 <td> <font face="Arial">nombre</font> </td> 
                                 <td> <font face="Arial">correo</font> </td> 
                                 <td> <font face="Arial">comentario</font> </td> 
-                                <td> <font face="Arial">fecha</font> </td>
                             </tr>
 
 
                     <?php foreach ($con -> query($datos) as $row) {
  
                         ?>
-
                             
                                 <tr>
-                                <td><p><?php echo $row['id_resena'] ?></p></td>
-                                    <td><p><?php echo $row['nombre'] ?></p></td>
-                                    <td><p><?php echo $row['correo'] ?></p></td>
-                                    <td><p><?php echo $row['comentario'] ?></p></td>
-                                    <td><p><?php echo $row['fecha'] ?></p></td>
-                                    <th><a href="actualizar.php?id_resena=<?php echo $row['id_resena']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?id_resena=<?php echo $row['id_resena']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                
+                                    <td><p><textarea readonly="readonly" name="id_resena" id="id_resena" rows="1"><?php echo $row['id_resena'] ?></textarea></p></td>
+                                    <td><p><textarea name="Nombre_Completo" id="Nombre_Completo" rows="1"><?php echo $row['Nombre_Completo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Correo" id="Correo" rows="1"><?php echo $row['Correo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion'] ?></textarea></p></td>
                                 </tr>
-
 
                         <?php
                         }
                     ?>
                 </table>
+                <button type="submit">
+                <span class="material-icons-sharp">edit</span>
+                <h3>Confirmar</h3>
+                </button>
                 </form>
             </div>
         </main>

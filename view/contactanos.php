@@ -32,23 +32,23 @@
                 <form method="Post" action="contactanos1.php">
                     <p>
                         <label for="Nombre">Nombre</label>
-                        <input type="text" name="Nombre" id="Nombre" onkeypress="return validar(event)">
+                        <input type="text" required name="Nombre" id="Nombre" onkeypress="return validar(event)">
                     </p>
                     <p>
                         <label for="Apellido">Apellido</label>
-                        <input type="text" name="Apellido" id="Nombre" onkeypress="return validar(event)">
+                        <input type="text" required name="Apellido" id="Nombre" onkeypress="return validar(event)">
                     </p>
                     <p>
                         <label>Email</label>
-                        <input type="email" name="Correo">
+                        <input type="email" required name="Correo">
                     </p>
                     <p>
                         <label>Telefono</label>
-                        <input type="number" name="Telefono">
+                        <input type="number" required name="Telefono">
                     </p>
                     <p class="block">
                         <label>Mensaje</label>
-                        <input type="text" name="Mensaje" id="Descripción"></input>
+                        <input type="text" required name="Mensaje" id="Descripción"></input>
                     </p>
                     <p class="block">
                         <button type="submit">

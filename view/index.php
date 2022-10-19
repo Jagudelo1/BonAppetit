@@ -8,7 +8,7 @@
     }
 
     include("conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','9','18','22')"
+    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','9','12','17','18','22')";
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +76,7 @@
 <div class="ContainerCards">
     <?php $resultado = mysqli_query($conexion, $platillos);
     while($row=mysqli_fetch_assoc($resultado)) { ?>
-    <div class="card" style="width: 23rem;">
+    <div class="card" style="width: 22rem;">
         <div class="ImgCard">
             <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
         </div>
@@ -176,7 +176,21 @@ body{
 /*Cards*/
 .ContainerCards{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: auto auto auto;
+}
+
+@media (max-width: 1157px){
+    .ContainerCards{
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media (max-width: 772px){
+    .ContainerCards{
+        display: grid;
+        grid-template-columns: auto;
+    }
 }
 
 .ContainerCards .card{
