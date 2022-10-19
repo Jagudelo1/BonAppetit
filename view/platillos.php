@@ -58,6 +58,7 @@
             </a>
 
             <ul class="dropdown-menu lista" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="platillos.php">Todos</a></li>
                 <li><a class="dropdown-item" href="col.php">Comida Colombiana</a></li>
                 <li><a class="dropdown-item" href="asados.php">Comidas Asadas</a></li>
                 <li><a class="dropdown-item" href="mar.php">Comida de Mar</a></li>
@@ -79,35 +80,17 @@
                     <?php echo $row["Nombre_Platillo"] ?>
                 </p>
                 <center>
-                    <button type="button" class="btn btn-primary botonVer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary botonVer" data-bs-toggle="modal" data-bs-target="#modalp<?php echo $row['Id_Platillo']; ?>">
                         Ver más
                     </button>
                 </center>
             </div>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel"><?php echo $row["Nombre_Platillo"] ?></h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <?php echo $row["Descripcion_Platillo"] ?>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary botonVer" data-bs-dismiss="modal">Salir</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        <?php include('modalp.php'); ?>
         <?php } ?>
-
-
-        
     </div>
 </div>
+
 <?php include("template/footer.php"); ?>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

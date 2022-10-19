@@ -12,8 +12,9 @@
         echo 'Usted no tiene autorización';
         header('Location: login.php');
         die();
-
     }
+
+    include("conexion.php");
     
 ?>
 <!DOCTYPE html>
@@ -62,11 +63,10 @@
                     
                     <p>
                         <label>Mesa</label>
-                        <input type="number" name="Mesa" required id="textInput" value=""/>
-                        <input type="range" name="rangeInput" min="1" max="8" onchange="updateTextInput(this.value);" />
+                        <input type="number" name="Mesa" required id="textInput" value="1"/>
+                        <input type="range" name="rangeInput" min="1" max="10" value="1" onchange="updateTextInput(this.value);" />
                     </p>
                 
-
                     <p class="block">
                         <button type="submit">
                             Enviar Reservación

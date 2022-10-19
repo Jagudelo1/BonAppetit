@@ -85,7 +85,7 @@
                                             <td data-label="Documento"><?php echo $row["Documento"] ?></td>
                                             <td data-label="Nombre"><?php echo $row["Nombres"] ?></td>
                                             <td data-label="Apellido"><?php echo $row["Apellidos"] ?></td>
-                                            <td data-label="Correo Electronico"><?php echo $row["Correo_Electronico"] ?></td>
+                                            <td data-label="E-Mail"><?php echo $row["Correo_Electronico"] ?></td>
                                             <td data-label="Celular"><?php echo $row["Celular"] ?></td>
                                             <td data-label="Contrasena"><?php echo $row["Contrasena"] ?></td>
                                             <td data-label="Actualizar">
