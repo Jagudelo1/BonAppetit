@@ -32,6 +32,8 @@
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
+    <link rel="shortcut icon" href="Img/ICONO.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
@@ -87,27 +89,28 @@
     </aside>
 
     <main>
-    <h1>Menú Administrador</h1>
+        <h1>Menú Administrador</h1>
 
         <br>        
 
         <div class="recent-orders">
-            
+
 
             <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%">
                 <div class="container2" style="margin-top: 10px;padding: 5px">
-                <thead> 
-                            <tr>
-                                <td> <font face="Arial">Documento</font> </td> 
-                                <td> <font face="Arial">Nombres</font> </td> 
-                                <td> <font face="Arial">Apellidos</font> </td> 
-                                <td> <font face="Arial">Teléfono</font> </td> 
-                                <td> <font face="Arial">Fecha</font> </td>
-                                <td> <font face="Arial">Usuario</font> </td> 
-                                <td> <font face="Arial">Contraseña</font> </td> 
-    
-                            </tr>
-                </thead>
+                    <thead> 
+                        <tr>
+                            <td> <font face="Arial">Documento</font> </td> 
+                            <td> <font face="Arial">Nombres</font> </td> 
+                            <td> <font face="Arial">Apellidos</font> </td> 
+                            <td> <font face="Arial">Teléfono</font> </td> 
+                            <td> <font face="Arial">Fecha</font> </td>
+                            <td> <font face="Arial">Usuario</font> </td> 
+                            <td> <font face="Arial">Contraseña</font> </td> 
+                            <td> <font face="Arial">Editar</font> </td> 
+                            <td> <font face="Arial">Eliminar</font> </td> 
+                        </tr>
+                    </thead>
                 </div>
                 <tbody>
                     <?php foreach ($conexion -> query($datos) as $row) {

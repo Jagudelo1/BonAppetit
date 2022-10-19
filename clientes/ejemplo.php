@@ -1,3 +1,26 @@
+<?php
+    // No mostrar los errores de PHP
+    error_reporting(0);
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+    include("../db/conexion.php");
+
+    $datos= "SELECT * FROM platillos";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,181 +48,29 @@
     <div class="container" style="margin-top: 10px;padding: 5px">
     <table id="tablax" class="table table-striped table-bordered" style="width:100%">
         <thead>
-            <th>Id</th>
             <th>Nombre</th>
-            <th>Apellido 1</th>
-            <th>Apellido 2</th>
-            <th>Telefono</th>
+            <th>precio</th>
+            <th>ventas</th>
+            <th>estado</th>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Romina</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Leonardo</td>
-                <td>Ape1</td>
-                <td>Ape2</td>
-                <td>12345689</td>
-            </tr>
+            <?php foreach ($conexion -> query($datos) as $row) {
+
+                            
+                        ?>
+
+                            
+                                <tr>
+                                    <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
+                                    <td class="tdp"><p><?php echo $row['ventas'] ?></p></td>
+                                    <td class="tdp"><p><?php echo $row['Estado'] ?></p></td>
+                                </tr>
+
+
+                        <?php
+                        }
+                    ?>
         </tbody>
     </table>
 </div>

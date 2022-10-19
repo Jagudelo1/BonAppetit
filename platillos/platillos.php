@@ -33,13 +33,11 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
     <title>Clientes</title>
     <link rel="stylesheet"a href="../platillos/stylep.css">
 </head>
@@ -50,9 +48,9 @@
 </div>
 
 <div class="content">
-<div class="container">
+<div class="container1">
     <aside>
-        <div class="top">       
+        <div class="top1">       
             <div class="logo">
                 <img src="./imag/icon.png">
                 <h2>BON<span class="danger">APPETIT</span></h2>
@@ -91,47 +89,45 @@
     </aside>
 
     <main>
-
         <h1>Menú Administrador</h1>
 
-             <br> 
+        <br> 
 
         <div class="recent-orders">
             <h2>Platillos</h2>
 
-            <table border="0" cellspacing="2" cellpadding="2"> 
-                            <tr> 
-                                <td> <font face="Arial">imagen</font> </td> 
-                                <td> <font face="Arial">nombre</font> </td> 
-                                <td> <font face="Arial">precio</font> </td> 
-                                <td> <font face="Arial">descripcion</font> </td> 
-                                <td> <font face="Arial">ventas</font> </td> 
-                                <td> <font face="Arial">estado</font> </td>    
-                            </tr>
+            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%"> 
+            <div class="container2" style="margin-top: 10px;padding: 5px">
+                <thead>
+                    <tr> 
+                        <td> <font face="Arial">Imagen</font> </td> 
+                        <td> <font face="Arial">Nombre</font> </td> 
+                        <td> <font face="Arial">Precio</font> </td> 
+                        <td> <font face="Arial">Ventas</font> </td> 
+                        <td> <font face="Arial">Estado</font> </td>    
+                        <td> <font face="Arial">Editar</font> </td>    
+                        <td> <font face="Arial">Eliminar</font> </td>    
+                    </tr>
+                </thead>
+            </div>
+            <tbody>
+                <?php foreach ($conexion -> query($datos) as $row) {
 
-                            <?php foreach ($conexion -> query($datos) as $row) {
-
-                            
-                        ?>
-
-                            
-                                <tr>
-                                    <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
-                                    <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
-                                    <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
-                                    <td class="tdp"><p><?php echo $row['Descripcion_Platillo'] ?></p></td>
-                                    <td class="tdp"><p><?php echo $row['ventas'] ?></p></td>
-                                    <td class="tdp"><p><?php echo $row['Estado'] ?></p></td>
-                                    <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                                    <th><a href="delete.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
-                                </tr>
-
-
-                        <?php
-                        }
-                    ?>
-
-        </table>
+                ?>      
+                    <tr>
+                        <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
+                        <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
+                        <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
+                        <td class="tdp"><p><?php echo $row['ventas'] ?></p></td>
+                        <td class="tdp"><p><?php echo $row['Estado'] ?></p></td>
+                        <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
+                        <th><a href="delete.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
+                    </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+            </table>
         </div>
     </main>
     <div class="right">
@@ -182,6 +178,47 @@
     </div>
 </div>
 </div>
+
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+        </script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
+            });
+        });
+    </script>
 
 <script src="./indexp.js"></script>
 <script src="../loader.min.js"></script>

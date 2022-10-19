@@ -35,7 +35,7 @@
     <div class="collapse navbar-collapse navcolor" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="index.php">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="platillos.php">Platillos</a>

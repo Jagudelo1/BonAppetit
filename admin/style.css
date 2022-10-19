@@ -724,9 +724,8 @@ main .recent-orders a{
     }
 }
 
-.content{
-    display: none;
-}
+
+
 
 body::-webkit-scrollbar{
     width: 11px;

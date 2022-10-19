@@ -65,9 +65,10 @@ body{
     user-select: none;
     overflow-x: hidden;
     color: var(--color-dark);
+    margin-top: 20px;
 }
 
-.container{
+.container1{
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -79,7 +80,9 @@ a {
     color: var(--color-dark);
 }
 
-
+th,td {
+    padding: 0.4rem !important;
+}
 
 img {
     width: 50px;
@@ -91,7 +94,6 @@ img.foto{
     width: 30px;
     height: 30px;
 }
-
 
 h1{
     font-weight:800;
@@ -401,15 +403,19 @@ main .recent-orders table {
     text-align: center;
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
-    margin-bottom: 30px;
+    box-shadow: 4px 4px 2px black;
+    border: 2px solid black;
+    border-radius: 8px;
 }
 
 main .recent-orders table:hover{
     box-shadow: none;
 }
 
+
+
 main table tbody td {
-    height: 2.8rem;
+    height: 2rem;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
 }
@@ -629,7 +635,18 @@ main .recent-orders a{
 @media screen and (max-width: 768px) {
     .container {
         width: 100%;
+        height: 1700px;
         grid-template-columns: 1fr;
+    }
+
+    h1 {
+        margin-top: 60px;
+        margin-left: 27%;
+    }
+
+    main .recent-orders h2 {
+        margin-top: -30px;
+        margin-left: 10px;
     }
 
     aside {
@@ -701,7 +718,7 @@ main .recent-orders a{
         align-items: center;
         padding: 0 0.8rem;
         height: 4.6rem;
-        background: var(--color-white);
+        background: var(--color-tablas);
         width: 100%;
         margin: 0;
         z-index: 2;
@@ -732,9 +749,6 @@ main .recent-orders a{
     }
 }
 
-main table tbody td.tdp {
-    width: 300px;
-}
 
 .tdi{
     size: 40px;
@@ -780,4 +794,17 @@ body::-webkit-scrollbar-thumb {
     100%{
         transform: rotate(360deg)
     }
+}
+
+
+.page-item.active .page-link {
+    background-color: var(--color-primary-variant);
+}
+
+.page-item:first-child .page-link {
+    background-color: var(--color-danger);
+}
+
+.page-item:last-child .page-link {
+    background-color: var(--color-success);
 }
