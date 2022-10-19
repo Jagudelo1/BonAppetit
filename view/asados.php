@@ -72,11 +72,14 @@
     <div class="ContainerCards">
         <?php $resultado = mysqli_query($conexion, $platillos);
         while($row=mysqli_fetch_assoc($resultado)) { ?>
-        <div class="card Cards" style="width: 19rem;">
-        <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
+        <div class="card" style="width: 23rem;">
+            <div class="ImgCard">
+                <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
+            </div>
             <div class="card-body">
-                <h5 class="card-title"><?php echo $row["Nombre_Platillo"] ?></h5>
-                <p class="card-text">$<?php echo $row["Precio_Platillo"] ?></p>
+                <p class="card-text">
+                    <?php echo $row["Nombre_Platillo"] ?>
+                </p>
                 <center>
                 <button type="button" class="btn btn-primary botonVer" data-bs-toggle="modal" data-bs-target="#modalp<?php echo $row['Id_Platillo']; ?>">
                         Ver más
@@ -85,7 +88,6 @@
             </div>
         </div>
         <?php include('modalp.php'); ?>
-        
         <?php } ?>
     </div>
 </div>
