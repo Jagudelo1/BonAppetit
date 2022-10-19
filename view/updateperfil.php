@@ -31,9 +31,16 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/d751bf33a4.js" crossorigin="anonymous"></script>
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Mi Perfil</title>
 </head>
 <body>
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="contento">
     <!--Navbar-->
     <?php include("../template/navbar.php"); ?>
     
@@ -90,7 +97,13 @@
 
     <!--Footer-->
     <?php include("../template/footer.php"); ?>
-
+</div>
+    <script>
+            $(window).on('load',function(){
+        $(".loader").fadeOut(1000);
+        $(".contento").fadeIn(1000);
+    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
 </body>
 </html>
@@ -219,7 +232,6 @@ div.content {
     text-align: center;
 }
 
-
 /*Boton Actualizar*/
 .BotonAct button{
     border: 0;
@@ -235,5 +247,47 @@ div.content {
 .BotonAct button:hover{
     background-color: #FF8040;
     color: #000;
+}
+
+.contento{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
 }
 </style>

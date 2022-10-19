@@ -27,153 +27,155 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Bon Appetit - Inicio</title>
 </head>
 <body>
-    
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid ml-auto">
-        <a class="navbar-brand titulo" href="#">Bonappetit</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse navcolor" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view/platillos.php">Platillos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view/resena.php">Reseña</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view/contactanos.php">Contactanos</a>
-                </li>
-            </ul>
 
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="view/login.php">Ingresar</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="view/registrate.php">Registrate</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid ml-auto">
+            <a class="navbar-brand titulo" href="#">Bonappetit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse navcolor" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view/platillos.php">Platillos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view/resena.php">Reseña</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view/contactanos.php">Contactanos</a>
+                    </li>
+                </ul>
 
-<!--Slider-->
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="view/img/Restaurant1.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block texth5">
-                <h5 class="text1">Te ofrecemos una experiencia gastronómica con el sabor único de la cocina.</h5>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="view/img/Restaurant2.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block texth5">
-                <h5 class="text2">Comparte momentos agradables con tus amigos.</h5>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="view/img/Restaurant3.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block texth5">
-                <h5 class="text3">Deleitate con nuestras variedades.</h5>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="view/img/Restaurant4.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block texth5">
-                <h5 class="text4">Disfruta de nuestros deliciosos platillos.</h5>
-            </div>
-        </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </button>
-</div>
-
-<!--Platilllos-->
-<div class="Cantainerinfo">
-    <h2>En nuestros platillos hay mucho amor</h2>
-</div>
-
-<!--Tarjetas-->
-<div class="ContainerCards">
-    <?php $resultado = mysqli_query($conexion, $platillos);
-    while($row=mysqli_fetch_assoc($resultado)) { ?>
-    <div class="card" style="width: 22rem;">
-        <div class="ImgCard">
-            <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
-        </div>
-        <div class="card-body">
-            <p class="card-text">
-                <?php echo $row["Nombre_Platillo"] ?>
-            </p>
-            <p class="text_card">
-                $<?php echo $row["Precio_Platillo"] ?>
-            </p>
-        </div>
-    </div>
-    <?php } ?>
-</div>
-<button class="buttonV">
-    <a href="view/platillos.php">Ver más</a>
-</button>
-
-<!--Footer-->
-<footer class="footer">
-    <div class="container_footer">
-        <div class="row_container">
-            <div class="footer_col">
-                <h4>BonAppetit</h4>
-                <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Politica de Privacidad</a></li>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="view/login.php">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="view/registrate.php">Registrate</a>
+                    </li>
                 </ul>
             </div>
-            <div class="footer_col">
-                <h4>Nuestros servicios</h4>
-                <ul>
-                    <li><a href="view/resena.php">Reseña</a></li>
-                    <li><a href="view/platillos.php">Platillos</a></li>
-                    <li><a href="view/contactanos.php">Contactanos</a></li>
-                </ul>
+        </div>
+    </nav>
+
+    <!--Slider-->
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="view/img/Restaurant1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block texth5">
+                    <h5 class="text1">Te ofrecemos una experiencia gastronómica con el sabor único de la cocina.</h5>
+                </div>
             </div>
-            <div class="footer_col">
-                <h4>Datos de contacto</h4>
-                <ul>
-                    <li><a href="#">bonappetit@gmail.com</a></li>
-                    <li><a href="#">032 53525</a></li>
-                    <li><a href="#">Sede Centro Palmira</a></li>
-                    <li><a href="#">Versalles</a></li>
-                </ul>
+            <div class="carousel-item">
+                <img src="view/img/Restaurant2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block texth5">
+                    <h5 class="text2">Comparte momentos agradables con tus amigos.</h5>
+                </div>
             </div>
-            <div class="footer_col">
-                <h4>Siguenos</h4>
-                <div class="social_links">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <div class="carousel-item">
+                <img src="view/img/Restaurant3.jpeg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block texth5">
+                    <h5 class="text3">Deleitate con nuestras variedades.</h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="view/img/Restaurant4.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block texth5">
+                    <h5 class="text4">Disfruta de nuestros deliciosos platillos.</h5>
                 </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
     </div>
-</footer>
-<div class="Copy">
-    <p>CopyRigth &copy;2022 Bon Appetit</p>
-</div>
+
+    <!--Platilllos-->
+    <div class="Cantainerinfo">
+        <h2>En nuestros platillos hay mucho amor</h2>
+    </div>
+
+    <!--Tarjetas-->
+    <div class="ContainerCards">
+        <?php $resultado = mysqli_query($conexion, $platillos);
+        while($row=mysqli_fetch_assoc($resultado)) { ?>
+        <div class="card" style="width: 22rem;">
+            <div class="ImgCard">
+                <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>">
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <?php echo $row["Nombre_Platillo"] ?>
+                </p>
+                <p class="text_card">
+                    $<?php echo $row["Precio_Platillo"] ?>
+                </p>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
+    <button class="buttonV">
+        <a href="view/platillos.php">Ver más</a>
+    </button>
+
+    <!--Footer-->
+    <footer class="footer">
+        <div class="container_footer">
+            <div class="row_container">
+                <div class="footer_col">
+                    <h4>BonAppetit</h4>
+                    <ul>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Politica de Privacidad</a></li>
+                    </ul>
+                </div>
+                <div class="footer_col">
+                    <h4>Nuestros servicios</h4>
+                    <ul>
+                        <li><a href="view/resena.php">Reseña</a></li>
+                        <li><a href="view/platillos.php">Platillos</a></li>
+                        <li><a href="view/contactanos.php">Contactanos</a></li>
+                    </ul>
+                </div>
+                <div class="footer_col">
+                    <h4>Datos de contacto</h4>
+                    <ul>
+                        <li><a href="#">bonappetit@gmail.com</a></li>
+                        <li><a href="#">032 53525</a></li>
+                        <li><a href="#">Sede Centro Palmira</a></li>
+                        <li><a href="#">Versalles</a></li>
+                    </ul>
+                </div>
+                <div class="footer_col">
+                    <h4>Siguenos</h4>
+                    <div class="social_links">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="Copy">
+        <p>CopyRigth &copy;2022 Bon Appetit</p>
+    </div>
 
 <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -472,8 +474,6 @@ body{
         margin: 0 auto;
     }
 }
+
+/*Loading*/
 </style>
-
-<script>
-
-</script>

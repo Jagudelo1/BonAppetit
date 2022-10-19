@@ -29,8 +29,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/d751bf33a4.js" crossorigin="anonymous"></script>
-            <!--Animation Script-->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Mi Perfil - Reservas</title>
 </head>
 <body>
@@ -103,8 +103,8 @@
     <!--Footer-->
     <?php include("template/footer.php"); ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> 
+<script>
         $(window).on('load',function(){
     $(".loader").fadeOut(1000);
     $(".contento").fadeIn(1000);
@@ -328,8 +328,7 @@ table.responsivegene th {
     }
   }
 
-
-  .contento{
+.contento{
     display: none;
 }
 
@@ -370,7 +369,5 @@ body::-webkit-scrollbar-thumb {
         transform: rotate(360deg)
     }
 }
-/*Estilos Datos Usuario*/
-
 
 </style>

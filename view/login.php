@@ -8,71 +8,73 @@
 <!-- ===== Iconscout CSS ===== -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <!--Animation Script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!--Animation Script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>Bon Appetit - Ingresar</title>
 
 <div class="loader">
     <div></div>
 </div>
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid ml-auto">
-        <a class="navbar-brand titulo" href="#">Bonappetit</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
-        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <div class="collapse navbar-collapse navcolor" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../index.php">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="platillos.php">Platillos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="resena.php">Reseña</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="contactanos.php">Contactanos</a>
-            </li>
-        </ul>
+<div class="content">
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid ml-auto">
+            <a class="navbar-brand titulo" href="#">Bonappetit</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse navcolor" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="../index.php">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="platillos.php">Platillos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="resena.php">Reseña</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contactanos.php">Contactanos</a>
+                </li>
+            </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="container">
-    <div class="forms">
-        <div class="form login">
-            <span class="title">Inicia Sesión</span>
+    <div class="container">
+        <div class="forms">
+            <div class="form login">
+                <span class="title">Inicia Sesión</span>
 
-            <form action="validar_login.php" method="post">
-                <div class="input-field">
-                    <input type="text" placeholder="Usuario" required name="Usuario">
+                <form action="validar_login.php" method="post">
+                    <div class="input-field">
+                        <input type="text" placeholder="Usuario" required name="Usuario">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" class="password" placeholder="Contraseña" required name="Contrasena">
+                        <i class="uil uil-eye-slash showHidePw"></i>
+                    </div>
+
+                    <div class="checkbox-text">
+                        <a href="#" class="text">Olvidaste tu contraseña?</a>
+                    </div>
+                        <button class="buttonI">Ingresar</button>
+                </form>
+
+                <div class="login-signup">
+                    <span class="text">Todavia no tienes una cuenta?
+                        <a href="registrate.php" class="text signup-link">Ingresar</a>
+                    </span>
                 </div>
-                <div class="input-field">
-                    <input type="password" class="password" placeholder="Contraseña" required name="Contrasena">
-                    <i class="uil uil-eye-slash showHidePw"></i>
-                </div>
-
-                <div class="checkbox-text">
-                    <a href="#" class="text">Olvidaste tu contraseña?</a>
-                </div>
-                    <button class="buttonI">Ingresar</button>
-            </form>
-
-            <div class="login-signup">
-                <span class="text">Todavia no tienes una cuenta?
-                    <a href="registrate.php" class="text signup-link">Ingresar</a>
-                </span>
             </div>
         </div>
     </div>
+
+    <?php include("../template/footer.php") ?>
 </div>
-
-<?php include("../template/footer.php") ?>
-
 <script src="../jquery.min.js"></script>
 <script src="../loader.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
