@@ -7,7 +7,7 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
     $platillos = "SELECT * FROM platillos WHERE id_categoria = 1";
 ?>
 <!DOCTYPE html>
@@ -32,13 +32,20 @@
     <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <!--Animation Script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Bon Appetit - Comida de Mar</title>
 
 </head>
 <body>
-    
+
+<div class="loader">
+    <div></div>
+</div>
+
+<div class="content">
 <!--Navbar-->
-<?php include("../template/navbar.php") ?>
+<?php include("template/navbar.php") ?>
 
 <div class="ContainerP">
     
@@ -52,7 +59,6 @@
             </a>
 
             <ul class="dropdown-menu lista" aria-labelledby="dropdownMenuLink">
-                <li class="platillos"><a class="dropdown-item" href="platillos.php">Todos los Platillos</a></li>
                 <li><a class="dropdown-item" href="col.php">Comida Colombiana</a></li>
                 <li><a class="dropdown-item" href="asados.php">Comidas Asadas</a></li>
                 <li><a class="dropdown-item" href="mar.php">Comida de Mar</a></li>
@@ -103,9 +109,10 @@
     </div>
 </div>
 
-<?php include("../template/footer.php"); ?>
-
+<?php include("template/footer.php"); ?>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="../loader.min.js"></script>
 </body>
 </html>
 
@@ -152,10 +159,6 @@ body{
 .lista a{
     color: #fff;
     font-weight: 700;
-}
-
-.platillos a:hover{
-    color: red;
 }
 
 /*Titulo*/
@@ -229,6 +232,48 @@ body{
 
 .Cards .ButtonM:hover{
     background: #D02424;
+}
+
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
 }
 
 </style>
