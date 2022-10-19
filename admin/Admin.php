@@ -31,6 +31,8 @@
         <!--Animation Script-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <title>Administrador</title>
     <link rel="stylesheet"a href="../admin/style.css">
 </head>
@@ -41,7 +43,7 @@
 </div>
 
 <div class="content">
-    <div class="container">
+    <div class="container1">
         <aside>
             <div class="top">       
                  <div class="logo">
@@ -89,16 +91,23 @@
             <h2 style="margin-top: 15px">Reservas</h2>
 
             <div class="recent-orders">
-            <table border="0" cellspacing="2" cellpadding="2"> 
-            <tr >  
+            <table id="tablax" border="0" cellspacing="2" cellpadding="2">   
+            <div class="container2" style="margin-top: 10px;padding: 5px">
+
+                <thead>
+                    <tr>
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Nombre</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Teléfono</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Fecha</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Hora</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td>
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Editar</font> </td>
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Eliminar</font> </td>
                         </tr>
-
+                    </thead>    
+                </div>
+                    <tbody>
                     <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
@@ -119,6 +128,7 @@
                         <?php
                         }
                     ?>
+                    </tbody>
                 </table>
             </div>
         </main>
@@ -162,6 +172,45 @@
         </div>
     </div>
 </div>
+
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
+            });
+        });
+    </script>
     <script src="index.js"></script>
     <script src="../loader.min.js"></script>
 </body>
