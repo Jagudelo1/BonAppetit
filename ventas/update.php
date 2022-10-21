@@ -10,7 +10,7 @@
     $result = mysqli_query($con,$update);
 
     if(isset($result)){
-        include("ventas.php");
+        header('Location: ventas.php');
     }
 
 

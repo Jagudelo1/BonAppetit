@@ -5,14 +5,6 @@
     $Id_Platillo = $_GET["Id_Platillo"];
     $datos = "SELECT * FROM platillos WHERE Id_Platillo = '".$Id_Platillo."'";
 
-    $sesion = $_SESSION['usuario'];
-        if($sesion == null || $sesion = ''){
-        echo 'Usted no tiene autorización';
-        header('Location: ../view/login.php');
-        die();
-
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -85,8 +77,7 @@
 
             <table border="0" cellspacing="2" cellpadding="2"> 
             <tr > 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Id</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">nombre_platillo</font> </td> 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Platillo</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">ventas</font> </td> 
                         </tr>
 
@@ -95,7 +86,6 @@
                         ?>
       
                                 <tr>
-                                    <td><p><textarea readonly="readonly" class="pipe" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea readonly="readonly" class="pipe" name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="ventas" id="ventas" rows="1"><?php echo $row['ventas'] ?></textarea></p></td>
                                 </tr>

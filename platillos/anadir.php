@@ -10,6 +10,7 @@
     include("../db/conexion.php");
 
     $datos= "SELECT * FROM platillos";
+    $category= "SELECT * FROM categorias";
 
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
@@ -94,40 +95,47 @@
         <br> 
 
         <div class="recent-orders">
-            <h2>Platillos</h2>
+            <h2>Añadir Platillos</h2>
 
-            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%"> 
-            <div class="container2" style="margin-top: 10px;padding: 5px">
-                <thead>
-                    <tr> 
-                        <td> <font face="Arial">Imagen</font> </td> 
-                        <td> <font face="Arial">Nombre</font> </td> 
-                        <td> <font face="Arial">Precio</font> </td> 
-                        <td> <font face="Arial">Ventas</font> </td> 
-                        <td> <font face="Arial">Estado</font> </td>    
-                        <td> <font face="Arial">Editar</font> </td>    
-                        <td> <font face="Arial">Eliminar</font> </td>    
-                    </tr>
-                </thead>
-            </div>
-            <tbody>
-                <?php foreach ($conexion -> query($datos) as $row) {
+            <div class="recent-orders">
 
-                ?>      
-                    <tr>
-                        <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
-                        <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
-                        <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
-                        <td class="tdp"><p><?php echo $row['ventas'] ?></p></td>
-                        <td class="tdp"><p><?php echo $row['Estado'] ?></p></td>
-                        <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                        <th><a href="delete.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
-                    </tr>
+            <form action="add.php" method="POST">
+            <div>
+            <label>Foto</label>
+            <input class="input form-control" type="file" id="formFile" name="Foto" accept="image/*" required>
+            <p style="color: white">Peso maximo de 60kb</p>
+            <label>Nombre</label>
+            <input class="input form-control" type="text" id="Nombre_Platillo" name="Nombre_Platillo" required>
+            <label>Precio</label>
+            <input class="input form-control" type="number" id="Precio_Platillo" name="Precio_Platillo" required>
+            <label>Descripcion</label>
+            <input class="input form-control" type="text" id="Descripcion_Platillo" name="Descripcion_Platillo" required>
+            <label>Estado</label>
+            <input class="input form-control" type="text" id="Estado" name="Estado" required>
+            <br />
+            <select name="Id_Categoria">
                 <?php
-                }
+                    $query=mysqli_query($conexion,$category);
+                    while($row=mysqli_fetch_array($query)){
+                        $idcategory=$row['Id_Categoria'];
+                        $nombrecategory=$row['Nombre_Categoria'];
+                    ?>
+                        <option value="<?php echo $idcategory ?>"><?php echo $nombrecategory ?></option>
+                <?php
+                    }
                 ?>
-            </tbody>
+            </select>
+            <br />
+        </div>
+
             </table>
+            <button type="submit">
+            <span class="material-icons-sharp">edit</span>
+            <h3>Confirmar</h3>
+        </button>
+    </form>
+</div>
+
         </div>
     </main>
     <div class="right">
@@ -154,33 +162,13 @@
             <!------------------- END OF RECENT UPDATES -------------------->
         <div class="sales-analytics">
         <h2>Analizador de INGRESOS</h2>
-            <div class="item customers">
+        <div class="item offline">
                 <div class="icon">
-                    <a target="_blank" href="../platillosr/index.php"> <span class="material-icons-sharp">inventory</span> </a>
+                    <a href="platillos.php"><span class="material-icons-sharp">undo</span></a>
                 </div>
                 <div class="right">
                     <div class="info">
-                        <h3>Imprimir reporte</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a target="_blank" href="../Grafico/index.php"> <span class="material-icons-sharp">analytics</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Gráficos</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a href="anadir.php"> <span class="material-icons-sharp">add</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Añadir Platillo</h3>
+                        <h3>Atrás</h3>
                     </div>
                 </div>
             </div>

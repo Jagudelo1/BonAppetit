@@ -808,3 +808,31 @@ body::-webkit-scrollbar-thumb {
 .page-item:last-child .page-link {
     background-color: var(--color-success);
 }
+
+.input-field .input{
+    width: 88%;
+    border-radius: 12px;
+}
+
+.input-field i{
+    position: static;
+    transform: translateY(-50%);
+    color: #999;
+    transition: all 0.2s ease;
+    color: white;
+
+    background-color: #FF9660;
+    border-radius: 12px;
+}
+
+.input-field .input:is(:focus, :valid) ~ i{
+    color: white;
+}
+
+.input-field i.showHidePw{
+    right: 0;
+    cursor: pointer;
+    padding: 6px;
+    border-bottom: 2px solid blue;
+    border-top: 2px solid transparent;
+}

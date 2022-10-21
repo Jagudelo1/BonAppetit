@@ -11,14 +11,6 @@
 
     $datos= "SELECT * FROM platillos";
 
-    $sesion = $_SESSION['usuario'];
-        if($sesion == null || $sesion = ''){
-        echo 'Usted no tiene autorización';
-        header('Location: ../view/login.php');
-        die();
-
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -92,8 +84,8 @@
             <div class="recent-orders">
             <table border="0" cellspacing="2" cellpadding="2"> 
                             <tr> 
-                                <td> <font face="Arial">Id</font> </td> 
                                 <td> <font face="Arial">Nombre</font> </td> 
+                                <td> <font face="Arial">Precio</font> </td> 
                                 <td> <font face="Arial">Ventas</font> </td> 
                             </tr>
 
@@ -104,8 +96,8 @@
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['Id_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
+                                    <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['ventas'] ?></p></td>
                                     <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo']?>"> <span class="material-icons-sharp">add</span> </a></td>                                  
                                 </tr>

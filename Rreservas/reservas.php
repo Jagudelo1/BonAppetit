@@ -22,12 +22,11 @@ function Header()
     // Movernos a la derecha
     $this->Cell(4);
     //Títulos
-    $this->Cell(25, 10, 'Id de la reserva', 1, 0, 'C', 0);
+    $this->Cell(35, 10, 'Nombre', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Fecha', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Hora', 1, 0, 'C', 0);
     $this->Cell(25, 10, 'Mesa', 1, 0, 'C', 0);
-    $this->Cell(45, 10, 'Descripcion', 1, 0, 'C', 0);
-    $this->Cell(35, 10, 'Nombre', 1, 1, 'C', 0);
+    $this->Cell(75, 10, 'Descripcion', 1, 1, 'C', 0);
 }
 
 // Pie de página
@@ -55,12 +54,11 @@ while($row = $resultado->fetch_assoc()){
     // Movernos a la derecha
     $pdf->Cell(4);
 
-    $pdf->Cell(25, 10, $row['Id_Reserva'], 1, 0, 'C', 0);
+    $pdf->Cell(35, 10, utf8_decode($row['Nombre_Completo']), 1, 0, 'C', 0);
     $pdf->Cell(25, 10, $row['Fecha'], 1, 0, 'C', 0);
     $pdf->Cell(25, 10, $row['Hora'], 1, 0, 'C', 0);
     $pdf->Cell(25, 10, $row['Mesa'], 1, 0, 'C', 0);
-    $pdf->Cell(45, 10, $row['Descripcion'], 1, 0, 'C', 0);
-    $pdf->Cell(35, 10, utf8_decode($row['Nombre_Completo']), 1, 1, 'C', 0);
+    $pdf->MultiCell(75, 10, utf8_decode($row['Descripcion']), 1, 'C', 0);
 }
 
 
