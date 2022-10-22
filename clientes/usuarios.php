@@ -31,6 +31,11 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <!--Animation Script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -97,12 +102,18 @@
         <div class="recent-orders">
             <h2>Clientes</h2>
 
-            <table border="0" cellspacing="2" cellpadding="2"> 
+            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%">   
+            <div class="container2" style="margin-top: 10px;padding: 5px">
+
+                <thead>
                             <tr> 
                                 <td> <font face="Arial">Usuario</font> </td> 
                                 <td> <font face="Arial">Contraseña</font> </td> 
                             </tr>
+                            </thead>
+            </div>
 
+                <tbody>
                             <?php foreach ($conexion -> query($datos) as $row) {
 
                             
@@ -118,7 +129,7 @@
                         <?php
                         }
                     ?>
-
+                </tbody>
         </table>
         </div>
     </main>
@@ -180,6 +191,44 @@
     </div>
 </div>
 </div>
+<!-- JQUERY -->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- DATATABLES -->
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+    </script>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#tablax').DataTable({
+                language: {
+                    processing: "Tratamiento en curso...",
+                    search: "Buscar&nbsp;:",
+                    lengthMenu: "Agrupar de _MENU_ items",
+                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                    infoEmpty: "No existen datos.",
+                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                    infoPostFix: "",
+                    loadingRecords: "Cargando...",
+                    zeroRecords: "No se encontraron datos con tu busqueda",
+                    emptyTable: "No hay datos disponibles en la tabla.",
+                    paginate: {
+                        first: "Primero",
+                        previous: "Anterior",
+                        next: "Siguiente",
+                        last: "Ultimo"
+                    },
+                    aria: {
+                        sortAscending: ": active para ordenar la columna en orden ascendente",
+                        sortDescending: ": active para ordenar la columna en orden descendente"
+                    }
+                },
+                scrollY: 400,
+                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
+            });
+        });
+    </script>
 <script src="./indexc.js"></script>
 <script src="../loader.min.js"></script>
 </body>

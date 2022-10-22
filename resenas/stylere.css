@@ -67,7 +67,7 @@ body{
     color: var(--color-dark);
 }
 
-.container{
+.container1{
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -391,7 +391,21 @@ main .recent-orders table {
     padding: var(--card-padding);
     text-align: center;
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
+    transition: all 500ms ease;
+    
+}
+
+table.dataTable.no-footer {
+    border-radius: 10px 10px 0 0 ;
+}
+
+table#tablax.dataTable.no-footer{
+    border-radius: 0 0 10px 10px;
+}
+
+main table tbody {
+    height: 30px;
+    margin-top: -30px;
 }
 
 main .recent-orders table:hover{
@@ -761,4 +775,17 @@ body::-webkit-scrollbar-thumb {
     100%{
         transform: rotate(360deg)
     }
+}
+
+
+.page-item.active .page-link {
+    background-color: var(--color-primary-variant);
+}
+
+.page-item:first-child .page-link {
+    background-color: var(--color-danger);
+}
+
+.page-item:last-child .page-link {
+    background-color: var(--color-success);
 }

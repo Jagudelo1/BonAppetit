@@ -231,17 +231,7 @@
                         <h3>Usuarios</h3>
                     </div>
                 </div>
-            </div>
-            <div class="item customers">
-                <div class="icon">
-                    <a href="../clientes/ejemplo.php"> <span class="material-icons-sharp">edit</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Ejemplo</h3>
-                    </div>
-                </div>
-            </div>
+            </div>          
         </div>
     </div>
 </div>
