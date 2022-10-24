@@ -70,7 +70,7 @@ body{
     color: var(--color-dark);
 }
 
-.container{
+.container1{
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -398,7 +398,21 @@ main .recent-orders table {
     padding: var(--card-padding);
     text-align: center;
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
+    transition: all 500ms ease;
+    
+}
+
+table.dataTable.no-footer {
+    border-radius: 10px 10px 0 0 ;
+}
+
+table#tablax.dataTable.no-footer{
+    border-radius: 0 0 10px 10px;
+}
+
+main table tbody {
+    height: 30px;
+    margin-top: -30px;
 }
 
 main .recent-orders table:hover{
@@ -726,4 +740,55 @@ main .recent-orders a{
     .right .top button span {
         font-size: 2rem;
     }
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
+}
+
+
+.page-item.active .page-link {
+    background-color: var(--color-primary-variant);
+}
+
+.page-item:first-child .page-link {
+    background-color: var(--color-danger);
+}
+
+.page-item:last-child .page-link {
+    background-color: var(--color-success);
 }

@@ -9,8 +9,8 @@
 
     include("../db/conexion.php");
 
-    $Usuario = $_GET["Usuario"];
-    $datos = "SELECT * FROM clientes WHERE Usuario = '".$Usuario."'";
+    $Documento = $_GET["Documento"];
+    $datos = "SELECT * FROM clientes WHERE Documento = '".$Documento."'";
 
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
@@ -120,9 +120,7 @@
 
                         <?php foreach ($conexion -> query($datos) as $row) {
     
-                        ?>
-
-        
+                        ?>       
                                     <tr>
                                         <td><p><textarea readonly="readonly" name="Documento" id="Documento" rows="1"><?php echo $row['Documento'] ?></textarea></p></td>
                                         <td><p><textarea name="Nombres" id="Nombres" rows="1"><?php echo $row['Nombres'] ?></textarea></p></td>
@@ -132,8 +130,6 @@
                                         <td><p><textarea name="Usuario" id="Usuario" rows="1"><?php echo $row['Usuario'] ?></textarea></p></td>
                                         <td><p><textarea name="Contrasena" id="Contrasena" rows="1"><?php echo $row['Contrasena'] ?></textarea></p></td>
                                     </tr>
-
-
                         <?php
                         }
                         ?>      

@@ -91,7 +91,7 @@
             <h2 style="margin-top: 15px">Reservas</h2>
 
             <div class="recent-orders">
-            <table id="tablax" border="0" cellspacing="2" cellpadding="2">   
+            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%" >   
             <div class="container2" style="margin-top: 10px;padding: 5px">
 
                 <thead>
