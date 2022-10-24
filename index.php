@@ -27,11 +27,71 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-    <!--Animation Script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Bon Appetit - Inicio</title>
 </head>
 <body>
+<!--Preloader-->
+<div class="preloader">
+    <div class="spiner">
+        <div class="spiner">
+            <div class="spiner">
+                <div class="spiner"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Estilos Preloader-->
+<style>
+    .preloader{
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .spiner{
+        width: 70px;
+        height: 70px;
+        border-top: 5px solid blue;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100000;
+    }
+
+    .spiner > div{
+        box-sizing: border-box;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<!--Javascript Preloader-->
+<script>
+    const preloader = document.querySelector(".preloader");
+
+    window.addEventListener("load",() =>{
+        preloader.style.display = "none"
+    })
+</script>
 
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg">
@@ -107,7 +167,7 @@
 
     <!--Platilllos-->
     <div class="Cantainerinfo">
-        <h2>En nuestros platillos hay mucho amor</h2>
+        <h2>DELEITATE CON NUESTROS MEJORES PLATILLOS</h2>
     </div>
 
     <!--Tarjetas-->
@@ -212,9 +272,9 @@ body{
 }
 
 .nav-item a{
-    font-size: 15px;
+    font-size: 17px;
     color: white;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 /*Estilos de slider*/
@@ -474,6 +534,4 @@ body{
         margin: 0 auto;
     }
 }
-
-/*Loading*/
 </style>

@@ -8,15 +8,70 @@
 <!-- ===== Iconscout CSS ===== -->
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<!--Animation Script-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>Bon Appetit - Ingresar</title>
 
-<div class="loader">
-    <div></div>
+<!--Preloader-->
+<div class="preloader">
+    <div class="spiner">
+        <div class="spiner">
+            <div class="spiner">
+                <div class="spiner"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="content">
+<!--Estilos Preloader-->
+<style>
+    .preloader{
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .spiner{
+        width: 70px;
+        height: 70px;
+        border-top: 5px solid blue;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100000;
+    }
+
+    .spiner > div{
+        box-sizing: border-box;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<!--Javascript Preloader-->
+<script>
+    const preloader = document.querySelector(".preloader");
+
+    window.addEventListener("load",() =>{
+        preloader.style.display = "none"
+    })
+</script>
 
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid ml-auto">
@@ -110,10 +165,11 @@ body{
     }
 
     .nav-item a{
-        font-size: 15px;
-        color: white;
-        font-weight: 900;
-    }
+    font-size: 17px;
+    color: white;
+    font-weight: 800;
+}
+
 
 .container{
     position: relative;
@@ -269,49 +325,6 @@ body{
     margin-top: 30px;
     text-align: center;
 }
-
-.content{
-    display: none;
-}
-
-body::-webkit-scrollbar{
-    width: 11px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #ff9d00;
-    border-radius: 5px;
-}
-
-.loader{
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background-color: #16191e;
-    position: absolute;
-}
-
-.loader>div{
-    height: 100px;
-    width: 100px;
-    border: 15px solid #45474b;
-    border-top-color: #2a88e6;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    animation: spin 1.5s infinite linear;
-}
-
-@keyframes spin{
-    100%{
-        transform: rotate(360deg)
-    }
-}
-
 </style>
 
 <script>

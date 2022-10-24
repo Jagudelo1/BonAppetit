@@ -10,15 +10,71 @@
 <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
-    <!--Animation Script-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <title>Bon Appetit - Registrate</title>
 
-<div class="loader">
-    <div></div>
+<!--Preloader-->
+<div class="preloader">
+    <div class="spiner">
+        <div class="spiner">
+            <div class="spiner">
+                <div class="spiner"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="content">
+<!--Estilos Preloader-->
+<style>
+    .preloader{
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .spiner{
+        width: 70px;
+        height: 70px;
+        border-top: 5px solid blue;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100000;
+    }
+
+    .spiner > div{
+        box-sizing: border-box;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<!--Javascript Preloader-->
+<script>
+    const preloader = document.querySelector(".preloader");
+
+    window.addEventListener("load",() =>{
+        preloader.style.display = "none"
+    })
+</script>
+
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid ml-auto">
         <a class="navbar-brand titulo" href="#">Bonappetit</a>
@@ -49,47 +105,54 @@
     <h1 class="tituloR">Registrarse</h1><br>
     <form class="Inputs_Contenedor" method="post" action="validar_registro.php">
         <div>
-            <label>Documento de Identidad</label>
-            <input class="input" type="number" name="Documento" required>
+            <label>Documento de Identidad<span style='color: white;'>*</span></label>
+            <input minlength="8" class="input" type="number" name="Documento" required>
+            <?php
+                if(isset($_GET["fallo"]) && $_GET["fallo"] == 'true')
+                {
+                    echo "<div style='text-align: center; font-weight: 700; float: left;'>
+                    El documento ya se encuentra registrado</div>";
+                }
+            ?>
         </div>
         <div>
-            <label>Nombre</label>
+            <label>Nombre<span style='color: white;'>*</span></label>
             <input class="input" type="name" required name="Nombres" onkeypress="return validar(event)">
         </div>
         <div>
-            <label>Apellido</label>
+            <label>Apellido<span style='color: white;'>*</span></label>
             <input class="input" type="name" required  name="Apellidos" onkeypress="return validar(event)">
         </div>
         <div>
-            <label>Correo</label>
+            <label>Correo<span style='color: white;'>*</span></label>
             <input class="input" type="email" required  name="Correo_Electronico">
         </div>
         <div>
-            <label>Telefono/Celular</label>
+            <label>Telefono/Celular<span style='color: white;'>*</span></label>
             <input class="input" type="number" required name="Celular">
         </div>
         <div>
-            <label>Fecha de Nacimiento</label>
+            <label>Fecha de Nacimiento<span style='color: white;'>*</span></label>
             <input class="input" type="date" required name="Fecha">
         </div>
         <div>
-            <label>Usuario</label>
+            <label>Usuario<span style='color: white;'>*</span></label>
             <input class="input" type="text" required name="Usuario">
         </div>
         <div class="input-field">
-            <label>Contraseña</label>
-            <input class="input password" type="password" required name="Contrasena">
+            <label>Contraseña<span style='color: white;'>*</span></label>
+            <input minlength="12" class="input password" type="password" required name="Contrasena">
             <i class="uil uil-eye-slash showHidePw"></i>
         </div>
         <div>
-            <label>Foto</label>
+            <label>Foto<span style='color: white;'>*</span></label>
             <input class="input form-control" type="file" id="formFile" name="Foto" accept="image/*">
             <p style="color: white">Peso maximo de 60kb</p>
         </div>
 
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
-            <label class="form-check-label" for="flexCheckDefault">Acepta Terminos y Condiciones</label>
+            <label class="form-check-label" for="flexCheckDefault">Acepta Terminos y Condiciones<span style='color: white;'>*</span></label>
         </div>
         <button class="botonR">Registrarse</button>
     </form>
@@ -100,10 +163,8 @@
     </div>
 </div>
 
-<?php include("template/footer.php") ?>
-</div>
+<?php include("../template/footer.php") ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-<script src="../loader.min.js"></script>
 </html>
 
 <style>
@@ -131,9 +192,9 @@ body{
 }
 
 .nav-item a{
-    font-size: 15px;
+    font-size: 17px;
     color: white;
-    font-weight: 900;
+    font-weight: 800;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -163,8 +224,7 @@ input[type=number] {
     text-align: center;
     text-transform: uppercase;
     font-weight: 900;
-    text-shadow: 3px 3px 0px white,
-    6px 6px 0px black;
+    color: white;
 }
 
 /*Estilos de Formulario*/
@@ -270,48 +330,6 @@ input[type=number] {
 
 .Recuperar a:hover{
     color: blue;
-}
-
-.content{
-    display: none;
-}
-
-body::-webkit-scrollbar{
-    width: 11px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #ff9d00;
-    border-radius: 5px;
-}
-
-.loader{
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background-color: #16191e;
-    position: absolute;
-}
-
-.loader>div{
-    height: 100px;
-    width: 100px;
-    border: 15px solid #45474b;
-    border-top-color: #2a88e6;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    animation: spin 1.5s infinite linear;
-}
-
-@keyframes spin{
-    100%{
-        transform: rotate(360deg)
-    }
 }
 
 @media (max-width: 940px){

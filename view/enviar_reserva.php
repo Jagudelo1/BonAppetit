@@ -24,10 +24,8 @@ if (!$conn) {
 
  //Insert//
  
-$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, 
-Fecha, Hora, Descripcion, Mesa) 
-VALUES ('$Nombre_Completo','$Telefono',
-'$Fecha','$Hora','$Descripcion','$Mesa')";
+$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha, Hora, Descripcion, Mesa) 
+VALUES ('$Nombre_Completo','$Telefono','$Fecha','$Hora','$Descripcion','$Mesa')";
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 

@@ -28,6 +28,69 @@
     <title>Bon Appetit - Inicio</title>
 </head>
 <body>
+<!--Preloader-->
+<div class="preloader">
+    <div class="spiner">
+        <div class="spiner">
+            <div class="spiner">
+                <div class="spiner"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Estilos Preloader-->
+<style>
+    .preloader{
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .spiner{
+        width: 70px;
+        height: 70px;
+        border-top: 5px solid blue;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100000;
+    }
+
+    .spiner > div{
+        box-sizing: border-box;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<!--Javascript Preloader-->
+<script>
+    const preloader = document.querySelector(".preloader");
+
+    window.addEventListener("load",() =>{
+        preloader.style.display = "none"
+    })
+</script>
+
 <!--Navbar-->
 <?php include("../template/navbar.php"); ?>
 

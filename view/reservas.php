@@ -1,6 +1,6 @@
 <?php
     // No mostrar los errores de PHP
-    error_reporting(0);
+
 
     if(!isset($_SESSION)) 
     { 
@@ -16,6 +16,10 @@
 
     include("conexion.php");
     
+    $reservas = "SELECT reservas.Nombre_Completo, reservas.Telefono, reservas.Fecha, 
+    reservas.Hora, reservas.Descripcion, reservas.Mesa, clientes.id_cliente, clientes.Usuario 
+    FROM reservas INNER JOIN clientes ON reservas.id_cliente = clientes.id_cliente WHERE clientes.Usuario = '$_SESSION[usuario]'";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,78 +28,177 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/ICONO.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Bon Appetit - Reserva</title>
 </head>
 <body>
-<!--Navbar-->
-<?php include("../template/navbar.php") ?>
 
-    <div class="ContenedorReser">
-        <h1 class="titulod">Reserva <span>Aqui</span></h1><br>
-
-        <div class="Reserva">
-            <div class="form">
-                <h3>Reservar</h3>
-                <form class="Inputs_Contenedor" method="Post" action="enviar_reserva.php">
-                    <p>
-                        <label for="Nombre_Completo">Nombre Completo</label>
-                        <input type="text" name="Nombre_Completo" required onkeypress="return validar(event)">
-                    </p>
-                    <p>
-                        <label>Telefono</label>
-                        <input type="number" name="Telefono" required>
-                    </p>
-                    <p>
-                        <label>Fecha</label>
-                        <input type="date" name="Fecha" required min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
-                    </p>
-                    <p>
-                        <label>Hora</label>
-                        <input type="time" name="Hora" required>
-                    </p>
-                    <p class="moti">
-                        <label>Motivo</label>
-                        <input type="text" name="Descripcion" required onkeypress="return validar(event)">
-                    </p>
-                    
-                    <p>
-                        <label>Mesa</label>
-                        <input type="number" name="Mesa" required id="textInput" value="1"/>
-                        <input type="range" name="rangeInput" min="1" max="10" value="1" onchange="updateTextInput(this.value);" />
-                    </p>
-                
-                    <p class="block">
-                        <button type="submit">
-                            Enviar Reservación
-                        </button>
-                    </p>
-                </form>
-            </div>
-
-            <div class="informacion">
-                <h2>Otros medios de reserva</h2>
-                <ul>
-                    <li><i class="fas fa-phone"> 123456789</i></li>
-                    <li><i class="fas fa-envelope-open-text"> BonAppetit@gmail.com</i></li>
-                </ul>
-                <p>Bievenido a Bon Appètit, donde ofrecemos una experiencia gastronómica única con
-                    el sabor unico de la cocina Colombiana, nuestras delicias enfocadas en Postres,
-                    Banquetes y mucho mása tu gusto.
-                </p>
+<!--Preloader-->
+<div class="preloader">
+    <div class="spiner">
+        <div class="spiner">
+            <div class="spiner">
+                <div class="spiner"></div>
             </div>
         </div>
-    </div><br><br>
+    </div>
+</div>
 
-    <?php include("../template/footer.php"); ?>
-    <script>
-        function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
+<!--Estilos Preloader-->
+<style>
+    .preloader{
+        width: 100%;
+        height: 100%;
+        background: #000;
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    .spiner{
+        width: 70px;
+        height: 70px;
+        border-top: 5px solid blue;
+        border-right: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        z-index: 100000;
+    }
+
+    .spiner > div{
+        box-sizing: border-box;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        100%{
+            transform: rotate(360deg);
         }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    }
+</style>
+
+<!--Javascript Preloader-->
+<script>
+    const preloader = document.querySelector(".preloader");
+
+    window.addEventListener("load",() =>{
+        preloader.style.display = "none"
+    })
+</script>
+
+<!--Navbar-->
+<?php include("../template/navbar.php") ?>
+    <div class="ContenedorReser">
+        <h1 class="titulod">Mis <span>Reservas</span></h1>
+        <div class="VerResr">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Telefono</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Descripción</th>
+                            <th>N° Mesa</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $resultado = mysqli_query($conexion, $reservas);
+                    while($row=mysqli_fetch_assoc($resultado)) {?>
+                        <tr>
+                            <th><?php echo $row ["Nombre_Completo"]?></th>
+                            <th><?php echo $row ["Telefono"]?></th>
+                            <th><?php echo $row ["Fecha"]?></th>
+                            <th><?php echo $row ["Hora"]?></th>
+                            <th><?php echo $row ["Descripcion"]?></th>
+                            <th><?php echo $row ["Mesa"]?></th>
+                            <th><button class="UpdteButton">Actualizar</button> <button class="UpdteButton">Eliminar</button></th>
+                        </tr>
+                    <?php }?>
+                    </tbody>
+                </table>
+            </div>
+            <!--Boton Modal Reservas-->
+            <center>
+                <div class="Modal">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        + Reservar
+                    </button>
+                </div>
+            </center>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">            
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Reservar</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="enviar_reserva.php">
+                            <p>
+                                <label for="">Nombre Completo</label>
+                                <input type="text" name="Nombre_Completo" require required onkeypress="return validar(event)">
+                            </p>
+                            <p>
+                                <label for="">Telefono</label>
+                                <input type="number" name="Telefono" require min="11">
+                            </p>
+                            <p>
+                                <label for="">Fecha</label>
+                                <input type="date" name="Fecha" require min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
+                            </p>
+                            <p>
+                                <label for="">Hora</label>
+                                <input type="time" name="Hora" require>
+                            </p>
+                            <p>
+                                <label for="">Descripción</label>
+                                <input type="text" name="Descripcion" require onkeypress="return validar(event)">
+                            </p>
+                            <p>
+                                <label for="">Mesa</label>
+                                <select name="Mesa">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </p>
+                            <p class="BotonReserva">
+                                <button type="submit" class="BotonXD">Enviar Reserva</button>
+                            </p>
+                        </form>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include("../template/footer.php"); ?>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
 
@@ -110,207 +213,161 @@
 }
 
 body{
-    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.jpg);
+    background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(img/Fondo.png);
     background-size: cover;
     background-position: center center;
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
 }
 
-/*ESTILOS RESERVA*/
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
 }
 
-input[type=number] { -moz-appearance:textfield; }
+input[type=number] { 
+    -moz-appearance:textfield; 
+}
 
+/*Estilos Reservas*/
 .ContenedorReser{
-    max-width: 1170px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.5em;
-    background-color: #fc5500;
+    width: 65%;
     color: #fff;
-    margin-top: 35px;
+    padding: 1.5em;
+    border-radius: 18px;
+    background-color: #fc5500;
+    margin: 35px auto 35px auto;
 }
 
 .titulod{
-   text-align: center;
-   font-size: 3em;
-   font-weight: 800;
+    font-size: 3em;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .titulod span{
-    font-weight: 800;
     color: #b70e21;
 }
 
-.form h3{
+/*Estilos Tabla*/
+.table{
+    color: #fff;
+    text-align: center;
+}
+
+.table thead{
+    background-color: #FF7B3D;
+    color: #fff;
+}
+
+.table tbody{
+    background-color: #FF641B;
+    color: #000;
+    font-weight: none;
+}
+
+.UpdteButton{
+    border: 0;
+    color: #000;
     font-weight: 700;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
-.Reserva{
-    box-shadow: 0 0 20px 0 rgba(240, 95, 17, 0.748);
+.UpdteButton:hover{
+    color: #fff;
 }
 
-.Reserva > *{
-    padding: 1em;
+@media (max-width: 800px){
+    .ContenedorReser{
+        width: 100%;
+    }
 }
 
-.form{
-    background: #ff6d2a;
+/*Estilos Modal y Formulario*/
+.Modal{
+    display: block;
+    margin: 0 auto;
 }
 
-.form form{
+.Modal button{
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-weight: 700;
+    border-radius: 12px;
+    background-color: #FF8445;
+}
+
+.Modal button:hover{
+    background-color: #FF6212;
+}
+
+/*Estilos Formulario*/
+.modal-header h1{
+    color: #000;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.modal-body form{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
 }
 
-.form form .block{
-    grid-column: 1/3;
-}
-
-.form form p{
+.modal-body form p{
     margin: 0;
-    padding: 1em;
+    padding: .5em;
 }
 
-.form form .Opciones{
+.modal-body form select{
     margin-top: 5px;
 }
 
-.form form button,
-.form form .Opciones,
-.form form input,
-.form form textarea{
+.modal-body form input,
+.modal-body form select{
     width: 100%;
     padding: .2em;
     border: none;
     background: none;
     outline: 0;
-    border-bottom: 1px solid #e15a00;
+    border-bottom: 1px solid #000;
     cursor: pointer;
 }
 
-.form form button{
-    background: #fc5500;
-    color: #fff;
-    border: 0;
-    text-transform: uppercase;
-    padding: 1em;
-    border-radius: 10px;
-    font-weight: 600;
-}
-
-.form form button:hover,
-.form form button:focus{
-    background: #e45b00;
+.modal-body form label{
     color: #000;
-    transition: background-color 1s ease-out;
-    outline: 0;
+    margin-top: 10px;
 }
 
-.informacion{
-    background: #ff6d20;
-}
-
-.informacion h2,
-.informacion ul,
-.informacion p{
-    text-align: center;
-    margin: 0 0 1rem;
-}
-
-.informacion ul li{
-    padding: 1em;
-}
-
-
-.informacion img{
-    width: 25%;
-    display: block;
-    margin: auto;
-}
-
-.wrap{
+.BotonReserva{
     grid-column: 1 / 3;
 }
 
-.radio{
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    margin-left: 50px;
-}
-
-.formulario h2 {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 10px;
-    margin-left: 20px;
-    text-transform: uppercase;
-}
-
-.formulario .radio label{
-    background-color: #fc5500;
-    display: inline-block;
-    cursor: pointer;
-    color: #fff;
-    position: relative;
-    padding: 12px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 1em;
+.BotonReserva button{
+    display: block;
+    margin: 0 auto;
+    border: 0;
+    padding: 8px;
     border-radius: 12px;
+    background-color: #FF8445;
+    color: #fff;
     font-weight: 700;
-    -webkit-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease; 
 }
 
-.formulario input[type="radio"] {
-    display: none; 
+.BotonReserva button:hover{
+    background-color: #FF6212;
 }
 
-.formulario input[type="radio"]:checked + label:before {
-    display: none; 
-}
-
-.formulario input[type="radio"]:checked + label {
-    padding: 15px 15px;
-    background: #e45b10;
-    border-radius: 12px;
-    color: #fff; 
-}
-
-.formulario .checkbox label:before {
-    border-radius: 3px; 
-}
-
-
-@media (min-width: 700px){
-
-    .Reserva{
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-    }
-
-    .Reserva > *{
-        padding: 2em;
-    }
-
-    .informacion h2,
-    .informacion ul,
-    .informacion p{
-        padding: 0.5em;
-        text-align: left;
+@media (max-width: 435px){
+    .modal-body form div{
+        grid-column: 1 / 3;
     }
 }
-
 </style>
+
 <script type="text/javascript">
     function validar(e) { // 1
     tecla = (document.all) ? e.keyCode : e.which; // 2

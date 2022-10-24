@@ -44,7 +44,7 @@
                     <a class="nav-link" href="resena.php">Reseña</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="reservas.php">Reserva</a>
+                    <a class="nav-link" href="reservas.php">Mis Reservas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contactanos.php">Contactanos</a>
@@ -130,7 +130,7 @@
     }
 
     .nav-item a{
-        font-size: 15px;
+        font-size: 17px;
         color: white;
         font-weight: 900;
     }

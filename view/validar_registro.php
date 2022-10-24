@@ -28,19 +28,20 @@ if (!$conn) {
 }
 
 //Validar Registros
-$checkDocumento = "SELECT Documento FROM clientes WHERE Documento = '$Documento'";
-if (mysqli_query ($conn, $checkDocumento)) {
-      echo '<script language="javascript">alert("El documento ya se encuentra registrado");</script>';
-      
-      header('Location: registrate.php');
+$sentencia = "SELECT Documento FROM clientes WHERE Documento='$Documento' LIMIT 1";
+$query = mysqli_query($conn,$sentencia);
+$existe = mysqli_num_rows($query);//si encuentra un registro, es decir, usuario existe, su valor sera 1 en caso contrario es 0 (NULL).
+
+//Comprobamos si existe usuario.
+if ($existe===1) {
+      header("location: registrate.php?fallo=true");
 }else{
 //Consulta para Subir los Datos del Usuario
 $sql = "INSERT INTO clientes (Documento, Nombres, Apellidos, Correo_Electronico, Celular, Fecha, Usuario, Contrasena, Foto) 
 VALUES ('$Documento','$Nombres','$Apellidos','$Correo_Electronico', '$Celular', '$Fecha','$Usuario','$Contrasena','$Foto')";
 if (mysqli_query ($conn, $sql)) {
-      echo '<script language="javascript">alert("Registro completado con exito");</script>';
+      header("location: login.php");
 
-      header('Location: login.php');
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }
