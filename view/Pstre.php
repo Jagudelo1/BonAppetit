@@ -105,7 +105,7 @@
 <div class="ContainerP">
     
     <!--Titulo-->
-    <h1 class="titleP">Nuestros Platillos</h1>
+    <h1 class="titleP">Postres</h1>
 
     <!--Categorias-->
         <div class="dropdown categorias">

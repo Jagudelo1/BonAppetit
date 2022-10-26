@@ -4,12 +4,15 @@
 // print_r($_POST);
 // echo '</pre>';
 // die();
+session_start();
+
 $Nombre_Completo = $_POST["Nombre_Completo"];
 $Telefono = $_POST["Telefono"];
 $Fecha = $_POST["Fecha"];
 $Hora = $_POST["Hora"];
 $Descripcion = $_POST["Descripcion"];
 $Mesa = $_POST["Mesa"];
+$Documento = $_POST["Documento"];
 
 $servername = "localhost";
 $database = "bonappetit";
@@ -24,8 +27,8 @@ if (!$conn) {
 
  //Insert//
  
-$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha, Hora, Descripcion, Mesa) 
-VALUES ('$Nombre_Completo','$Telefono','$Fecha','$Hora','$Descripcion','$Mesa')";
+$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha, Hora, Descripcion, Mesa, Documento) 
+VALUES ('$Nombre_Completo','$Telefono','$Fecha','$Hora','$Descripcion','$Mesa','$Documento')";
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 

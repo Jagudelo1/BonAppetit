@@ -122,21 +122,21 @@
                         <td> <font face="Arial">Documento</font> </td> 
                         <td> <font face="Arial">Nombres</font> </td> 
                         <td> <font face="Arial">Apellidos</font> </td> 
-                        <td> <font face="Arial">Teléfono</font> </td> 
                         <td> <font face="Arial">Correo Electronico</font></td>
+                        <td> <font face="Arial">Celular</font> </td> 
                         <td> <font face="Arial">Contraseña</font> </td> 
                     </tr>
                 </thead>
                 <tbody>
-                    <form method="POST" action="Usuario/updatep.php">
+                    <form method="POST" action="Funciones/updatep.php">
                         <?php foreach ($conexion -> query($datos) as $row) {?>
                             <tr>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" readonly="readonly" name="Documento" id="Documento" rows="1"><?php echo $row['Documento'] ?></textarea></p></td>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" name="Nombres" id="Nombres" rows="1"><?php echo $row['Nombres'] ?></textarea></p></td>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" name="Apellidos" id="Apellidos" rows="1"><?php echo $row['Apellidos'] ?></textarea></p></td>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" name="Celular" id="Celular" rows="1"><?php echo $row['Celular'] ?></textarea></p></td>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" name="Correo_Electronico" id="Correo_Electronico" rows="1"><?php echo $row['Correo_Electronico'] ?></textarea></p></td>
-                                <td><p><textarea class="form-control" id="exampleFormControlTextarea1" name="Contrasena" id="Contrasena" rows="1"><?php echo $row['Contrasena'] ?></textarea></p></td>
+                                <td><p><input type="number" value="<?php echo $row['Documento'] ?>" class="form-control" id="exampleFormControlTextarea1" readonly="readonly" name="Documento" id="Documento"></input></p></td>
+                                <td><p><input type="text" value="<?php echo $row['Nombres'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Nombres" id="Nombres"></input></p></td>
+                                <td><p><input type="text" value="<?php echo $row['Apellidos'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Apellidos" id="Apellidos"></input></p></td>
+                                <td><p><input type="email" value="<?php echo $row['Correo_Electronico'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Correo_Electronico" id="Correo_Electronico"></input></p></td>
+                                <td><p><input type="number" value="<?php echo $row['Celular'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Celular" id="Celular"></input></p></td>
+                                <td><p><input type="password" value="<?php echo $row['Contrasena'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Contrasena" id="Contrasena"></input></p></td>
                             </tr>
                         <?php } ?>
                 </tbody>

@@ -1,5 +1,5 @@
 <?php
-include("../db/conexion.php");
+include("conexion.php");
 
 // echo '<pre>';
 // print_r($_POST);

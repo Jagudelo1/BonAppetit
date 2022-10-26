@@ -18,8 +18,9 @@
     
     $reservas = "SELECT reservas.Nombre_Completo, reservas.Telefono, reservas.Fecha, 
     reservas.Hora, reservas.Descripcion, reservas.Mesa, clientes.id_cliente, clientes.Usuario 
-    FROM reservas INNER JOIN clientes ON reservas.id_cliente = clientes.id_cliente WHERE clientes.Usuario = '$_SESSION[usuario]'";
+    FROM reservas INNER JOIN clientes ON clientes.Documento = reservas.Documento WHERE clientes.Usuario = '$_SESSION[usuario]'";
     
+    $documento = ("SELECT Documento FROM clientes WHERE Usuario = '$_SESSION[usuario]'");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,26 +106,34 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Documento</th>
                             <th>Nombre Completo</th>
                             <th>Telefono</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Descripción</th>
                             <th>N° Mesa</th>
-                            <th>Acción</th>
+                            <th>Actualizar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php $resultado = mysqli_query($conexion, $reservas);
                     while($row=mysqli_fetch_assoc($resultado)) {?>
                         <tr>
+                            <th><?php echo $row ["Documento"]?></th>
                             <th><?php echo $row ["Nombre_Completo"]?></th>
                             <th><?php echo $row ["Telefono"]?></th>
                             <th><?php echo $row ["Fecha"]?></th>
                             <th><?php echo $row ["Hora"]?></th>
                             <th><?php echo $row ["Descripcion"]?></th>
                             <th><?php echo $row ["Mesa"]?></th>
-                            <th><button class="UpdteButton">Actualizar</button> <button class="UpdteButton">Eliminar</button></th>
+                            <th>
+                                <a href="updatereserva.php" class="Acciones"><i class="fa-solid fa-pen-to-square"></i></a> 
+                            </th>
+                            <th>
+                                <a href="#" class="Acciones"><i class="fa-solid fa-trash"></i></a>
+                            </th>
                         </tr>
                     <?php }?>
                     </tbody>
@@ -149,6 +158,13 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="enviar_reserva.php">
+                            <?php $resultado = mysqli_query($conexion, $documento);
+                            while($row=mysqli_fetch_assoc($resultado)) { ?>
+                            <p>
+                                <label for="">Documento</label>
+                                <input type="number" name="Documento" value="<?php echo $row["Documento"] ?>" disabled>
+                            </p>
+                            <?php } ?>
                             <p>
                                 <label for="">Nombre Completo</label>
                                 <input type="text" name="Nombre_Completo" require required onkeypress="return validar(event)">
@@ -171,17 +187,13 @@
                             </p>
                             <p>
                                 <label for="">Mesa</label>
-                                <select name="Mesa">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
+                                <select name="Mesa" id="Mesa">
+                                    <?php
+                                        $sql = $conexion ->query("SELECT * FROM mesas");
+                                        while($fila=$sql -> fetch_array()){
+                                            echo "<option value='".$fila["id_mesa"]."'>".$fila['id_mesa']."</option>";
+                                        }
+                                    ?>
                                 </select>
                             </p>
                             <p class="BotonReserva">
@@ -268,22 +280,18 @@ input[type=number] {
     font-weight: none;
 }
 
-.UpdteButton{
-    border: 0;
-    color: #000;
-    font-weight: 700;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-.UpdteButton:hover{
-    color: #fff;
-}
-
 @media (max-width: 800px){
     .ContenedorReser{
         width: 100%;
     }
+}
+
+.Acciones{
+    color: #000
+}
+
+.Acciones:hover{
+    color: #fff;
 }
 
 /*Estilos Modal y Formulario*/
