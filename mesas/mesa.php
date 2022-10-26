@@ -9,7 +9,7 @@
 
     include("../db/conexion.php");
 
-    $datos= "SELECT * FROM reservas";
+    $datos= "SELECT * FROM mesas";
 
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
@@ -34,15 +34,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <title>Administrador</title>
-    <link rel="stylesheet"a href="../admin/style.css">
+    <link rel="stylesheet"a href="../mesas/styleM.css">
 </head>
 <body>
 
-<div class="loader">
-    <div></div>
-</div>
 
-<div class="content">
     <div class="container1">
         <aside>
             <div class="top">       
@@ -55,7 +51,7 @@
                 </div>       
             </div>
             <div class="sidebar">
-                <a href="../admin/admin.php" class="active">
+                <a href="../admin/admin.php">
                      <span class="material-icons-sharp">grid_view</span>
                      <h3>Reservas</h3>
                 </a>
@@ -75,7 +71,7 @@
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
                 </a>
-                <a href="../mesas/mesa.php">
+                <a href="../mesas/mesa.php" class="active">
                     <span class="material-icons-sharp">table_bar</span>
                     <h3>Mesas</h3>
                 </a>
@@ -92,7 +88,7 @@
 
             <br>
 
-            <h2 style="margin-top: 15px">Reservas</h2>
+            <h2 style="margin-top: 15px">Mesas</h2>
 
             <div class="recent-orders">
             <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%" >   
@@ -100,13 +96,7 @@
 
                 <thead>
                     <tr>
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Nombre</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Teléfono</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Fecha</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Hora</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Descripcion</font> </td>
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Editar</font> </td>
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Eliminar</font> </td>
                         </tr>
                     </thead>    
@@ -118,14 +108,8 @@
 
                             
                                 <tr>
-                                    <td><p><?php echo $row['Nombre_Completo'] ?></p></td>
-                                    <td><p><?php echo $row['Telefono'] ?></p></td>
-                                    <td><p><?php echo $row['Fecha'] ?></p></td>
-                                    <td><p><?php echo $row['Hora'] ?></p></td>  
-                                    <td><p><?php echo $row['Mesa'] ?></p></td>  
-                                    <td><p><?php echo $row['Descripcion'] ?></p></td>
-                                    <th><a href="actualizar.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <td><p><?php echo $row['no_mesa'] ?></p></td>
+                                    <th><a href="delete.php?id_mesa=<?php echo $row['id_mesa']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
                                 </tr>
 
 
@@ -157,25 +141,23 @@
                     </div>
                 </div>
             </div>
-            <!----- END OF TOP ------>
-            
+ 
             <!------------------- END OF RECENT UPDATES -------------------->
             <div class="sales-analytics">
-                <h2>Analizador de INGRESOS</h2>
+                <h2>Añadir mesas</h2>
                 <div class="item customers">
                     <div class="icon">
-                        <a target="_blank" href="../Rreservas/reservas.php"><span class="material-icons-sharp">inventory</span></a>
+                        <a href="../mesas/anadir.php"><span class="material-icons-sharp">add</span></a>
                     </div>
                     <div class="right">
                         <div class="info">
-                            <h3>Imprimir Reporte</h3>
+                            <h3>Añadir</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

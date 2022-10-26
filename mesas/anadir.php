@@ -9,7 +9,7 @@
 
     include("../db/conexion.php");
 
-    $datos= "SELECT * FROM platillos";
+    $mesas= "SELECT * FROM mesas";
 
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
@@ -32,27 +32,21 @@
         <!-- MATERIAL CDN -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <!-- STYLESHEET -->
-    <link rel="shortcut icon" href="Img/ICONO.png">
+    <link rel="shortcut icon" href="img/icon.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <title>Clientes</title>
-    <link rel="stylesheet"a href="../platillos/stylep.css">
+    <link rel="stylesheet"a href="../mesas/styleM.css">
 </head>
 <body>
-
-<div class="loader">
-    <div></div>
-</div>
-
-<div class="content">
 <div class="container1">
     <aside>
         <div class="top1">       
             <div class="logo">
-                <img src="./imag/icon.png">
+                <img src="./img/icon.png">
                 <h2>BON<span class="danger">APPETIT</span></h2>
             </div>
             <div class="close" id="close-btn">
@@ -68,7 +62,7 @@
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Personas</h3>
             </a>
-            <a href="../platillos/platillos.php" class="active">
+            <a href="../platillos/platillos.php">
                 <span class="material-icons-sharp">restaurant</span>
                 <h3>Platillos</h3>
                </a>
@@ -79,6 +73,10 @@
             <a href="../ventas/ventas.php">
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
+                </a>
+                <a href="../mesas/mesa.php" class="active">
+                    <span class="material-icons-sharp">table_bar</span>
+                    <h3>Mesas</h3>
                 </a>
             
             <a href="../view/cerrar_sesion.php">
@@ -94,42 +92,44 @@
         <br> 
 
         <div class="recent-orders">
-            <h2>Platillos</h2>
+            <h2>Añadir Platillos</h2>
 
-            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%"> 
-            <div class="container2" style="margin-top: 10px;padding: 5px">
-                <thead>
-                    <tr> 
-                        <td> <font face="Arial">Imagen</font> </td> 
-                        <td> <font face="Arial">Nombre</font> </td> 
-                        <td> <font face="Arial">Precio</font> </td> 
-                        <td> <font face="Arial">Descripcion</font> </td> 
-                        <td> <font face="Arial">Ventas</font> </td> 
-                        <td> <font face="Arial">Estado</font> </td>    
-                        <td> <font face="Arial">Editar</font> </td>    
-                        <td> <font face="Arial">Eliminar</font> </td>    
-                    </tr>
-                </thead>
-            </div>
-            <tbody>
-                <?php foreach ($conexion -> query($datos) as $row) {
+            <div class="recent-orders">
 
-                ?>      
-                    <tr>
-                        <td><img height="50px" src="data:image/png/jpg/jpeg;base64,<?php echo base64_encode($row['Foto_Platillo']) ?>"></td>
-                        <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
-                        <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
-                        <td><p><?php echo $row['Descripcion'] ?></p></td>
-                        <td class="tdp"><p><?php echo $row['ventas'] ?></p></td>
-                        <td class="tdp"><p><?php echo $row['Estado'] ?></p></td>
-                        <th><a href="actualizar.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp">edit</span> </a></td>     
-                        <th><a href="delete.php?Id_Platillo=<?php echo $row['Id_Platillo'] ?> "> <span class="material-icons-sharp" style="color: red;">delete</span> </a></td>                                  
-                    </tr>
+            <form action="add.php" method="POST">
+                <div>
+            <label>Foto</label>
+            <input class="input form-control" type="file" id="Foto_Platillo" name="Foto_Platillo" accept="image/*" required>
+            <p style="color: white">Peso maximo de 60kb</p>
+            <label>Nombre</label>
+            <input class="input form-control" type="text" id="Nombre_Platillo" name="Nombre_Platillo" required>
+            <label>Precio</label>
+            <input class="input form-control" type="number" id="Precio_Platillo" name="Precio_Platillo" required>
+            <label>Descripcion</label>
+            <input class="input form-control" type="text" id="Descripcion" name="Descripcion" required>
+            <label>Estado</label>
+            <input class="input form-control" type="text" id="Estado" name="Estado" required>
+            <br />
+            <select name="Id_Categoria" id="Id_Categoria">
                 <?php
-                }
+                    $query=mysqli_query($conexion,$category);
+                    while($row=mysqli_fetch_array($query)){
+                        $idcategory=$row['Id_Categoria'];
+                        $nombrecategory=$row['Nombre_Categoria'];
+                    ?>
+                        <option value="<?php echo $idcategory ?>"><?php echo $nombrecategory ?></option>
+                <?php
+                    }
                 ?>
-            </tbody>
-            </table>
+            </select>
+                </div>
+
+            <button type="submit">
+            <span class="material-icons-sharp">edit</span>
+            <h3>Confirmar</h3>
+            </button>
+            </form>
+            </div>
         </div>
     </main>
     <div class="right">
@@ -156,41 +156,19 @@
             <!------------------- END OF RECENT UPDATES -------------------->
         <div class="sales-analytics">
         <h2>Analizador de INGRESOS</h2>
-            <div class="item customers">
+            <div class="item offline">
                 <div class="icon">
-                    <a target="_blank" href="../platillosr/index.php"> <span class="material-icons-sharp">inventory</span> </a>
+                    <a href="platillos.php"><span class="material-icons-sharp">undo</span></a>
                 </div>
                 <div class="right">
                     <div class="info">
-                        <h3>Imprimir reporte</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a target="_blank" href="../Grafico/index.php"> <span class="material-icons-sharp">analytics</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Gráficos</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a href="anadir.php"> <span class="material-icons-sharp">add</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Añadir Platillo</h3>
+                        <h3>Atrás</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
-
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
@@ -233,6 +211,5 @@
     </script>
 
 <script src="./indexp.js"></script>
-<script src="../loader.min.js"></script>
 </body>
 </html>
