@@ -206,7 +206,7 @@
                 <div class="icon">
                     <a target="_blank" href="../reportes/index.php"> <span class="material-icons-sharp">inventory</span> </a>
                 </div>
-                <div class="right">
+                <div class="right1">
                     <div class="info">
                         <h3>Imprimir reporte</h3>
                     </div>
@@ -216,7 +216,7 @@
                 <div class="icon">
                     <a target="_blank" href="../clientes/nombres.php"><span class="material-icons-sharp">person_search</span></a>
                 </div>
-                <div class="right">
+                <div class="right1">
                     <div class="info">
                         <h3>Nombres</h3>
                     </div>
@@ -226,7 +226,7 @@
                 <div class="icon">
                     <a target="_blank" href="usuarios.php"><span class="material-icons-sharp">account_circle</span></a>
                 </div>
-                <div class="right">
+                <div class="right1">
                     <div class="info">
                         <h3>Usuarios</h3>
                     </div>
@@ -238,7 +238,6 @@
 </div>
 
 <script src="./indexc.js"></script>
-<script src="../clientes/main.js"></script>
 <script src="../loader.min.js"></script>
 </body>
 </html>
