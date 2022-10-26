@@ -9,7 +9,6 @@
 
     include("../db/conexion.php");
 
-    $datos= "SELECT * FROM platillos";
     $category= "SELECT * FROM categorias";
 
     $sesion = $_SESSION['usuario'];
@@ -99,21 +98,30 @@
 
             <div class="recent-orders">
 
-            <form action="add.php" method="POST">
+            <form action="add.php" method="POST" enctype="multipart/form-data">
             <div>
             <label>Foto</label>
-            <input class="input form-control" type="file" id="formFile" name="Foto" accept="image/*" required>
+            <input class="input form-control" type="file" id="Foto_Platillo" name="Foto_Platillo" accept="image/*" required>
             <p style="color: white">Peso maximo de 60kb</p>
             <label>Nombre</label>
             <input class="input form-control" type="text" id="Nombre_Platillo" name="Nombre_Platillo" required>
             <label>Precio</label>
             <input class="input form-control" type="number" id="Precio_Platillo" name="Precio_Platillo" required>
             <label>Descripcion</label>
-            <input class="input form-control" type="text" id="Descripcion_Platillo" name="Descripcion_Platillo" required>
+            <input class="input form-control" type="text" id="Descripcion" name="Descripcion" required>
             <label>Estado</label>
             <input class="input form-control" type="text" id="Estado" name="Estado" required>
+            <label>Categoria</label>
+            <select name="Id_Categoria" id="Id_Categoria" require>
+            <?php
+                $sql = $conexion ->query("SELECT * FROM categorias");
+                while($fila=$sql -> fetch_array()){
+                    echo "<option value='".$fila["Id_Categoria"]."'>".$fila['Id_Categoria']."</option>";
+                }
+            ?>
+            </select>
             <br />
-            <select name="Id_Categoria">
+            <select name="Id_Categoria" id="Id_Categoria">
                 <?php
                     $query=mysqli_query($conexion,$category);
                     while($row=mysqli_fetch_array($query)){
@@ -125,7 +133,6 @@
                     }
                 ?>
             </select>
-            <br />
         </div>
 
             </table>

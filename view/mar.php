@@ -8,7 +8,7 @@
     }
 
     include("../db/conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE id_categoria = 1";
+    $platillos = "SELECT * FROM platillos WHERE id_categoria = 2";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,14 +26,11 @@
     <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="platillos.css">
-    <link rel="stylesheet" href="footer.css">
     <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
     <script src="app.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/Platillos.css">
     <title>Bon Appetit - Comida de Mar</title>
-
 </head>
 <body>
 <!--Preloader-->
@@ -151,137 +148,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-
-body{
-    overflow-x: hidden;
-    background-image: url(img/Fondo.png);
-}
-
-*{
-    margin: 0;
-}
-
-/*dropdown*/
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited{
-    background-color: #fc5500 !important;
-}
-
-.categorias{
-    margin-left: 95px;
-    margin-top: 35px;
-    margin-bottom: 35px;
-}
-
-.categ{
-    background-color: #fc5500;
-    color: #000;
-    font-weight: 700;
-    border: 0;
-}
-
-.categ:hover{
-    background-color: #fc5500;
-    color: #fff;
-}
-
-.lista{
-    background-color: #fc5500;
-    
-}
-
-.lista a{
-    color: #fff;
-    font-weight: 700;
-}
-
-/*Titulo*/
-.titleP{
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    font-family: 'Concert One', cursive;
-    margin-top: 40px;
-    font-weight: 900;
-    text-shadow: 3px 3px 0px white,
-    6px 6px 0px black;
-    font-size: 50px;
-}
-
-/*Contenedor Principal*/
-.ContainerCards{
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-
-@media (max-width: 1157px){
-    .ContainerCards{
-        display: grid;
-        grid-template-columns: auto auto;
-    }
-}
-
-@media (max-width: 772px){
-    .ContainerCards{
-        display: grid;
-        grid-template-columns: auto;
-    }
-}
-
-.ContainerCards .card{
-    margin: 0 auto;
-    border-radius: 18px;
-    background-color: #D0D0D0;
-    margin-bottom: 30px;
-    margin-top: 60px;
-}
-
-.ContainerCards .ImgCard{
-    background-color: #fc5500;
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    border-radius: 18px 18px 0 0;
-    padding: 10px;
-}
-
-.ContainerCards .card img{
-    height: 200px;
-    width: 210px;
-    border-radius: 50%;
-    border: 7px solid #fff;
-    display: block;
-    margin: 0 auto;
-}
-
-.card .card-text{
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 900;
-    font-family: 'Concert One', cursive;
-    font-size: 25px;
-
-    color: #fff;
-    text-shadow:
-    3px 3px 0px #000,
-    6px 6px 0px #000;
-}
-
-.card .text_card{
-    display: block;
-    margin: 0 auto;
-    background-color: #fc5500;
-    width: 30%;
-    padding: 8px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: 700;
-    color: #fff;
-}
-
-.botonVer{
-    border: 0;
-}
-</style>
