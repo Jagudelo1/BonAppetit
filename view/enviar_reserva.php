@@ -8,7 +8,7 @@ session_start();
 
 $Nombre_Completo = $_POST["Nombre_Completo"];
 $Telefono = $_POST["Telefono"];
-$Fecha = $_POST["Fecha"];
+$Fecha_Reserva = $_POST["Fecha_Reserva"];
 $Hora = $_POST["Hora"];
 $Descripcion = $_POST["Descripcion"];
 $Mesa = $_POST["Mesa"];
@@ -27,8 +27,8 @@ if (!$conn) {
 
  //Insert//
  
-$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha, Hora, Descripcion, Mesa, Documento) 
-VALUES ('$Nombre_Completo','$Telefono','$Fecha','$Hora','$Descripcion','$Mesa','$Documento')";
+$sql = "INSERT INTO reservas (Nombre_Completo, Telefono, Fecha_Reserva, Hora, Descripcion, Mesa, Documento) 
+VALUES ('$Nombre_Completo','$Telefono','$Fecha_Reserva','$Hora','$Descripcion','$Mesa','$Documento')";
 if (mysqli_query ($conn, $sql)) {
       echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
 
