@@ -24,12 +24,11 @@ if (!$conn) {
  //Insert//
  
 $sql = "INSERT INTO contactanos (Nombre, Apellido, Correo, Telefono, Mensaje) 
-                         VALUES ('$Nombre','$Apellido','$Correo','$Telefono','$Mensaje')";
-if (mysqli_query ($conn, $sql)) {
-      echo '<script language="javascript">alert("Registro Enviado Con Exito");</script>';
+VALUES ('$Nombre','$Apellido','$Correo','$Telefono','$Mensaje')";
 
-      
-      header("Location: contactanos.php");
+if (mysqli_query ($conn, $sql)) {
+      echo '<script>alert("Registro enviado con Exito");
+      document.location=("contactanos.php");</script>';
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }

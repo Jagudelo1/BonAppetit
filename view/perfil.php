@@ -262,6 +262,7 @@ div.content {
     border-radius: 50%;
     width: 170px;
     height: 170px;
+    object-fit: cover;
 }
 
 /*Contenedor de Textos principales*/

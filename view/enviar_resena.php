@@ -12,8 +12,8 @@ $Descripcion = $_POST["Descripcion"];
 $sql = "INSERT INTO resenas (Nombre_Completo, Correo, Descripcion) 
 VALUES ('$Nombre_Completo','$Correo','$Descripcion')";
 if (mysqli_query ($conexion, $sql)) {
-      echo '<script language="javascript">alert("Envio de reserva con exito, Que tenga buen dia");</script>';
-      header("Location: resena.php");
+      echo '<script>alert("Se realizo exitosamente su reservación, que tenga buen día");
+      document.location=("reservas.php");</script>';
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conexion);
 }

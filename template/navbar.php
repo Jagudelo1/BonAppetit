@@ -143,4 +143,14 @@
     .dropdown button:hover{
         color: white !important;
     }
+
+    .dropdown-menu{
+        border: 0;
+        background-color: #fc5500;
+        border-radius: 0;
+    }
+
+    .dropdown-menu li a{
+        color: #fff;
+    }
 </style>
