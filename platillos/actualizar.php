@@ -75,6 +75,10 @@
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
                 </a>
+                <a href="../mesas/mesa.php">
+                    <span class="material-icons-sharp">table_bar</span>
+                    <h3>Mesas</h3>
+                </a>
 
                 <a href="../view/cerrar_sesion.php">
                     <span class="material-icons-sharp">logout</span>
@@ -101,12 +105,10 @@
 
             <table border="0" cellspacing="2" cellpadding="2"> 
             <tr> 
-                                <td> <font face="Arial">imagen</font> </td> 
-                                <td> <font face="Arial">id_platillo</font> </td> 
-                                <td> <font face="Arial">nombre_platillo</font> </td> 
-                                <td> <font face="Arial">precio</font> </td> 
-                                <td> <font face="Arial">descripcion</font> </td> 
-                                <td> <font face="Arial">id_categoria</font> </td>        
+                                <td> <font face="Arial">Platillo</font> </td> 
+                                <td> <font face="Arial">Precio</font> </td> 
+                                <td> <font face="Arial">Descripción</font> </td> 
+                                <td> <font face="Arial">Categoría</font> </td>        
                             </tr>
 
 
@@ -116,11 +118,9 @@
 
                             
                                 <tr>
-                                    <td><img src="data:image/png/jpeg/jpg;base64,<?php echo base64_encode($row['Foto_Platillo']); ?>"></td>
-                                    <td><p><textarea readonly="readonly" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Precio_Platillo" id="Precio_Platillo" rows="1"><?php echo $row['Precio_Platillo'] ?></textarea></p></td>
-                                    <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion'] ?></textarea></p></td>
                                     <td><p><textarea name="Id_Categoria" id="Id_Categoria" rows="1"><?php echo $row['Id_Categoria'] ?></textarea></p></td>
                                 </tr>
 

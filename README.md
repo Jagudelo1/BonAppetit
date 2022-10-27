@@ -1,2 +1,0 @@
-# BonAppetit
-Proyecto Sena

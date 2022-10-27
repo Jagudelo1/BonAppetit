@@ -80,6 +80,10 @@
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
                 </a>
+                <a href="../mesas/mesa.php">
+                    <span class="material-icons-sharp">table_bar</span>
+                    <h3>Mesas</h3>
+                </a>
 
             <a href="../view/cerrar_sesion.php">
                 <span class="material-icons-sharp">logout</span>

@@ -80,6 +80,10 @@
                     <span class="material-icons-sharp">add_alert</span>
                     <h3>Ventas</h3>
                 </a>
+                <a href="../mesas/mesa.php">
+                    <span class="material-icons-sharp">table_bar</span>
+                    <h3>Mesas</h3>
+                </a>
             
             <a href="../view/cerrar_sesion.php">
                 <span class="material-icons-sharp">logout</span>
@@ -112,15 +116,6 @@
             <label>Estado</label>
             <input class="input form-control" type="text" id="Estado" name="Estado" required>
             <label>Categoria</label>
-            <select name="Id_Categoria" id="Id_Categoria" require>
-            <?php
-                $sql = $conexion ->query("SELECT * FROM categorias");
-                while($fila=$sql -> fetch_array()){
-                    echo "<option value='".$fila["Id_Categoria"]."'>".$fila['Id_Categoria']."</option>";
-                }
-            ?>
-            </select>
-            <br />
             <select name="Id_Categoria" id="Id_Categoria">
                 <?php
                     $query=mysqli_query($conexion,$category);

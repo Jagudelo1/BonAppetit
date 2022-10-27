@@ -92,36 +92,14 @@
         <br> 
 
         <div class="recent-orders">
-            <h2>Añadir Platillos</h2>
+            <h2>Añadir Mesas</h2>
 
             <div class="recent-orders">
 
             <form action="add.php" method="POST">
                 <div>
-            <label>Foto</label>
-            <input class="input form-control" type="file" id="Foto_Platillo" name="Foto_Platillo" accept="image/*" required>
-            <p style="color: white">Peso maximo de 60kb</p>
-            <label>Nombre</label>
-            <input class="input form-control" type="text" id="Nombre_Platillo" name="Nombre_Platillo" required>
-            <label>Precio</label>
-            <input class="input form-control" type="number" id="Precio_Platillo" name="Precio_Platillo" required>
-            <label>Descripcion</label>
-            <input class="input form-control" type="text" id="Descripcion" name="Descripcion" required>
-            <label>Estado</label>
-            <input class="input form-control" type="text" id="Estado" name="Estado" required>
-            <br />
-            <select name="Id_Categoria" id="Id_Categoria">
-                <?php
-                    $query=mysqli_query($conexion,$category);
-                    while($row=mysqli_fetch_array($query)){
-                        $idcategory=$row['Id_Categoria'];
-                        $nombrecategory=$row['Nombre_Categoria'];
-                    ?>
-                        <option value="<?php echo $idcategory ?>"><?php echo $nombrecategory ?></option>
-                <?php
-                    }
-                ?>
-            </select>
+            <label>Número de mesa</label>
+            <input class="input form-control" type="number" id="no_mesa" name="no_mesa" required>
                 </div>
 
             <button type="submit">
@@ -147,7 +125,7 @@
                     <small class="text-muted">Admin</small>
                 </div>
                 <div class="profile-photo">
-                    <img src="./imag/user.png" class="foto">
+                    <img src="./img/user.png" class="foto">
                 </div>
             </div>
         </div>
