@@ -57,7 +57,7 @@ html{
 }
 
 body{
-    width: 100vw;
+    width: 95%;
     height: 100%;
     font-family: poppins, sans-serif;
     font-size:0.88rem;
@@ -65,7 +65,8 @@ body{
     user-select: none;
     overflow-x: hidden;
     color: var(--color-dark);
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-left: 20px;
 }
 
 .container1{
@@ -73,7 +74,7 @@ body{
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+    grid-template-columns: 13% 70% 17%;
 }
 
 a {
@@ -593,9 +594,15 @@ main .recent-orders a{
 /* ==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 1200px) {
-    .container{
+    .container1{
         width: 94%;
-        grid-template-columns: 7rem auto 23rem;
+        grid-template-columns: 9% 105% 4%;
+        margin-left: -20px;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside .logo h2 {
@@ -621,11 +628,8 @@ main .recent-orders a{
     }
 
     main .recent-orders {
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 8.8rem;
+        margin-top: 150px;
+        margin-right: 50px;
     }
 
     main .recent-orders table {
@@ -639,25 +643,70 @@ main .recent-orders a{
     main table body tr td:last-child, main table body tr td:first-child {
         display: none;
     }
+
+
+    h2 {
+        display: none;
+    }
+
+    h3{
+        display: none;
+    }
+
+    .container2{
+        display: none;
+    }
+
+    .right1{
+        display: none;
+    }
+
+
+    .right{
+        margin-top: 7rem;
+        width: 300px;
+        margin-right: 300px;
+        margin-left: -400px;
+    }
+    
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
+    }
+
+    .right .sales-analytics .item .icon {
+        padding: 8px var(--card-padding);
+    }
+
+    :root{
+        --card-padding:9px;
+    }
+
+
 }
 
 /*==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 768px) {
-    .container {
+    .container1{
         width: 100%;
-        height: 1700px;
         grid-template-columns: 1fr;
-    }
-
-    h1 {
-        margin-top: 60px;
-        margin-left: 27%;
-    }
-
-    main .recent-orders h2 {
-        margin-top: -30px;
-        margin-left: 10px;
     }
 
     aside {
@@ -729,7 +778,7 @@ main .recent-orders a{
         align-items: center;
         padding: 0 0.8rem;
         height: 4.6rem;
-        background: var(--color-tablas);
+        background: var(--color-white);
         width: 100%;
         margin: 0;
         z-index: 2;

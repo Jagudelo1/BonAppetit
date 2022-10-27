@@ -26,13 +26,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
         <!--Animation Script-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <!-- STYLESHEET -->
+    <link rel="shortcut icon" href="Img/ICONO.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <title>Administrador</title>
     <link rel="stylesheet"a href="../admin/style.css">
 </head>
@@ -166,7 +173,7 @@
                     <div class="icon">
                         <a target="_blank" href="../Rreservas/reservas.php"><span class="material-icons-sharp">inventory</span></a>
                     </div>
-                    <div class="right">
+                    <div class="right1">
                         <div class="info">
                             <h3>Imprimir Reporte</h3>
                         </div>
@@ -176,46 +183,47 @@
         </div>
     </div>
 </div>
+</div>
 
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- DATATABLES -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-    </script>
-    <!-- BOOTSTRAP -->
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#tablax').DataTable({
-                language: {
-                    processing: "Tratamiento en curso...",
-                    search: "Buscar&nbsp;:",
-                    lengthMenu: "Agrupar de _MENU_ items",
-                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
-                    infoEmpty: "No existen datos.",
-                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
-                    infoPostFix: "",
-                    loadingRecords: "Cargando...",
-                    zeroRecords: "No se encontraron datos con tu busqueda",
-                    emptyTable: "No hay datos disponibles en la tabla.",
-                    paginate: {
-                        first: "Primero",
-                        previous: "Anterior",
-                        next: "Siguiente",
-                        last: "Ultimo"
-                    },
-                    aria: {
-                        sortAscending: ": active para ordenar la columna en orden ascendente",
-                        sortDescending: ": active para ordenar la columna en orden descendente"
-                    }
+<!-- DATATABLES -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
+</script>
+<!-- BOOTSTRAP -->
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+</script>
+<script>
+    $(document).ready(function () {
+        $('#tablax').DataTable({
+            language: {
+                processing: "Tratamiento en curso...",
+                search: "Buscar&nbsp;:",
+                lengthMenu: "Agrupar de _MENU_ items",
+                info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+                infoEmpty: "No existen datos.",
+                infoFiltered: "(filtrado de _MAX_ elementos en total)",
+                infoPostFix: "",
+                loadingRecords: "Cargando...",
+                zeroRecords: "No se encontraron datos con tu busqueda",
+                emptyTable: "No hay datos disponibles en la tabla.",
+                paginate: {
+                    first: "Primero",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Ultimo"
                 },
-                scrollY: 400,
-                lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
-            });
+                aria: {
+                    sortAscending: ": active para ordenar la columna en orden ascendente",
+                    sortDescending: ": active para ordenar la columna en orden descendente"
+                }
+            },
+            scrollY: 400,
+            lengthMenu: [ [5, 10, -1], [5, 10, "All"] ],
         });
-    </script>
-    <script src="index.js"></script>
-    <script src="../loader.min.js"></script>
+    });
+</script>
+<script src="index.js"></script>
+<script src="../loader.min.js"></script>
 </body>
 </html>
