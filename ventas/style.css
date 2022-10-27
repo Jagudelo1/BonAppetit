@@ -596,9 +596,14 @@ main .recent-orders a{
 /* ==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 1200px) {
-    .container{
+    .container1{
         width: 94%;
-        grid-template-columns: 7rem auto 23rem;
+        grid-template-columns: 8% 96% 4%;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside .logo h2 {
@@ -624,11 +629,7 @@ main .recent-orders a{
     }
 
     main .recent-orders {
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 8.8rem;
+        margin-top: 150px;
     }
 
     main .recent-orders table {
@@ -642,12 +643,67 @@ main .recent-orders a{
     main table body tr td:last-child, main table body tr td:first-child {
         display: none;
     }
+
+    h1 {
+        display: none;
+    }
+
+    h2 {
+        display: none;
+    }
+
+    .container2{
+        display: none;
+    }
+
+    .right1{
+        display: none;
+    }
+
+
+    .right{
+        margin-top: 7rem;
+        width: 300px;
+        margin-right: 300px;
+        margin-left: -400px;
+    }
+    
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -100px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
+    }
+
+    .right .sales-analytics .item .icon {
+        padding: 8px var(--card-padding);
+    }
+
+    :root{
+        --card-padding:9px;
+    }
+
+
 }
 
 /*==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 768px) {
-    .container {
+    .container1{
         width: 100%;
         grid-template-columns: 1fr;
     }
@@ -751,6 +807,8 @@ main .recent-orders a{
         font-size: 2rem;
     }
 }
+
+
 
 body::-webkit-scrollbar{
     width: 11px;

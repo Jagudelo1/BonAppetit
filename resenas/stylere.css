@@ -53,6 +53,10 @@
 }
 
 html{
+    font-size:14px;
+}
+
+body{
     width: 95%;
     height: 100%;
     font-family: poppins, sans-serif;
@@ -65,30 +69,18 @@ html{
     margin-left: 20px;
 }
 
-body{
-    width: 100vw;
-    height: 103vh;
-    font-family: poppins, sans-serif;
-    font-size:0.88rem;
-    background: var(--color-background);
-    user-select: none;
-    overflow-x: hidden;
-    color: var(--color-dark);
-}
 
 .container1{
     display: grid;
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+    grid-template-columns: 13% 70% 17%;
 }
 
 a {
     color: var(--color-dark);
 }
-
-
 
 img {
     width: 30px;
@@ -589,9 +581,15 @@ main .recent-orders a{
 /* ==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 1200px) {
-    .container{
+    .container1{
         width: 94%;
-        grid-template-columns: 7rem auto 23rem;
+        grid-template-columns: 9% 110% 4%;
+        margin-left: -20px;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside .logo h2 {
@@ -617,11 +615,8 @@ main .recent-orders a{
     }
 
     main .recent-orders {
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 8.8rem;
+        margin-top: 150px;
+        margin-right: 100px;
     }
 
     main .recent-orders table {
@@ -635,14 +630,71 @@ main .recent-orders a{
     main table body tr td:last-child, main table body tr td:first-child {
         display: none;
     }
+
+
+    h2 {
+        display: none;
+    }
+
+    .container2{
+        display: none;
+    }
+
+    .right1{
+        display: none;
+    }
+
+
+    .right{
+        margin-top: 7rem;
+        width: 300px;
+        margin-right: 300px;
+        margin-left: -400px;
+    }
+    
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
+    }
+
+    .right .sales-analytics .item .icon {
+        padding: 8px var(--card-padding);
+    }
+
+    :root{
+        --card-padding:9px;
+    }
+
+
 }
 
 /*==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 768px) {
-    .container {
+    .container1{
         width: 100%;
         grid-template-columns: 1fr;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside {
@@ -742,48 +794,6 @@ main .recent-orders a{
 
     .right .top button span {
         font-size: 2rem;
-    }
-}
-
-.content{
-    display: none;
-}
-
-body::-webkit-scrollbar{
-    width: 11px;
-}
-
-body::-webkit-scrollbar-thumb {
-    background: #ff9d00;
-    border-radius: 5px;
-}
-
-.loader{
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background-color: #16191e;
-    position: absolute;
-}
-
-.loader>div{
-    height: 100px;
-    width: 100px;
-    border: 15px solid #45474b;
-    border-top-color: #2a88e6;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-radius: 50%;
-    animation: spin 1.5s infinite linear;
-}
-
-@keyframes spin{
-    100%{
-        transform: rotate(360deg)
     }
 }
 

@@ -582,7 +582,13 @@ main .recent-orders a{
 @media screen and (max-width: 1200px) {
     .container1{
         width: 94%;
-        grid-template-columns: 8% 100% 4%;
+        grid-template-columns: 6% 105% 4%;
+        margin-left: -20px;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside .logo h2 {
@@ -609,6 +615,7 @@ main .recent-orders a{
 
     main .recent-orders {
         margin-top: 150px;
+        margin-right: 40px;
     }
 
     main .recent-orders table {
@@ -623,9 +630,6 @@ main .recent-orders a{
         display: none;
     }
 
-    h1 {
-        display: none;
-    }
 
     h2 {
         display: none;
@@ -651,7 +655,7 @@ main .recent-orders a{
         width: 60px;
         height: 60px;
         margin-left: -80%;
-        margin-top: -100px;
+        margin-top: -60px;
     }
 
     .item.online{
@@ -685,6 +689,7 @@ main .recent-orders a{
     .container1{
         width: 100%;
         grid-template-columns: 1fr;
+        margin-left: 0px;
     }
 
     aside {
@@ -756,7 +761,7 @@ main .recent-orders a{
         align-items: center;
         padding: 0 0.8rem;
         height: 4.6rem;
-        background: var(--color-white);
+        background: var(--color-tablas);
         width: 100%;
         margin: 0;
         z-index: 2;
@@ -766,7 +771,7 @@ main .recent-orders a{
     .right .top .theme-toggler {
         width: 4.4rem;
         position: absolute;
-        left: 66%;
+        left: 76%;
     }
 
     .right .profile .info {
@@ -785,6 +790,12 @@ main .recent-orders a{
     .right .top button span {
         font-size: 2rem;
     }
+
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+
 }
 
 .lab{
