@@ -10,8 +10,6 @@
     $Usuario = $_POST["Usuario"];
     $Contrasena = $_POST["Contrasena"];
 
-    
-
     $update = "UPDATE clientes SET Nombres ='$Nombres', Apellidos ='$Apellidos', Celular ='$Celular', Fecha ='$Fecha',Usuario ='$Usuario', Contrasena ='$Contrasena' WHERE Documento ='$Documento'";
     $result = mysqli_query($conexion,$update);
 
@@ -20,3 +18,4 @@
     }
     
 ?>
+

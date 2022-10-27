@@ -1,6 +1,6 @@
 <?php
 
-    include("../db/conexion.php");
+    require("../db/conexion.php");
 
     $id_reserva = $_POST["id_reserva"];
     $Fecha = $_POST["Fecha"];

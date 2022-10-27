@@ -105,6 +105,7 @@
 
             <table border="0" cellspacing="2" cellpadding="2"> 
             <tr> 
+                                <td> <font face="Arial">Número de platillo</font> </td> 
                                 <td> <font face="Arial">Platillo</font> </td> 
                                 <td> <font face="Arial">Precio</font> </td> 
                                 <td> <font face="Arial">Descripción</font> </td> 
@@ -118,6 +119,7 @@
 
                             
                                 <tr>
+                                    <td><p><textarea readonly="readonly" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Precio_Platillo" id="Precio_Platillo" rows="1"><?php echo $row['Precio_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion'] ?></textarea></p></td>

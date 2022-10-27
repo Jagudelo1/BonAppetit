@@ -7,15 +7,15 @@
         session_start(); 
     }
 
-    include("conexion.php");
+    include("../db/conexion.php");
 
     $datos= "SELECT * FROM platillos";
 
     $sesion = $_SESSION['usuario'];
-    if($sesion == null || $sesion = ''){
-    echo 'Usted no tiene autorización';
-    header('Location: ../view/login.php');
-    die();
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
 
     }
 
@@ -50,9 +50,7 @@
 </head>
 <body>
 
-<div class="loader">
-    <div></div>
-</div>
+
 
     <div class="container1">
         <aside>
@@ -120,7 +118,7 @@
             </div>
 
                 <tbody>
-                            <?php foreach ($con -> query($datos) as $row) {
+                            <?php foreach ($conexion -> query($datos) as $row) {
 
                             
                         ?>
@@ -227,6 +225,21 @@
         });
     </script>
     <script src="../admin/index.js"></script>
-    <script src="../loader.min.js"></script>
+    <script type="text/javascript">
+		function valideKey(evt){
+			
+			// code is the decimal ASCII representation of the pressed key.
+			var code = (evt.which) ? evt.which : evt.keyCode;
+			
+			if(code==8) { // backspace.
+			  return true;
+			} else if(code>=48 && code<=57) { // is a number.
+			  return true;
+			} else{ // other keys.
+			  return false;
+			}
+		}
+		</script>
+        <script src="../loader.min.js"></script>
 </body>
 </html>

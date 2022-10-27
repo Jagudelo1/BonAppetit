@@ -1,5 +1,5 @@
 <?php
-    $conexion=mysqli_connect(
+    $con=mysqli_connect(
         'localhost',
         'root',
         '',
