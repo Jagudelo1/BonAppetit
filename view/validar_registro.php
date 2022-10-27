@@ -39,16 +39,13 @@ if ($existe===1) {
 //Consulta para Subir los Datos del Usuario
 $sql = "INSERT INTO clientes (Documento, Nombres, Apellidos, Correo_Electronico, Celular, Fecha, Usuario, Contrasena, Foto) 
 VALUES ('$Documento','$Nombres','$Apellidos','$Correo_Electronico', '$Celular', '$Fecha','$Usuario','$Contrasena','$Foto')";
-if (mysqli_query ($conn, $sql)) {
-      header("location: login.php");
 
+if (mysqli_query ($conn, $sql)) {
+      echo '<script>alert("Registro Completado con Exito");
+      document.location=("login.php");</script>';
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conn);
 }
 mysqli_close($conn);
 }
 ?>
-
-
-
-

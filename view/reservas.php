@@ -16,7 +16,7 @@
 
     include("conexion.php");
     
-    $reservas = "SELECT reservas.Nombre_Completo, reservas.Telefono, reservas.Fecha, 
+    $reservas = "SELECT reservas.id_reserva, reservas.Nombre_Completo, reservas.Telefono, reservas.Fecha_Reserva, 
     reservas.Hora, reservas.Descripcion, reservas.Mesa, clientes.id_cliente, clientes.Usuario 
     FROM reservas INNER JOIN clientes ON clientes.Documento = reservas.Documento WHERE clientes.Usuario = '$_SESSION[usuario]'";
     
@@ -106,7 +106,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Documento</th>
                             <th>Nombre Completo</th>
                             <th>Telefono</th>
                             <th>Fecha</th>
@@ -121,15 +120,14 @@
                     <?php $resultado = mysqli_query($conexion, $reservas);
                     while($row=mysqli_fetch_assoc($resultado)) {?>
                         <tr>
-                            <th><?php echo $row ["Documento"]?></th>
                             <th><?php echo $row ["Nombre_Completo"]?></th>
                             <th><?php echo $row ["Telefono"]?></th>
-                            <th><?php echo $row ["Fecha"]?></th>
+                            <th><?php echo $row ["Fecha_Reserva"]?></th>
                             <th><?php echo $row ["Hora"]?></th>
                             <th><?php echo $row ["Descripcion"]?></th>
                             <th><?php echo $row ["Mesa"]?></th>
                             <th>
-                                <a href="updatereserva.php" class="Acciones"><i class="fa-solid fa-pen-to-square"></i></a> 
+                                <a href="updatereserva.php?id_reserva=<?php echo $row ["id_reserva"];?>" class="Acciones"><i class="fa-solid fa-pen-to-square"></i></a> 
                             </th>
                             <th>
                                 <a href="#" class="Acciones"><i class="fa-solid fa-trash"></i></a>
@@ -162,7 +160,7 @@
                             while($row=mysqli_fetch_assoc($resultado)) { ?>
                             <p>
                                 <label for="">Documento</label>
-                                <input type="number" name="Documento" value="<?php echo $row["Documento"] ?>" disabled>
+                                <input type="number" name="Documento" readonly value="<?php echo $row["Documento"] ?>">
                             </p>
                             <?php } ?>
                             <p>
@@ -175,7 +173,7 @@
                             </p>
                             <p>
                                 <label for="">Fecha</label>
-                                <input type="date" name="Fecha" require min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
+                                <input type="date" name="Fecha_Reserva" require min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>">
                             </p>
                             <p>
                                 <label for="">Hora</label>

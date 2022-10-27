@@ -23,8 +23,8 @@ if($Acceder['id_rol'] == 1){
     $_SESSION['usuario']=$Usuario;
     header("Location: index.php");
 } else{
-    echo '<script language="javascript">alert("No estás registrado");</script>';
-    include 'login.php';
+    echo '<script>alert("No te encuentras registrado");
+      document.location=("login.php");</script>';
 }
 
 ?>

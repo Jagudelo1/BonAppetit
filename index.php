@@ -8,7 +8,7 @@
     }
 
     include("view/conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','9','12','17','18','22')";
+    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','8','12','17','18','22')";
 ?>
 
 <!DOCTYPE html>

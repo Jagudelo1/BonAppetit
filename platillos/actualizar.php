@@ -120,7 +120,7 @@
                                     <td><p><textarea readonly="readonly" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Precio_Platillo" id="Precio_Platillo" rows="1"><?php echo $row['Precio_Platillo'] ?></textarea></p></td>
-                                    <td><p><textarea name="Descripcion_Platillo" id="Descripcion_Platillo" rows="1"><?php echo $row['Descripcion_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="Id_Categoria" id="Id_Categoria" rows="1"><?php echo $row['Id_Categoria'] ?></textarea></p></td>
                                 </tr>
 

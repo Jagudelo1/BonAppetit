@@ -15,11 +15,13 @@
     }
 
     include("conexion.php");
+
+    $id_reserva = $_GET["id_reserva"];
     
     $datos = "SELECT * FROM reservas INNER JOIN clientes ON 
-    clientes.Documento = reservas.Documento WHERE clientes.Usuario
-    = '$_SESSION[usuario]'";
+    clientes.Documento = reservas.Documento WHERE id_reserva = '$id_reserva'";
     
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,7 +107,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="display: none">N° Reserva</th>
+                            <th>N° Reserva</th>
                             <th>Nombre Completo</th>
                             <th>Telefono</th>
                             <th>Fecha</th>
@@ -118,10 +120,10 @@
                     <form method="POST" action="Funciones/updater.php">
                         <?php foreach ($conexion -> query($datos) as $row) {?>
                             <tr>
-                                <td style="display: none"><p><input type="number" value="<?php echo $row['id_reserva'] ?>" class="form-control Reserva" id="exampleFormControlTextarea1" name="id_reserva" id="id_reserva"></input></p></td>
+                                <td><p><input type="number" value="<?php echo $row['id_reserva'] ?>" class="form-control Reserva" id="exampleFormControlTextarea1" name="id_reserva" id="id_reserva"></input></p></td>
                                 <td><p><input type="text" value="<?php echo $row['Nombre_Completo'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Nombre_Completo" id="Nombre_Completo"></input></p></td>
                                 <td><p><input type="number" value="<?php echo $row['Telefono'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Telefono" id="Telefono"></input></p></td>
-                                <td><p><input type="date" value="<?php echo $row['Fecha'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Fecha" id="Fecha"></input></p></td>
+                                <td><p><input type="date" value="<?php echo $row['Fecha_Reserva'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Fecha_Reserva" id="Fecha_Reserva" min = "<?php $hoy=date("Y-m-d"); echo $hoy;?>"></input></p></td>
                                 <td><p><input type="time" value="<?php echo $row['Hora'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Hora" id="Hora"></input></p></td>
                                 <td><p><input type="text" value="<?php echo $row['Descripcion'] ?>" class="form-control" id="exampleFormControlTextarea1" name="Descripcion" id="Descripcion"></input></p></td>
                                 <td><p>

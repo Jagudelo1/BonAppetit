@@ -8,12 +8,13 @@ include("conexion.php");
 $Nombre_Completo = $_POST["Nombre_Completo"];
 $Correo = $_POST["Correo"];
 $Descripcion = $_POST["Descripcion"];
+$puntuacion = $_POST["puntuacion"];
  
-$sql = "INSERT INTO resenas (Nombre_Completo, Correo, Descripcion) 
-VALUES ('$Nombre_Completo','$Correo','$Descripcion')";
+$sql = "INSERT INTO resenas (Nombre_Completo, Correo, Descripcion, puntuacion) 
+VALUES ('$Nombre_Completo','$Correo','$Descripcion','$puntuacion')";
 if (mysqli_query ($conexion, $sql)) {
-      echo '<script language="javascript">alert("Envio de reserva con exito, Que tenga buen dia");</script>';
-      header("Location: resena.php");
+      echo '<script>alert("Gracias por su resena, que tenga buen dia");
+      document.location=("resena.php");</script>';
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error ($conexion);
 }
