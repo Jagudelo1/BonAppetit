@@ -591,6 +591,7 @@ main .recent-orders a{
         margin-left: 30px;
     }
 
+
     aside .logo h2 {
         display: none;
     }
@@ -616,6 +617,7 @@ main .recent-orders a{
     main .recent-orders {
         margin-top: 150px;
         margin-right: 40px;
+
     }
 
     main .recent-orders table {
@@ -629,7 +631,6 @@ main .recent-orders a{
     main table body tr td:last-child, main table body tr td:first-child {
         display: none;
     }
-
 
     h2 {
         display: none;
@@ -659,7 +660,7 @@ main .recent-orders a{
         width: 60px;
         height: 60px;
         margin-left: -80%;
-        margin-top: -60px;
+        margin-top: -70px;
     }
 
     .item.online{
@@ -673,7 +674,7 @@ main .recent-orders a{
         width: 60px;
         height: 60px;
         margin-left: -20%;
-        margin-top: -70px;
+        margin-top: -68px;
     }
 
     .right .sales-analytics .item .icon {
@@ -799,7 +800,7 @@ main .recent-orders a{
         margin-top: 20px;
         text-align: center;
     }
-
+    
 }
 
 .lab{

@@ -26,13 +26,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
         <!--Animation Script-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
+    <link rel="shortcut icon" href="Img/ICONO.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
     <title>Administrador</title>
     <link rel="stylesheet"a href="../mesas/styleM.css">
 </head>
