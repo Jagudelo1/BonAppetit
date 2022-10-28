@@ -103,6 +103,9 @@
 <style>
     body{
         overflow-x: hidden;
+        background-image: linear-gradient(rgba(5, 10, 5, 0.80), rgba(254, 229, 204, 0.8)), url(../view/img/Fondo.png);
+        background-size: cover;
+        background-position: center center;
     }
 
     *{

@@ -108,18 +108,16 @@
                     </p>
                     <div class="rating">
                         <p class="clasificacion">
-                            <input id="radio1" type="radio" name="puntuacion" value="1">
+                            <input id="radio1" type="radio" name="puntuacion" value="5">
                             <label for="radio1" value="1">★</label>
-                            <input id="radio2" type="radio" name="puntuacion" value="2">
+                            <input id="radio2" type="radio" name="puntuacion" value="4" placeholder="★">
                             <label for="radio2">★</label>
                             <input id="radio3" type="radio" name="puntuacion" value="3">
                             <label for="radio3">★</label>
-                            <input id="radio4" type="radio" name="puntuacion" value="4">
+                            <input id="radio4" type="radio" name="puntuacion" value="2">
                             <label for="radio4">★</label>
-                            <input id="radio5" type="radio" name="puntuacion" value="5">
+                            <input id="radio5" type="radio" name="puntuacion" value="1">
                             <label for="radio5">★</label>
-                            
-                            
                         </p>     
                     </div>
                     <p class="block">

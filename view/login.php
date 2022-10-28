@@ -114,7 +114,7 @@
                     </div>
 
                     <div class="checkbox-text">
-                        <a href="#" class="text">Olvidaste tu contraseña?</a>
+                        <a href="recuperar_contrasena.php" class="text">Olvidaste tu contraseña?</a>
                     </div>
                         <button class="buttonI">Ingresar</button>
                 </form>
@@ -149,22 +149,22 @@ body{
 }
 
 :root{
-        --primary-color: #fc5500 !important;
-    }
+    --primary-color: #fc5500 !important;
+}
 
-    /*Navbar*/
-    .navbar{
-        background-color: var(--primary-color);
-        box-shadow: 4px 4px 7px #C71414 !important;
-    }
+/*Navbar*/
+.navbar{
+    background-color: var(--primary-color);
+    box-shadow: 4px 4px 7px #C71414 !important;
+}
 
-    .titulo{
-        font-size: 30px;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
+.titulo{
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
 
-    .nav-item a{
+.nav-item a{
     font-size: 17px;
     color: white;
     font-weight: 800;
