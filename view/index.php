@@ -8,7 +8,7 @@
     }
 
     include("conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','8','12','17','18','22')";
+    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','2','8','10','17','18','22')";
 ?>
 
 <!DOCTYPE html>
@@ -271,6 +271,7 @@ body{
     width: 100%;
     border-radius: 18px 18px 0 0;
     padding: 10px;
+    object-fit: cover;
 }
 
 .ContainerCards .card img{
@@ -280,6 +281,7 @@ body{
     border: 7px solid #fff;
     display: block;
     margin: 0 auto;
+    object-fit: cover;
 }
 
 .card .card-text{

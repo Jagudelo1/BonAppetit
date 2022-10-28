@@ -8,7 +8,7 @@
     }
 
     include("view/conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','6','8','12','17','18','22')";
+    $platillos = "SELECT * FROM platillos WHERE Id_Platillo IN ('1','4','2','8','10','17','18','22')";
 ?>
 
 <!DOCTYPE html>
@@ -302,7 +302,7 @@ body{
     text-align: center;
     text-transform: uppercase;
     color: #FF0000;
-    font-family: 'Concert One', cursive;
+    font-family: 'Secular One', sans-serif;
     font-weight: 900;
     font-size: 120px;
     text-shadow: -1px -1px 0px red,
@@ -357,6 +357,7 @@ body{
     width: 100%;
     border-radius: 18px 18px 0 0;
     padding: 10px;
+    object-fit: cover;
 }
 
 .ContainerCards .card img{
@@ -366,19 +367,17 @@ body{
     border: 7px solid #fff;
     display: block;
     margin: 0 auto;
+    object-fit: cover;
 }
 
 .card .card-text{
     text-align: center;
     text-transform: uppercase;
     font-weight: 900;
-    font-family: 'Concert One', cursive;
+    font-family: 'Secular One', sans-serif;
     font-size: 25px;
 
-    color: #fff;
-    text-shadow:
-    3px 3px 0px #000,
-    6px 6px 0px #000;
+    color: #000;
 }
 
 .card .text_card{
@@ -391,7 +390,7 @@ body{
     border-radius: 12px;
     text-align: center;
     font-weight: 700;
-    color: #000;
+    color: #fff;
 }
 
 .buttonV{

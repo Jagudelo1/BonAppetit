@@ -1,6 +1,6 @@
 <?php
 
-    require 'conexion.php';
+    require '../db/conexion.php';
 
     $Nombre_Platillo = $_POST["Nombre_Platillo"];
     $Precio_Platillo = $_POST["Precio_Platillo"];

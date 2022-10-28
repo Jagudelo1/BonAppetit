@@ -66,12 +66,29 @@ body{
         display: grid;
         grid-template-columns: auto auto;
     }
+
+    .titleP{
+        text-align: center;
+    }
 }
 
 @media (max-width: 772px){
     .ContainerCards{
         display: grid;
         grid-template-columns: auto;
+    }
+
+    .titleP{
+        text-align: center;
+        margin: 0;
+        margin-top: 20px;
+    }
+
+    .categorias{
+        display: block;
+        margin: 0 auto;
+        margin-left: 20px;
+        margin-top: 40px;
     }
 }
 

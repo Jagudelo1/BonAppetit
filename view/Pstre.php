@@ -8,7 +8,7 @@
     }
 
     include("../db/conexion.php");
-    $platillos = "SELECT * FROM platillos WHERE id_categoria = 5";
+    $platillos = "SELECT * FROM platillos WHERE id_categoria = 2";
 ?>
 <!DOCTYPE html>
 <html lang="en">
