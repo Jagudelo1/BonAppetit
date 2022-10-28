@@ -130,7 +130,7 @@
                                 <a href="updatereserva.php?id_reserva=<?php echo $row ["id_reserva"];?>" class="Acciones"><i class="fa-solid fa-pen-to-square"></i></a> 
                             </th>
                             <th>
-                                <a href="#" class="Acciones"><i class="fa-solid fa-trash"></i></a>
+                                <a href="Funciones/deleter.php?id_reserva=<?php echo $row['id_reserva']?>" class="Acciones"><i class="fa-solid fa-trash"></i></a>
                             </th>
                         </tr>
                     <?php }?>

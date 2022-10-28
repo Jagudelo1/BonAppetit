@@ -387,10 +387,11 @@ body{
     background-color: #fc5500;
     width: 30%;
     padding: 8px;
+    font-family: 'Secular One', sans-serif;
     border-radius: 12px;
     text-align: center;
     font-weight: 700;
-    color: #fff;
+    color: #000;
 }
 
 .buttonV{

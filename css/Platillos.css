@@ -52,6 +52,7 @@ body{
     margin-right: 40px;
     font-weight: 900;
     font-size: 60px;
+    color: #fff;
 }
 
 /*Contenedor Principal*/
@@ -106,11 +107,6 @@ body{
     font-weight: 900;
     font-family: 'Secular One', sans-serif;
     font-size: 25px;
-
-    color: #fff;
-    text-shadow:
-    3px 3px 0px #000,
-    6px 6px 0px #000;
 }
 
 .card .text_card{

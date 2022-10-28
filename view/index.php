@@ -132,7 +132,7 @@
 
 <!--Platilllos-->
 <div class="Cantainerinfo">
-    <h2>En nuestros platillos hay mucho amor</h2>
+    <h2>DELEITATE CON NUESTROS MEJORES PLATILLOS</h2>
 </div>
 
 <!--Tarjetas-->
@@ -286,13 +286,10 @@ body{
     text-align: center;
     text-transform: uppercase;
     font-weight: 900;
-    font-family: 'Concert One', cursive;
+    font-family: 'Secular One', sans-serif;
     font-size: 25px;
 
-    color: #fff;
-    text-shadow:
-    3px 3px 0px #000,
-    6px 6px 0px #000;
+    color: #000;
 }
 
 .card .text_card{
