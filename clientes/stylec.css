@@ -644,6 +644,10 @@ main .recent-orders a{
         display: none;
     }
 
+    h3 {
+        display: none;
+    }
+
     .container2{
         display: none;
     }

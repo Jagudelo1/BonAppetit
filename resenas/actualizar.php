@@ -27,7 +27,7 @@
     <link rel="stylesheet"a href="../resenas/stylere.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container1">
         <aside>
             <div class="top">       
                  <div class="logo">
@@ -96,7 +96,7 @@
                             </tr>
 
 
-                    <?php foreach ($con -> query($datos) as $row) {
+                    <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
                             

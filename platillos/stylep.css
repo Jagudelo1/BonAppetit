@@ -807,6 +807,13 @@ main .recent-orders a{
     .right .top button span {
         font-size: 2rem;
     }
+    
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+
+
 }
 
 

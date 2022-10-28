@@ -1,9 +1,24 @@
 <?php
+    // No mostrar los errores de PHP
+    error_reporting(0);
 
-    include("conexion.php");
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+
+    include("../db/conexion.php");
 
     $Id_Platillo = $_GET["Id_Platillo"];
     $datos = "SELECT * FROM platillos WHERE Id_Platillo = '".$Id_Platillo."'";
+
+    $sesion = $_SESSION['usuario'];
+        if($sesion == null || $sesion = ''){
+        echo 'Usted no tiene autorización';
+        header('Location: ../view/login.php');
+        die();
+
+    }
 
 ?>
 
@@ -19,7 +34,10 @@
     <link rel="stylesheet"a href="style.css">
 </head>
 <body>
-    <div class="container">
+
+
+
+    <div class="container1">
         <aside>
             <div class="top">       
                  <div class="logo">
@@ -77,20 +95,26 @@
             <!--------------- END OF INSIGHTS --------------->
             <div class="recent-orders">
 
-            <form action="update.php" method="POST">
 
             <table border="0" cellspacing="2" cellpadding="2"> 
-            <tr > 
+            <thead> 
+                        <tr > 
+                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Número de platillo</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Platillo</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">ventas</font> </td> 
                         </tr>
+            </thead> 
 
-                    <?php foreach ($con -> query($datos) as $row) {
+            <tbody>
+            <form action="updatev.php" method="POST">
+
+                    <?php foreach ($conexion -> query($datos) as $row) {
  
                         ?>
       
                                 <tr>
-                                    <td><p><textarea readonly="readonly" class="pipe" name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea readonly="readonly" name="Id_Platillo" id="Id_Platillo" rows="1"><?php echo $row['Id_Platillo'] ?></textarea></p></td>
+                                    <td><p><textarea readonly="readonly" name="Nombre_Platillo" id="Nombre_Platillo" rows="1"><?php echo $row['Nombre_Platillo'] ?></textarea></p></td>
                                     <td><p><textarea name="ventas" id="ventas" rows="1"><?php echo $row['ventas'] ?></textarea></p></td>
                                 </tr>
 
@@ -98,10 +122,11 @@
                         <?php
                         }
                     ?>
+                </tbody>
                 </table>
                 <button type="submit">
-                <span class="material-icons-sharp">edit</span>
-                <h3>Confirmar</h3>
+                    <span class="material-icons-sharp">edit</span>
+                    <h3>Confirmar</h3>
                 </button>
                 </form>
             </div>
@@ -135,5 +160,21 @@
     </div>
 
     <script src="../admin/index.js"></script>
+    <script type="text/javascript">
+		function valideKey(evt){
+			
+			// code is the decimal ASCII representation of the pressed key.
+			var code = (evt.which) ? evt.which : evt.keyCode;
+			
+			if(code==8) { // backspace.
+			  return true;
+			} else if(code>=48 && code<=57) { // is a number.
+			  return true;
+			} else{ // other keys.
+			  return false;
+			}
+		}
+		</script>
+        <script src="../loader.min.js"></script>
 </body>
 </html>

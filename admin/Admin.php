@@ -1,4 +1,4 @@
-<?php
+ <?php
     // No mostrar los errores de PHP
     error_reporting(0);
 

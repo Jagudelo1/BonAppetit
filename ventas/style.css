@@ -56,6 +56,10 @@
 }
 
 html{
+    font-size:14px;
+}
+
+body{
     width: 95%;
     height: 100%;
     font-family: poppins, sans-serif;
@@ -68,28 +72,13 @@ html{
     margin-left: 20px;
 }
 
-body{
-    width: 100vw;
-    height: 103vh;
-    font-family: poppins, sans-serif;
-    font-size:0.88rem;
-    background: var(--color-background);
-    user-select: none;
-    overflow-x: hidden;
-    color: var(--color-dark);
-}
-
 .container1{
     display: grid;
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem auto 23rem;
+    grid-template-columns: 13% 70% 17%;
 }
-
-
-
-
 
 a {
     color: var(--color-dark);
@@ -142,10 +131,6 @@ p {
 
 b {
     color: var(--color-dark);
-}
-
-.pipe{
-    resize: none;
 }
 
 .primary {
@@ -394,6 +379,7 @@ main .insights small {
 
 main .recent-orders{
     margin-top: 2rem;
+    width: 100%;
 }
 
 main .recent-orders h2 {
@@ -402,7 +388,6 @@ main .recent-orders h2 {
 
 main .recent-orders table {
     background: var(--color-tablas);
-    width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     text-align: center;
@@ -449,7 +434,6 @@ main .recent-orders a{
 
 .right{
     margin-top: 1.4rem;
-    margin-right: 70px;
 }
 
 .right .top {
@@ -598,13 +582,15 @@ main .recent-orders a{
 @media screen and (max-width: 1200px) {
     .container1{
         width: 94%;
-        grid-template-columns: 8% 96% 4%;
+        grid-template-columns: 6% 105% 4%;
+        margin-left: -20px;
     }
 
     div.top{
         margin-top: 25px;
         margin-left: 30px;
     }
+
 
     aside .logo h2 {
         display: none;
@@ -630,6 +616,8 @@ main .recent-orders a{
 
     main .recent-orders {
         margin-top: 150px;
+        margin-right: 40px;
+
     }
 
     main .recent-orders table {
@@ -644,11 +632,11 @@ main .recent-orders a{
         display: none;
     }
 
-    h1 {
+    h2 {
         display: none;
     }
 
-    h2 {
+    h3 {
         display: none;
     }
 
@@ -672,7 +660,7 @@ main .recent-orders a{
         width: 60px;
         height: 60px;
         margin-left: -80%;
-        margin-top: -100px;
+        margin-top: -70px;
     }
 
     .item.online{
@@ -686,7 +674,7 @@ main .recent-orders a{
         width: 60px;
         height: 60px;
         margin-left: -20%;
-        margin-top: -70px;
+        margin-top: -68px;
     }
 
     .right .sales-analytics .item .icon {
@@ -706,6 +694,7 @@ main .recent-orders a{
     .container1{
         width: 100%;
         grid-template-columns: 1fr;
+        margin-left: 0px;
     }
 
     aside {
@@ -777,7 +766,7 @@ main .recent-orders a{
         align-items: center;
         padding: 0 0.8rem;
         height: 4.6rem;
-        background: var(--color-white);
+        background: var(--color-tablas);
         width: 100%;
         margin: 0;
         z-index: 2;
@@ -787,7 +776,7 @@ main .recent-orders a{
     .right .top .theme-toggler {
         width: 4.4rem;
         position: absolute;
-        left: 66%;
+        left: 76%;
     }
 
     .right .profile .info {
@@ -806,9 +795,21 @@ main .recent-orders a{
     .right .top button span {
         font-size: 2rem;
     }
+
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+    
 }
 
+.lab{
+    margin-left: 60%;
+}
 
+.content{
+    display: none;
+}
 
 body::-webkit-scrollbar{
     width: 11px;
