@@ -39,6 +39,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
 
     <title>Administrador</title>
     <link rel="stylesheet"a href="../admin/style.css">
@@ -131,10 +133,15 @@
                                     <td><p><?php echo $row['Hora'] ?></p></td>  
                                     <td><p><?php echo $row['Mesa'] ?></p></td>  
                                     <td><p><?php echo $row['Descripcion'] ?></p></td>
-                                    <th><a href="actualizar.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?id_reserva=<?php echo $row['id_reserva']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <td><a data-toggle="modal" data-target="#editarreserva<?php echo $row['id_reserva']; ?>"> <span class="material-icons-sharp" style="color: blue;">edit</span> </a></th>     
+                                    <td><a data-toggle="modal" data-target="#eliminarreserva<?php echo $row['id_reserva']; ?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
                                 </tr>
 
+                                <!--Ventana Modal para Actualizar--->
+                                <?php  include('ModalEditar.php'); ?>
+                                
+                                <!--Ventana Modal para la Alerta de Eliminar--->
+                                <?php include('ModalEliminar.php'); ?>
 
                         <?php
                         }
@@ -225,5 +232,9 @@
 </script>
 <script src="index.js"></script>
 <script src="../loader.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
 </body>
 </html>
