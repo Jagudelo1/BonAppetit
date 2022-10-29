@@ -55,7 +55,7 @@
                    <b>Hola</b>, <?php echo $_SESSION['usuario']; ?>
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="../view/perfil.php">Editar</a></li>
+                    <li><a class="dropdown-item" href="../view/perfil.php">Mi Perfil</a></li>
                     <li><a class="dropdown-item" href="cerrar_sesion.php">Cerrar Sesion</a></li>
                 </ul>
             </div>
