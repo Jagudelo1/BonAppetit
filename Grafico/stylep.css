@@ -1,3 +1,277 @@
+/*@media screen and (max-width: 1200px) {
+    .container1{
+        width: 94%;
+        grid-template-columns: 7% 90% 4%;
+        margin-left: -20px;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
+    }
+
+    aside .logo h2 {
+        display: none;
+    }
+
+    aside .sidebar h3 {
+        display: none;
+    }
+
+    aside .sidebar a {
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child {
+        position: relative;
+        margin-top: 1.8rem;
+    }
+
+    main {
+        margin-left: 10px;
+    }
+
+    main .insights {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    main .recent-orders {
+        margin-top: 150px;
+        margin-right: 40px;
+    }
+
+    main .recent-orders table {
+        width: 83vw;
+    }
+
+    main table thead tr th:last-child, main table thead tr th:first-child {
+        display: none;
+    } 
+
+    main table body tr td:last-child, main table body tr td:first-child {
+        display: none;
+    }
+
+
+    h2 {
+        display: none;
+    }
+
+    .container2{
+        display: none;
+    }
+
+    .right1{
+        display: none;
+    }
+
+
+    .right{
+        margin-top: 7rem;
+        width: 300px;
+        margin-right: 300px;
+        margin-left: -400px;
+    }
+    
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -70%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -40%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -10%;
+        margin-top: -70px;
+    }
+
+    .right .sales-analytics .item .icon {
+        padding: 8px var(--card-padding);
+    }
+
+    :root{
+        --card-padding:9px;
+    }
+
+
+}*/
+
+/*
+
+@media screen and (max-width: 768px) {
+    .container1{
+        width: 90%;
+        grid-template-columns: 1fr 0fr;
+        margin-left: 20px;
+    }
+
+    aside {
+        position: fixed;
+        left: -100;
+        background: var(--color-white);
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 200vh;
+        padding-right: var(--card-padding);
+        display: none;
+        animation: showMenu 400ms ease forwards;
+    }
+
+
+
+    @keyframes showMenu{
+        to{
+            left: 0;
+        }
+    }
+
+    aside .logo {
+        margin-left: 1rem;
+    }
+
+    aside .logo h2 {
+        display: inline;
+    }
+
+    aside .sidebar h3 {
+        display: inline;
+    }
+
+    aside .sidebar a {
+        width: 100%;
+        height: 3.4rem;
+    }
+
+    aside .sidebar a:last-child {
+        position: absolute;
+        bottom: 5rem;
+    }
+
+    aside .close {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    main {
+        margin-left: 0px;
+    }
+
+    main .recent-orders {
+        position: center;
+        margin: 5rem 0 0 0;
+        width: 100%;
+    }
+
+    main .recent-orders table {
+        width: 100%;
+        margin: 0;
+    }
+
+
+    .right {
+        width: 100%;
+        margin-top: 9rem;
+    }
+
+    .right .top {
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        background: var(--color-tablas);
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+    }
+
+    .right .top .theme-toggler {
+        width: 4.4rem;
+        position: absolute;
+        left: 76%;
+    }
+
+    .right .profile .info {
+        display: none;
+    }
+
+    .right .top button {
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .right .top button span {
+        font-size: 2rem;
+    }
+
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
+    }
+
+}
+
+main table tbody td.tdp {
+    width: 300px;
+}
+
+.tdi{
+    size: 40px;
+}
+
+
+.fechas{
+    align-items: center;
+    text-align: center;
+    padding: 20px 350px;
+    margin-top: 10px;
+}
+
+.row{
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}*/
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
 /* -------------- ROOT VARAIBLES --------------*/
@@ -15,7 +289,8 @@
   --color-dark-variant:#677483;
   --color-background:linear-gradient(to bottom, #EDEAE5, #EDEAE5);
   --color-tablas:#fff;
-  --color-botones: #ff9483;
+  --color-td:#5a6571;
+
   --card-border-radius:2rem;
   --border-radius-1:0.4rem;
   --border-radius-2:0.8rem;
@@ -36,8 +311,10 @@
     --color-dark-variant: #eaf8ff;
     --color-light: rgba(0, 0, 0, 0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
-    --color-info-dark:#ffffff;
+    --color-info-dark: #ffffff;
     --color-tablas: transparent;
+  --color-td:#cfe6ff;
+
 }
 
 
@@ -57,42 +334,34 @@ html{
 }
 
 body{
-    width: 100%;
+    width: 95%;
     height: 100%;
     font-family: poppins, sans-serif;
-    font-size: 0.88rem;
+    font-size:0.88rem;
     background: var(--color-background);
     user-select: none;
     overflow-x: hidden;
     color: var(--color-dark);
+    margin-top: 50px;
+    margin-left: 20px;
 }
 
-
-.container{
+.container1{
     display: grid;
-    width: 100%;
-    margin: 20px;
+    width: 96%;
+    margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 14rem 85rem 25rem;
+    grid-template-columns: 13% 70% 17%;
 }
 
 a {
     color: var(--color-dark);
 }
 
-
-
 img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-}
-
-img.foto{
     width: 30px;
     height: 30px;
 }
-
 
 h1{
     font-weight:800;
@@ -125,13 +394,6 @@ small {
     height: 2.8rem;
     overflow: hidden;
 }
-
-.graficos{
-    background-color: transparent;
-    border-radius: 3px;
-}
-
-
 
 .text-muted {
     color: var(--color-info-dark);
@@ -190,7 +452,6 @@ aside .logo img {
 aside .close {
     display: none;
 }
-
 
 font{
     color: var(--color-info-dark);
@@ -273,7 +534,7 @@ aside .sidebar .message-count {
 
 main {
     margin-top: 1.4rem;
-    width: 100%;
+    margin-left: 20px;
 }
 
 main .date {
@@ -296,7 +557,7 @@ main .insights {
 }
 
 main .insights > div {
-    background: var(--color-white);
+    background: var(--color-tablas);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     margin-top: 1rem;
@@ -312,7 +573,6 @@ main .insights > div span {
     background: var(--color-primary);
     padding: 0.5rem;
     border-radius: 50%;
-    color: var(--color-white);
     font-size: 2rem;
 }
 
@@ -394,6 +654,7 @@ main .insights small {
 
 main .recent-orders{
     margin-top: 2rem;
+    width: 100%;
 }
 
 main .recent-orders h2 {
@@ -402,13 +663,25 @@ main .recent-orders h2 {
 
 main .recent-orders table {
     background: var(--color-tablas);
-    width: 100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
     text-align: center;
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
-    margin-bottom: 30px;
+    transition: all 500ms ease;
+    
+}
+
+table.dataTable.no-footer {
+    border-radius: 10px 10px 0 0 ;
+}
+
+table#tablax.dataTable.no-footer{
+    border-radius: 0 0 10px 10px;
+}
+
+main table tbody {
+    height: 30px;
+    margin-top: -30px;
 }
 
 main .recent-orders table:hover{
@@ -418,7 +691,6 @@ main .recent-orders table:hover{
 main table tbody td {
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
-    color: var(--color-dark-variant);
 }
 
 main table tbody tr:last-child td {
@@ -428,21 +700,21 @@ main table tbody tr:last-child td {
 main .recent-orders a{
     text-align: center;
     display: block;
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     color: var(--color-primary);
 }
 
 
 /* =============== RIGHT =============== */
+
 .right{
     margin-top: 1.4rem;
-    height: 50px;
 }
 
 .right .top {
     display: flex;
     justify-content: end;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 .right .top button {
@@ -496,7 +768,6 @@ main .recent-orders a{
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
 }
 
 .right .recent-updates .updates:hover {
@@ -529,20 +800,12 @@ main .recent-orders a{
     padding: 1.4rem var(--card-padding);
     border-radius: var(--border-radius-3);
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
 }
 
-.right .sales-analytics .item:hover {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin: 0;
-    width: 100%;
-}
 
 .right .sales-analytics .item .icon {
     padding: 0.6rem;
-    color: var(--color-tablas);
+    background: var(--color-tablas);
     border-radius: 50%;
     background: var(--color-primary);
     display: flex;
@@ -583,9 +846,15 @@ main .recent-orders a{
 /* ==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 1200px) {
-    .container{
+    .container1{
         width: 94%;
-        grid-template-columns: 7rem auto 23rem;
+        grid-template-columns: 7% 90% 4%;
+        margin-left: -20px;
+    }
+
+    div.top{
+        margin-top: 25px;
+        margin-left: 30px;
     }
 
     aside .logo h2 {
@@ -605,17 +874,18 @@ main .recent-orders a{
         margin-top: 1.8rem;
     }
 
+    main {
+        margin-left: 10px;
+    }
+
     main .insights {
         grid-template-columns: 1fr;
         gap: 0;
     }
 
     main .recent-orders {
-        width: 94%;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 8.8rem;
+        margin-top: 150px;
+        margin-right: 40px;
     }
 
     main .recent-orders table {
@@ -629,14 +899,71 @@ main .recent-orders a{
     main table body tr td:last-child, main table body tr td:first-child {
         display: none;
     }
+
+
+    h2 {
+        display: none;
+    }
+
+    h3{
+        display: none;
+    }
+
+    .container2{
+        display: none;
+    }
+
+    .right1{
+        display: none;
+    }
+
+
+    .right{
+        margin-top: 7rem;
+        width: 300px;
+        margin-right: 300px;
+        margin-left: -400px;
+    }
+    
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -70%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -40%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -10%;
+        margin-top: -70px;
+    }
+
+    .right .sales-analytics .item .icon {
+        padding: 8px var(--card-padding);
+    }
+
+    :root{
+        --card-padding:9px;
+    }
+
+
 }
 
 /*==================== MEDIA QUERIES ==================== */
 
 @media screen and (max-width: 768px) {
-    .container {
-        width: 100%;
-        grid-template-columns: 1fr;
+    .container1{
+        width: 90%;
+        grid-template-columns: 1fr 0fr;
+        margin-left: 20px;
     }
 
     aside {
@@ -646,11 +973,13 @@ main .recent-orders a{
         width: 18rem;
         z-index: 3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
+        height: 200vh;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
     }
+
+
 
     @keyframes showMenu{
         to{
@@ -685,9 +1014,13 @@ main .recent-orders a{
         cursor: pointer;
     }
 
+    main {
+        margin-left: 0px;
+    }
+
     main .recent-orders {
-        position: relative;
-        margin: 3rem 0 0 0;
+        position: center;
+        margin: 5rem 0 0 0;
         width: 100%;
     }
 
@@ -696,9 +1029,10 @@ main .recent-orders a{
         margin: 0;
     }
 
+
     .right {
-        width: 94%;
-        margin: 0 auto 4rem;
+        width: 100%;
+        margin-top: 9rem;
     }
 
     .right .top {
@@ -708,7 +1042,7 @@ main .recent-orders a{
         align-items: center;
         padding: 0 0.8rem;
         height: 4.6rem;
-        background: var(--color-white);
+        background: var(--color-tablas);
         width: 100%;
         margin: 0;
         z-index: 2;
@@ -718,7 +1052,7 @@ main .recent-orders a{
     .right .top .theme-toggler {
         width: 4.4rem;
         position: absolute;
-        left: 66%;
+        left: 76%;
     }
 
     .right .profile .info {
@@ -737,27 +1071,94 @@ main .recent-orders a{
     .right .top button span {
         font-size: 2rem;
     }
+
+    h1{
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    h3{
+        display: none;
+    }
+
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
+    }
+
 }
 
-main table tbody td.tdp {
-    width: 300px;
+.lab{
+    margin-left: 60%;
 }
 
-.tdi{
-    size: 40px;
+.content{
+    display: none;
+}
+
+body::-webkit-scrollbar{
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #ff9d00;
+    border-radius: 5px;
+}
+
+.loader{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #16191e;
+    position: absolute;
+}
+
+.loader>div{
+    height: 100px;
+    width: 100px;
+    border: 15px solid #45474b;
+    border-top-color: #2a88e6;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg)
+    }
 }
 
 
-.fechas{
-    align-items: center;
-    text-align: center;
-    padding: 20px 350px;
-    margin-top: 10px;
+.page-item.active .page-link {
+    background-color: var(--color-primary-variant);
 }
 
-.row{
-    align-items: center;
-    align-content: center;
-    text-align: center;
+.page-item:first-child .page-link {
+    background-color: var(--color-danger);
 }
 
+.page-item:last-child .page-link {
+    background-color: var(--color-success);
+}

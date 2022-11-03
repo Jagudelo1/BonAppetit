@@ -260,6 +260,7 @@ aside .sidebar .message-count {
 
 main {
     margin-top: 1.4rem;
+    margin-left: 20px;
 }
 
 main .date {
@@ -493,7 +494,6 @@ main .recent-orders a{
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
 }
 
 .right .recent-updates .updates:hover {
@@ -526,16 +526,8 @@ main .recent-orders a{
     padding: 1.4rem var(--card-padding);
     border-radius: var(--border-radius-3);
     box-shadow: var(--box-shadow);
-    transition: all 300ms ease;
 }
 
-.right .sales-analytics .item:hover {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin: 0;
-    width: 100%;
-}
 
 .right .sales-analytics .item .icon {
     padding: 0.6rem;
@@ -582,7 +574,7 @@ main .recent-orders a{
 @media screen and (max-width: 1200px) {
     .container1{
         width: 94%;
-        grid-template-columns: 6% 105% 4%;
+        grid-template-columns: 7% 90% 4%;
         margin-left: -20px;
     }
 
@@ -606,6 +598,10 @@ main .recent-orders a{
     aside .sidebar a:last-child {
         position: relative;
         margin-top: 1.8rem;
+    }
+
+    main {
+        margin-left: 10px;
     }
 
     main .insights {
@@ -635,6 +631,10 @@ main .recent-orders a{
         display: none;
     }
 
+    h3{
+        display: none;
+    }
+
     .container2{
         display: none;
     }
@@ -654,21 +654,21 @@ main .recent-orders a{
     .item.customers{
         width: 60px;
         height: 60px;
-        margin-left: -80%;
+        margin-left: -70%;
         margin-top: -60px;
     }
 
     .item.online{
         width: 60px;
         height: 60px;
-        margin-left: -50%;
+        margin-left: -40%;
         margin-top: -70px;
     }
 
     .item.offline{
         width: 60px;
         height: 60px;
-        margin-left: -20%;
+        margin-left: -10%;
         margin-top: -70px;
     }
 
@@ -687,9 +687,9 @@ main .recent-orders a{
 
 @media screen and (max-width: 768px) {
     .container1{
-        width: 100%;
-        grid-template-columns: 1fr;
-        margin-left: 0px;
+        width: 90%;
+        grid-template-columns: 1fr 0fr;
+        margin-left: 20px;
     }
 
     aside {
@@ -699,11 +699,13 @@ main .recent-orders a{
         width: 18rem;
         z-index: 3;
         box-shadow: 1rem 3rem 4rem var(--color-light);
-        height: 100vh;
+        height: 200vh;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
     }
+
+
 
     @keyframes showMenu{
         to{
@@ -738,9 +740,13 @@ main .recent-orders a{
         cursor: pointer;
     }
 
+    main {
+        margin-left: 0px;
+    }
+
     main .recent-orders {
-        position: relative;
-        margin: 3rem 0 0 0;
+        position: center;
+        margin: 5rem 0 0 0;
         width: 100%;
     }
 
@@ -749,9 +755,10 @@ main .recent-orders a{
         margin: 0;
     }
 
+
     .right {
-        width: 94%;
-        margin: 0 auto 4rem;
+        width: 100%;
+        margin-top: 9rem;
     }
 
     .right .top {
@@ -794,6 +801,31 @@ main .recent-orders a{
     h1{
         margin-top: 20px;
         text-align: center;
+    }
+
+    h3{
+        display: none;
+    }
+
+    .item.customers{
+        width: 60px;
+        height: 60px;
+        margin-left: -80%;
+        margin-top: -60px;
+    }
+
+    .item.online{
+        width: 60px;
+        height: 60px;
+        margin-left: -50%;
+        margin-top: -70px;
+    }
+
+    .item.offline{
+        width: 60px;
+        height: 60px;
+        margin-left: -20%;
+        margin-top: -70px;
     }
 
 }

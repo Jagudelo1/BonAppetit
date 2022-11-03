@@ -24,18 +24,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-        <!--Animation Script-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
     <title>Administrador</title>
     <link rel="stylesheet"a href="../mesas/styleM.css">
 </head>
@@ -92,16 +96,17 @@
             <br>
 
             <h2 style="margin-top: 15px">Mesas</h2>
-
             <div class="recent-orders">
-            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped table-bordered" style="width:100%" >   
+
+            <table id="tablax" border="0" cellspacing="5" cellpadding="5" class="table table-striped display responsive nowrap" style="width:100%" >   
             <div class="container2" style="margin-top: 10px;padding: 5px">
 
                 <thead>
                     <tr>
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
-                            <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Eliminar</font> </td>
-                        </tr>
+                        <td></td>
+                        <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
+                        <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Eliminar</font> </td>
+                    </tr>
                     </thead>    
                 </div>
                     <tbody>
@@ -111,6 +116,7 @@
 
                             
                                 <tr>
+                                    <td></td>
                                     <td><p><?php echo $row['no_mesa'] ?></p></td>
                                     <th><a href="delete.php?id_mesa=<?php echo $row['id_mesa']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
                                 </tr>
@@ -164,9 +170,10 @@
 
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <!-- DATATABLES -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-    </script>
+<!-- DATATABLES -->
+<script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<!-- Responsive -->
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>

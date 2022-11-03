@@ -45,7 +45,7 @@
     <link rel="stylesheet"a href="../Grafico/stylep.css">
 </head>
 <body>
-<div class="container">
+<div class="container1">
     <aside>
         <div class="top">       
             <div class="logo">
@@ -157,7 +157,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item customers">
+            <div class="item online">
                 <div class="icon">
                     <button class="graficos" onclick="downloadPDFhori()"><span class="material-icons-sharp">align_horizontal_left</span></button>
                 </div>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
             </div>
-            <div class="item customers">
+            <div class="item offline">
                 <div class="icon">
                     <button class="graficos" onclick="downloadPDFdona()"><span class="material-icons-sharp">donut_large</span></button>
                 </div>
