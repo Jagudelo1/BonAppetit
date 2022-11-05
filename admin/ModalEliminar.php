@@ -4,13 +4,13 @@
       <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">
-                ¿Realmente deseas eliminar a ?
+                ¿Realmente deseas eliminar la reserva de?
             </h4>
         </div>
 
         <div class="modal-body">
           <strong style="text-align: center !important"> 
-            <?php echo $row['id_reserva']; ?>
+            <?php echo $row['Nombre_Completo']; ?>
         
           </strong>
         </div>
