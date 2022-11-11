@@ -104,7 +104,6 @@
                 <div class="container2" style="margin-top: 10px;padding: 5px">
                     <thead> 
                         <tr>
-                            <td></td>
                             <td> <font face="Arial">Documento</font> </td> 
                             <td> <font face="Arial">Nombres</font> </td> 
                             <td> <font face="Arial">Apellidos</font> </td> 
@@ -122,7 +121,6 @@
     
                         ?>
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['Documento'] ?></p></td>
                                     <td><p><?php echo $row['Nombres'] ?></p></td>
                                     <td><p><?php echo $row['Apellidos'] ?></p></td>
@@ -130,9 +128,15 @@
                                     <td><p><?php echo $row['Fecha'] ?></p></td>  
                                     <td><p><?php echo $row['Usuario'] ?></p></td>  
                                     <td><p><?php echo $row['Contrasena'] ?></p></td>  
-                                    <th><a href="actualizar.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <th><a data-toggle="modal" data-target="#editarreserva<?php echo $row['id_cliente']; ?>"> <span class="material-icons-sharp" style="color: blue; cursor: pointer">edit</span> </a></th>     
+                                    <th><a data-toggle="modal" data-target="#eliminarreserva<?php echo $row['id_cliente']; ?>"> <span class="material-icons-sharp" style="color: red; cursor: pointer">delete</span> </a></th>                                  
                                 </tr>
+
+                                <!--Ventana Modal para Actualizar--->
+                                <?php  include('ModalEditar.php'); ?>
+                                
+                                <!--Ventana Modal para la Alerta de Eliminar--->
+                                <?php include('ModalEliminar.php'); ?>
                         <?php
                         }
                         ?>
@@ -247,5 +251,6 @@
 
 <script src="./indexc.js"></script>
 <script src="../loader.min.js"></script>
+<script src="./index.js"></script>
 </body>
 </html>

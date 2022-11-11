@@ -136,7 +136,7 @@
         <h2>Analizador de INGRESOS</h2>
             <div class="item offline">
                 <div class="icon">
-                    <a href="platillos.php"><span class="material-icons-sharp">undo</span></a>
+                    <a href="mesa.php"><span class="material-icons-sharp">undo</span></a>
                 </div>
                 <div class="right">
                     <div class="info">

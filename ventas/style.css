@@ -631,7 +631,7 @@ main .recent-orders a{
         display: none;
     }
 
-    h3 {
+    h3{
         display: none;
     }
 
@@ -741,7 +741,8 @@ main .recent-orders a{
     }
 
     main {
-        margin-left: 0px;
+        margin-left: 10%;
+        width: 85%;
     }
 
     main .recent-orders {
@@ -761,6 +762,23 @@ main .recent-orders a{
         margin-top: 9rem;
     }
 
+    .right .sales-analytics {
+        margin-top: 800px;
+        margin-left: 100px;
+    }
+
+    .item.customers {
+        margin-left: 20px;
+    }
+
+    .item.online {
+        margin-left: 95px;
+    }
+
+    .item.offline {
+        margin-left: 170px;
+    }
+
     .right .top {
         position: fixed;
         top: 0;
@@ -778,7 +796,7 @@ main .recent-orders a{
     .right .top .theme-toggler {
         width: 4.4rem;
         position: absolute;
-        left: 76%;
+        left: 70%;
     }
 
     .right .profile .info {
@@ -803,29 +821,8 @@ main .recent-orders a{
         text-align: center;
     }
 
-    h3 {
+    h3{
         display: none;
-    }
-
-    .item.customers{
-        width: 60px;
-        height: 60px;
-        margin-left: -80%;
-        margin-top: -60px;
-    }
-
-    .item.online{
-        width: 60px;
-        height: 60px;
-        margin-left: -50%;
-        margin-top: -70px;
-    }
-
-    .item.offline{
-        width: 60px;
-        height: 60px;
-        margin-left: -20%;
-        margin-top: -70px;
     }
 
 }

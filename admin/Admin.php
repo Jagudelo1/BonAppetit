@@ -108,7 +108,6 @@
 
                 <thead>
                     <tr>
-                            <td></td>
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Nombre</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Teléfono</font> </td> 
                             <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Fecha</font> </td> 
@@ -127,15 +126,14 @@
 
                             
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['Nombre_Completo'] ?></p></td>
                                     <td><p><?php echo $row['Telefono'] ?></p></td>
                                     <td><p><?php echo $row['Fecha'] ?></p></td>
                                     <td><p><?php echo $row['Hora'] ?></p></td>  
                                     <td><p><?php echo $row['Mesa'] ?></p></td>  
                                     <td><p><?php echo $row['Descripcion'] ?></p></td>
-                                    <td><a data-toggle="modal" data-target="#editarreserva<?php echo $row['id_reserva']; ?>"> <span class="material-icons-sharp" style="color: blue;">edit</span> </a></th>     
-                                    <td><a data-toggle="modal" data-target="#eliminarreserva<?php echo $row['id_reserva']; ?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <td><a data-toggle="modal" data-target="#editarreserva<?php echo $row['Id_Reserva']; ?>"> <span class="material-icons-sharp" style="color: blue; cursor: pointer">edit</span> </a></th>     
+                                    <td><a data-toggle="modal" data-target="#eliminarreserva<?php echo $row['Id_Reserva']; ?>"> <span class="material-icons-sharp" style="color: red; cursor: pointer;">delete</span> </a></th>                                  
                                 </tr>
 
                                 <!--Ventana Modal para Actualizar--->
@@ -236,7 +234,42 @@
 <script src="../loader.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
 
+        $(window).load(function() {
+            $(".cargando").fadeOut(1000);
+        });
+
+//Ocultar mensaje
+    setTimeout(function () {
+        $("#contenMsjs").fadeOut(1000);
+    }, 3000);
+
+
+    $('.btnBorrar').click(function(e){
+        e.preventDefault();
+        var id = $(this).attr("id");
+
+        var dataString = 'id_reserva='+ id;
+        url = "delete.php";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: dataString,
+                success: function(data)
+                {
+                  window.location.href="admin.php";
+                  $('#respuesta').html(data);
+                }
+            });
+    return false;
+
+    });
+
+
+});
+</script>
 
 </body>
 </html>
