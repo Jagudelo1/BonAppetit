@@ -1,30 +1,24 @@
 <?php
     // No mostrar los errores de PHP
     error_reporting(0);
-
     if(!isset($_SESSION)) 
     { 
         session_start(); 
     }
-
     include("../db/conexion.php");
-
     $datos= "SELECT * FROM clientes";
-
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
         header('Location: ../view/login.php');
         die();
-
     }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
@@ -39,7 +33,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
     <title>Clientes</title>
     <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
@@ -104,7 +97,6 @@
                 <div class="container2" style="margin-top: 10px;padding: 5px">
                     <thead> 
                         <tr>
-                            <td></td>
                             <td> <font face="Arial">Documento</font> </td> 
                             <td> <font face="Arial">Nombres</font> </td> 
                             <td> <font face="Arial">Apellidos</font> </td> 
@@ -122,7 +114,6 @@
     
                         ?>
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['Documento'] ?></p></td>
                                     <td><p><?php echo $row['Nombres'] ?></p></td>
                                     <td><p><?php echo $row['Apellidos'] ?></p></td>
@@ -130,9 +121,15 @@
                                     <td><p><?php echo $row['Fecha'] ?></p></td>  
                                     <td><p><?php echo $row['Usuario'] ?></p></td>  
                                     <td><p><?php echo $row['Contrasena'] ?></p></td>  
-                                    <th><a href="actualizar.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp">edit</span> </a></th>     
-                                    <th><a href="delete.php?Documento=<?php echo $row['Documento']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <th><a data-toggle="modal" data-target="#editarreserva<?php echo $row['id_cliente']; ?>"> <span class="material-icons-sharp" style="color: blue; cursor: pointer">edit</span> </a></th>     
+                                    <th><a data-toggle="modal" data-target="#eliminarreserva<?php echo $row['id_cliente']; ?>"> <span class="material-icons-sharp" style="color: red; cursor: pointer">delete</span> </a></th>     
                                 </tr>
+
+                                <!--Ventana Modal para Actualizar--->
+                                <?php  include('ModalEditar.php'); ?>
+                                
+                                <!--Ventana Modal para la Alerta de Eliminar--->
+                                <?php include('ModalEliminar.php'); ?>
                         <?php
                         }
                         ?>
@@ -204,48 +201,12 @@
                 </div>
             </div>
         </div>
-        <!----- END OF TOP ------>
-
-            <!------------------- END OF RECENT UPDATES -------------------->
-        <div class="sales-analytics">
-            <h2>Analizador de CLIENTES</h2>
-
-            <div class="item customers">
-                <div class="icon">
-                    <a target="_blank" href="../reportes/index.php"> <span class="material-icons-sharp">inventory</span> </a>
-                </div>
-                <div class="right1">
-                    <div class="info">
-                        <h3>Imprimir reporte</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a target="_blank" href="../clientes/nombres.php"><span class="material-icons-sharp">person_search</span></a>
-                </div>
-                <div class="right1">
-                    <div class="info">
-                        <h3>Nombres</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item offline">
-                <div class="icon">
-                    <a target="_blank" href="usuarios.php"><span class="material-icons-sharp">account_circle</span></a>
-                </div>
-                <div class="right1">
-                    <div class="info">
-                        <h3>Usuarios</h3>
-                    </div>
-                </div>
-            </div>          
-        </div>
     </div>
 </div>
 </div>
 
 <script src="./indexc.js"></script>
 <script src="../loader.min.js"></script>
+<script src="./index.js"></script>
 </body>
 </html>

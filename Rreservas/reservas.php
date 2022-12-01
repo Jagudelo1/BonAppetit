@@ -55,7 +55,7 @@ while($row = $resultado->fetch_assoc()){
     $pdf->Cell(4);
 
     $pdf->Cell(35, 10, utf8_decode($row['Nombre_Completo']), 1, 0, 'C', 0);
-    $pdf->Cell(25, 10, $row['Fecha'], 1, 0, 'C', 0);
+    $pdf->Cell(25, 10, $row['Fecha_Reserva'], 1, 0, 'C', 0);
     $pdf->Cell(25, 10, $row['Hora'], 1, 0, 'C', 0);
     $pdf->Cell(25, 10, $row['Mesa'], 1, 0, 'C', 0);
     $pdf->MultiCell(75, 10, utf8_decode($row['Descripcion']), 1, 'C', 0);

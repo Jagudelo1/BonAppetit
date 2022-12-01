@@ -1,6 +1,6 @@
 
 <!--ventana para Update--->
-<div class="modal fade" id="editarreserva<?php echo $row['id_reserva']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="editarreserva<?php echo $row['Id_Reserva']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background-color: #563d7c !important;">
@@ -14,29 +14,29 @@
 
 
       <form method="POST" action="update.php">
-        <input type="hidden" name="id_reserva" value="<?php echo $row['id_reserva']; ?>">
+        <input type="hidden" name="Id_Reserva" value="<?php echo $row['Id_Reserva']; ?>">
 
             <div class="modal-body" id="cont_modal">
 
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Fecha de la reserva:</label>
-                  <input type="date" name="Fecha" class="form-control" value="<?php echo $row['Fecha']; ?>" required="true">
+                  <input type="date" name="Fecha_Reserva" id="Fecha_Reserva" class="form-control" value="<?php echo $row['Fecha_Reserva']; ?>" required="true">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Hora de la reserva:</label>
-                  <input type="time" name="Hora" class="form-control" value="<?php echo $row['Hora']; ?>" required="true">
+                  <input type="time" name="Hora" id="Hora" class="form-control" value="<?php echo $row['Hora']; ?>" required="true">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Mesa:</label>
-                  <input type="number" name="Mesa" class="form-control" value="<?php echo $row['Mesa']; ?>" required="true">
+                  <input type="number" name="Mesa" id="Mesa" class="form-control" value="<?php echo $row['Mesa']; ?>" required="true">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Descripción:</label>
-                  <input type="text" name="Descripcion" class="form-control" value="<?php echo $row['Descripcion']; ?>" required="true">
+                  <input type="text" name="Descripcion" id="Descripcion" class="form-control" value="<?php echo $row['Descripcion']; ?>" required="true">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">Celular:</label>
-                  <input type="number" name="Telefono" class="form-control" value="<?php echo $row['Telefono']; ?>" required="true">
+                  <input type="number" name="Telefono" id="Telefono" class="form-control" value="<?php echo $row['Telefono']; ?>" required="true">
                 </div>
                 
             </div>

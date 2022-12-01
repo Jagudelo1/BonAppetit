@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
@@ -39,7 +39,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
     <title>Administrador</title>
     <link rel="stylesheet"a href="../mesas/styleM.css">
 </head>
@@ -103,9 +102,9 @@
 
                 <thead>
                     <tr>
-                        <td></td>
                         <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Mesa</font> </td> 
                         <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Eliminar</font> </td>
+                        <td> <font face="Arial" style="color: var(--color-info-dark); font-size: 1rem;">Añadir</font> </td>
                     </tr>
                     </thead>    
                 </div>
@@ -116,9 +115,9 @@
 
                             
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['no_mesa'] ?></p></td>
-                                    <th><a href="delete.php?id_mesa=<?php echo $row['id_mesa']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>                                  
+                                    <th><a href="delete.php?id_mesa=<?php echo $row['id_mesa']?>"> <span class="material-icons-sharp" style="color: red;">delete</span> </a></th>  
+                                    <td><a href="../mesas/anadir.php"><span class="material-icons-sharp">add</span></a></td>                                
                                 </tr>
 
 
@@ -147,21 +146,6 @@
                     </div>
                     <div class="profile-photo">
                        <img src="./img/user.png">
-                    </div>
-                </div>
-            </div>
- 
-            <!------------------- END OF RECENT UPDATES -------------------->
-            <div class="sales-analytics">
-                <h2>Añadir mesas</h2>
-                <div class="item customers">
-                    <div class="icon">
-                        <a href="../mesas/anadir.php"><span class="material-icons-sharp">add</span></a>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3>Añadir</h3>
-                        </div>
                     </div>
                 </div>
             </div>

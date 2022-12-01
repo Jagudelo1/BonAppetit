@@ -1,51 +1,38 @@
 <?php
     // No mostrar los errores de PHP
     error_reporting(0);
-
     if(!isset($_SESSION)) 
     { 
         session_start(); 
     }
-
     include("../db/conexion.php");
-
-    $datos= "SELECT * FROM clientes";
-
+    $datos= "SELECT * FROM reservas";
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
         header('Location: ../view/login.php');
         die();
-
     }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- MATERIAL CDN -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-                <!--Animation Script-->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-                <!--Animation Script-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <!-- STYLESHEET -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <!-- MATERIAL CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!--Animation Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <!-- STYLESHEET -->
     <link rel="shortcut icon" href="Img/ICONO.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/073e5c788d.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fc2b9b04bc.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <title>Clientes</title>
     <link rel="stylesheet"a href="../clientes/stylec.css">
 </head>
@@ -157,42 +144,6 @@
                 </div>
                 <div class="profile-photo">
                     <img src="./imag/user.png">
-                </div>
-            </div>
-        </div>
-        <!----- END OF TOP ------>
-
-            <!------------------- END OF RECENT UPDATES -------------------->
-        <div class="sales-analytics">
-            <h2>Analizador de CLIENTES</h2>
-            <div class="item customers">
-                <div class="icon">
-                    <a href="../reportesnom/index.php"> <span class="material-icons-sharp">inventory</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Imprimir reporte</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item online">
-                <div class="icon">
-                    <a href="#"><span class="material-icons-sharp">query_stats</span></a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Consulta</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="item offline">
-                <div class="icon">
-                    <a href="../clientes/clientes.php"><span class="material-icons-sharp">undo</span></a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Atrás</h3>
-                    </div>
                 </div>
             </div>
         </div>

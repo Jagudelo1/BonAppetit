@@ -1,5 +1,5 @@
 <!-- Ventana modal para eliminar -->
-<div class="modal fade" id="eliminarreserva<?php echo $row['id_reserva']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="eliminarreserva<?php echo $row['Id_Reserva']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -17,7 +17,7 @@
         
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-danger btnBorrar" data-dismiss="modal" id="<?php echo $row['id_reserva']; ?>">Borrar</button>
+          <button type="submit" class="btn btn-danger btnBorrar" data-dismiss="modal" id="<?php echo $row['Id_Reserva']; ?>">Borrar</button>
         </div>
         
         </div>

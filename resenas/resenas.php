@@ -1,31 +1,24 @@
 <?php
     // No mostrar los errores de PHP
     error_reporting(0);
-
     if(!isset($_SESSION)) 
     { 
         session_start(); 
     }
-
     include("../db/conexion.php");
-
     $datos= "SELECT * FROM resenas";
-
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
         header('Location: ../view/login.php');
         die();
-
     }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
@@ -40,7 +33,6 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-
     <title>Clientes</title>
     <link rel="stylesheet"a href="../resenas/stylere.css">
 </head>
@@ -108,7 +100,6 @@
             <div class="container2" style="margin-top: 10px;padding: 5px">
             <thead>
                             <tr> 
-                                <td></td>
                                 <td> <font face="Arial">id</font> </td> 
                                 <td> <font face="Arial">nombre</font> </td> 
                                 <td> <font face="Arial">correo</font> </td> 
@@ -126,7 +117,6 @@
 
                             
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['id_resena'] ?></p></td>
                                     <td><p><?php echo $row['Nombre_Completo'] ?></p></td>
                                     <td><p><?php echo $row['Correo'] ?></p></td>

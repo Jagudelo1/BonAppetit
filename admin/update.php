@@ -2,7 +2,7 @@
 
     require("../db/conexion.php");
 
-    $id_reserva = $_POST["id_reserva"];
+    $Id_Reserva = $_POST["Id_Reserva"];
     $Fecha = $_POST["Fecha"];
     $Hora = $_POST["Hora"];
     $Mesa = $_POST["Mesa"];
@@ -11,7 +11,7 @@
 
     
 
-    $update = "UPDATE reservas SET Fecha ='$Fecha', Hora ='$Hora', Mesa ='$Mesa', Descripcion ='$Descripcion', Telefono ='$Telefono' WHERE id_reserva ='$id_reserva'";
+    $update = "UPDATE reservas SET Fecha ='$Fecha', Hora ='$Hora', Mesa ='$Mesa', Descripcion ='$Descripcion', Telefono ='$Telefono' WHERE Id_Reserva ='$Id_Reserva'";
     $result = mysqli_query($conexion,$update);
 
     if(isset($result)){

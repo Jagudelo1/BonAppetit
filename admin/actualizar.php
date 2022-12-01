@@ -128,7 +128,7 @@
                             
                                 <tr>
                                     <td><p><textarea readonly="readonly" name="id_reserva" id="id_reserva" rows="1"><?php echo $row['id_reserva'] ?></textarea></p></td>
-                                    <td><p><textarea name="Fecha" id="Fecha" rows="1"><?php echo $row['Fecha'] ?></textarea></p></td>
+                                    <td><p><textarea name="Fecha" id="Fecha" rows="1"><?php echo $row['Fecha_Reserva'] ?></textarea></p></td>
                                     <td><p><textarea name="Hora" id="Hora" rows="1"><?php echo $row['Hora'] ?></textarea></p></td>
                                     <td><p><textarea name="Mesa" id="Mesa" rows="1"><?php echo $row['Mesa'] ?></textarea></p></td>
                                     <td><p><textarea name="Descripcion" id="Descripcion" rows="1"><?php echo $row['Descripcion'] ?></textarea></p></td>

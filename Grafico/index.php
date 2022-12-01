@@ -1,26 +1,19 @@
 <?php
     // No mostrar los errores de PHP
     error_reporting(0);
-
     if(!isset($_SESSION)) 
     { 
         session_start(); 
     }
-
     include("conexion.php");
-
     $datos= "SELECT * FROM platillos";
-
     $sesion = $_SESSION['usuario'];
         if($sesion == null || $sesion = ''){
         echo 'Usted no tiene autorización';
         header('Location: ../view/login.php');
         die();
-
     }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,10 +107,10 @@
                         </div>
                         <br></br>
                         <br></br>
-                        <canvas id="graficobar" width="100" height="100" class="ver" ></canvas> 
-                        <canvas id="graficobarhorizontal" width="100" height="100"></canvas>
-                        <canvas id="graficodoughnut" width="100" height="100"></canvas>
-                        <canvas id="graficopolarArea" width="100" height="100"></canvas>
+                        <canvas id="graficobar" width="20" height="10" class="ver"></canvas> 
+                        <canvas id="graficobarhorizontal" width="20" height="10"></canvas>
+                        <canvas id="graficodoughnut" width="30" height="10"></canvas>
+                        <canvas id="graficopolarArea" width="30" height="10"></canvas>
                         </div>            
                     </div>
                 </div>
@@ -358,21 +351,21 @@
                     
                     options: {
                         tooltips: {
-                            titleFontSize: 20,
-                            bodyFontSize: 20
+                            titleFontSize: 8,
+                            bodyFontSize: 10
                         },
                         scales: {
                             
                         },
 
                         pointLabels: { 
-                                fontSize: 30
+                                fontSize: 8
                             },
 
                             title: {
                                 display: true,
                                 text: 'ESTADO DE LAS VENTAS',
-                                fontSize: 30,
+                                fontSize: 10,
                                 fontFamily: "candara",
                                 fontColor: '#000',  
                                 position: 'top',
@@ -382,7 +375,7 @@
                             position: 'right',
                             labels: {
                                 fontColor: 'black',
-                                fontSize: 26
+                                fontSize: 9
                             }
                         },
                         plugins: {
@@ -531,32 +524,32 @@
             background-color: var(--color-tablas); 
         }
         #graficobar.chartjs-render-monitor{
-            height: 500px !important;
+            height: 350px !important;
             width: 90% !important;
             margin-left: 5% !important;
         }
         #graficobarhorizontal.chartjs-render-monitor{
-            height: 500px !important;
+            height: 350px !important;
             width: 90% !important;
             margin-left: 5% !important;
         }
         #graficodoughnut.chartjs-render-monitor{
-            height: 500px !important;
+            height: 350px !important;
             width: 80% !important;
             margin-left: 5% !important;
         }
         #graficoline.chartjs-render-monitor{
-            height: 500px !important;
+            height: 350px !important;
             width: 90% !important;
             margin-left: 5% !important;
         }
         #graficopolarArea.chartjs-render-monitor{
-            height: 500px !important;
+            height: 350px !important;
             width: 80% !important;
             margin-left: 5% !important;
         }
         .ver{
-            font-size: 20px !important;
+            font-size: 10px !important;
         }
 
     </style>

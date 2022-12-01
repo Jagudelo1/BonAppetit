@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible"content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- MATERIAL CDN -->
@@ -46,7 +46,7 @@
 <body>
 
 
-
+<div class="content">
     <div class="container1">
         <aside>
             <div class="top">       
@@ -104,7 +104,6 @@
 
                 <thead>
                             <tr> 
-                                <td></td>
                                 <td> <font face="Arial">Nombre</font> </td> 
                                 <td> <font face="Arial">Precio</font> </td> 
                                 <td> <font face="Arial">Ventas</font> </td> 
@@ -121,7 +120,6 @@
 
                             
                                 <tr>
-                                    <td></td>
                                     <td><p><?php echo $row['Nombre_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['Precio_Platillo'] ?></p></td>
                                     <td><p><?php echo $row['ventas'] ?></p></td>
@@ -156,33 +154,9 @@
                     </div>
                 </div>
             </div>
-            <!----- END OF TOP ------>
-            
-            <!------------------- END OF RECENT UPDATES -------------------->
-            <div class="sales-analytics">
-                <h2>Analizador de INGRESOS</h2>
-                <div class="item customers">
-                    <div class="icon">
-                        <a target="_blank" href="../Rreservas/reservas.php"><span class="material-icons-sharp">inventory</span></a>
-                    </div>
-                    <div class="right">
-                        <div class="info">
-                            <h3>Imprimir Reporte</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="item online">
-                <div class="icon">
-                    <a target="_blank" href="../Grafico/index.php"> <span class="material-icons-sharp">analytics</span> </a>
-                </div>
-                <div class="right">
-                    <div class="info">
-                        <h3>Gráficos</h3>
-                    </div>
-                </div>
-            </div>         
         </div>
     </div>
+</div>
 <!-- JQUERY -->
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <!-- DATATABLES -->
